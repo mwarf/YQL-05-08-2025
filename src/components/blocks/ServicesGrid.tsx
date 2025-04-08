@@ -52,7 +52,7 @@ const ServicesGrid: React.FC<ServicesGridProps> = ({ services, title }) => {
               <div className="mb-4 h-12 w-12 flex items-center justify-center bg-muted text-muted-foreground rounded-full">
                 <IconComponent className="h-6 w-6" /> {/* Render the selected icon component */}
               </div>
-              <span className="text-lg font-semibold mb-1">{service.title}</span>
+              <h3 className="text-lg font-semibold mb-1">{service.title}</h3>
               <p className="text-muted-foreground text-sm">
                 {service.description}
               </p>

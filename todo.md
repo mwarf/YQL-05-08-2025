@@ -63,4 +63,24 @@ This file tracks specific tasks and improvements to be implemented.
 - [ ] **Mobile Nav:** Verify link order in `MobileNav.astro` matches desktop header (About, Services, Blog, Contact).
 
 ---
+
+## Pre-Launch SEO & Accessibility Checklist
+
+### SEO
+- [ ] Review Image Alt Text across site components (Carousel [Done], About [Done], etc.).
+- [x] Implement Structured Data (Schema Markup - LocalBusiness, Service).
+- [ ] Review Internal Linking Strategy (e.g., blog posts to service pages) [Started - Real Estate, Mapping].
+- [x] Verify XML Sitemap Generation (`sitemap-index.xml`).
+- [x] Check `robots.txt` for crawlability.
+- [ ] Review Blog Post SEO (Titles/Descriptions in frontmatter).
+
+### Accessibility
+- [x] Check Semantic HTML & Heading Structure site-wide.
+- [ ] Test Keyboard Navigation thoroughly.
+- [ ] Verify Color Contrast Ratios (WCAG AA).
+- [x] Review ARIA Roles/Attributes on custom components (if needed).
+- [ ] Check Form Accessibility (labels, error messages).
+- [ ] Ensure Video Accessibility (Captions for Wistia player).
+
+---
 *Add other tasks as needed.*

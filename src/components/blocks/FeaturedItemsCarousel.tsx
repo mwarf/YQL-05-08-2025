@@ -17,6 +17,7 @@ interface GalleryItem {
   title: string;
   summary: string;
   url: string;
+  alt: string; // Add this line
   imgAttrs: {
     // Use the new key and define the expected shape
     src: string;
@@ -79,6 +80,7 @@ const FeaturedItemsCarousel = ({
               }}
               disabled={!canScrollPrev}
               className="disabled:pointer-events-auto rounded-lg" // Added rounded-lg
+              aria-label="Previous slide" // Added aria-label
             >
               <ArrowLeft className="size-5" />
             </Button>
@@ -90,6 +92,7 @@ const FeaturedItemsCarousel = ({
               }}
               disabled={!canScrollNext}
               className="disabled:pointer-events-auto rounded-lg" // Added rounded-lg
+              aria-label="Next slide" // Added aria-label
             >
               <ArrowRight className="size-5" />
             </Button>
@@ -130,16 +133,16 @@ const FeaturedItemsCarousel = ({
                               height={item.imgAttrs.height} // Use imgAttrs
                               loading="lazy" // Add lazy loading
                               decoding="async" // Add async decoding
-                              alt={item.title}
+                              alt={item.alt} // Change this from item.title
                               className="h-full w-full object-cover object-center"
                             />
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="font-heading mb-2 line-clamp-3 break-words pt-4 text-lg font-medium md:mb-3 md:pt-4 md:text-xl lg:pt-4 lg:text-2xl">
+                    <h3 className="font-heading mb-2 line-clamp-3 break-words pt-4 text-lg font-medium md:mb-3 md:pt-4 md:text-xl lg:pt-4 lg:text-2xl">
                       {item.title}
-                    </div>
+                    </h3>
                     <div className="mb-8 line-clamp-2 text-sm text-muted-foreground md:mb-12 md:text-base lg:mb-9">
                       {item.summary}
                     </div>

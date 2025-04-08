@@ -1,0 +1,6 @@
+# Allow all ethical crawlers access
+User-agent: *
+Allow: /
+
+# Sitemap location (adjust if Astro generates it elsewhere)
+Sitemap: /sitemap-index.xml

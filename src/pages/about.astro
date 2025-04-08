@@ -10,8 +10,8 @@ import bentoVisualImage from "@/images/projects/project-upscaled-04-upscale-3.3x
 
 
 // Define SEO variables based on new content
-const pageTitle = "About Coalbanks Creative | Lethbridge Drone Experts";
-const pageDescription = "Meet Coalbanks Creative, Lethbridge drone experts founded by Michael Warf. Learn about our digital roots, documentary style, safety focus, and commitment to visual storytelling in Southern Alberta.";
+const pageTitle = "About Lethbridge Drone | Our Story & Expertise";
+const pageDescription = "Learn about Lethbridge Drone, founded by Michael Warf. Discover our digital roots, documentary style, safety focus, and commitment to visual storytelling in Southern Alberta.";
 
 // Use imported images - Astro handles optimization and pathing via the Image component
 // const founderPlaceholder = "https://via.placeholder.com/400x400.png?text=Michael+Warf"; // Removed
@@ -33,7 +33,7 @@ const pageDescription = "Meet Coalbanks Creative, Lethbridge drone experts found
     <section class="grid md:grid-cols-2 gap-8 md:gap-12 items-center max-w-5xl mx-auto">
       <div class="flex justify-center">
         {/* Use Astro Image component for optimization */}
-        <Image src={founderImage} alt="Michael Warf - Founder of Coalbanks Creative" class="rounded-lg shadow-md w-full max-w-sm aspect-square object-cover" width={400} height={400} densities={[1, 1.5, 2]}/>
+        <Image src={founderImage} alt="Headshot of Michael Warf, founder of Lethbridge Drone, smiling." class="rounded-lg shadow-md w-full max-w-sm aspect-square object-cover" width={400} height={400} densities={[1, 1.5, 2]}/>
       </div>
       <div class="prose prose-lg dark:prose-invert">
         <h2>Michael's Journey</h2>
@@ -88,7 +88,7 @@ const pageDescription = "Meet Coalbanks Creative, Lethbridge drone experts found
         {/* Tile 1: Main Visual */}
         <div class="md:col-span-1 md:row-span-2 rounded-lg overflow-hidden shadow-md aspect-video md:aspect-auto">
            {/* Use Astro Image component for optimization */}
-          <Image src={bentoVisualImage} alt="Stunning aerial photography showcase" class="w-full h-full object-cover" width={600} height={400} densities={[1, 1.5, 2]}/>
+          <Image src={bentoVisualImage} alt="Promotional image for the documentary Francheska Prairie Queen featuring the subject." class="w-full h-full object-cover" width={600} height={400} densities={[1, 1.5, 2]}/>
         </div>
         {/* Tile 2: Certification */}
         <div class="bg-card text-card-foreground p-6 rounded-lg shadow-md flex flex-col justify-center items-center text-center">

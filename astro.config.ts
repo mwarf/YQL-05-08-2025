@@ -2,17 +2,17 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind"; // Import the tailwind integration
+import sitemap from "@astrojs/sitemap"; // Import the sitemap integration
 // import tailwindcss from "@tailwindcss/vite"; // Remove Vite plugin import
 import icon from "astro-icon"; // Uncomment astro-icon import
 
 // https://astro.build/config
 export default defineConfig({
-  site: process.env.CI
-    ? "https://astro-shadcn-ui-template.vercel.app"
-    : "http://localhost:4322", // Updated port based on dev server output
+  site: "https://lethbridgedrone.com", // Set production domain
   integrations: [
     react(),
     tailwind(), // Add the tailwind integration
+    sitemap(), // Add the sitemap integration
     icon({
       // Uncomment and configure astro-icon integration
       include: {

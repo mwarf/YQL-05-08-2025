@@ -16,6 +16,42 @@ const { title, description, ogImage } = Astro.props;
 <html lang="en">
   <head>
     <HeadSEO title={title} description={description} ogImage={ogImage} />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Lethbridge Drone",
+      "image": "https://lethbridgedrone.com/favicon.svg",
+      "@id": "https://lethbridgedrone.com",
+      "url": "https://lethbridgedrone.com",
+      "telephone": "+1-587-813-5950",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "#208, 316 5 St S",
+        "addressLocality": "Lethbridge",
+        "addressRegion": "AB",
+        "postalCode": "T1J 2B5",
+        "addressCountry": "CA"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "17:00"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "Southern Alberta"
+      },
+      "description": "Expert aerial photography and videography services in Lethbridge and Southern Alberta, specializing in real estate, events, construction, agriculture, and marketing."
+    }
+    </script>
   </head>
   <body class="bg-background min-h-screen font-sans antialiased">
     <ReadingProgress /> {/* Add ReadingProgress component here */}
