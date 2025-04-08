@@ -65,13 +65,10 @@ const FeaturedItemsCarousel = ({
             <h2 className="font-heading mb-3 text-3xl font-bold md:mb-4 md:text-4xl lg:mb-6">
               {heading}
             </h2>
-            <a
-              href={demoUrl}
-              className="group flex items-center gap-1 text-sm font-medium md:text-base lg:text-lg"
-            >
-              Book a demo
-              <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-1" />
-            </a>
+            {/* Replaced Book a demo link with intro text */}
+            <p className="text-sm text-muted-foreground md:text-base lg:text-lg">
+              We love helping Lethbridge businesses and organizations shine. Here's a peek at what we've been up to:
+            </p>
           </div>
           <div className="mt-8 flex shrink-0 items-center justify-start gap-2">
             <Button

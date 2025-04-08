@@ -134,6 +134,10 @@ const ClientLogos = ({
         <h2 className="font-heading my-6 text-pretty text-3xl font-bold md:text-4xl">
           {heading}
         </h2>
+        {/* Added intro line */}
+        <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
+          We're proud to partner with fantastic organizations in Southern Alberta and beyond:
+        </p>
       </div>
       <div className="pt-10 md:pt-12 lg:pt-16">
         {" "}

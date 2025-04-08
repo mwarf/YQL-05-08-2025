@@ -237,11 +237,11 @@ const carouselItems = [
         <HeroWithVideoContent
           client:visible
           badgeText="Serving Southern Alberta"
-          title="Stunning Aerial Views: Lethbridge Drone Videography & Photography"
-          description="Coalbanks Creative offers professional drone services in Lethbridge, capturing breathtaking aerial footage and high-resolution photos for real estate, events, marketing, and more."
-          button1Text="Get a Quote"
+          title="Your Project, Elevated: Stunning Drone Views by Coalbanks Creative."
+          description="Ready for breathtaking aerial footage or crystal-clear photos? Coalbanks Creative is your local Lethbridge team for professional drone services. We help businesses in real estate, agriculture, construction, marketing, events, and more capture unique perspectives safely and beautifully. Let's show your project from its best angle!"
+          button1Text="Get Your Free Quote"
           button1Link="/contact"
-          button2Text="See Our Work"
+          button2Text="Explore Our Work"
           button2Link="#sizzle-reel"
         />
          <div class="w-full rounded-xl flex items-center justify-center overflow-hidden"> {/* Removed aspect-video and bg-muted */}
@@ -261,7 +261,11 @@ const carouselItems = [
 
     {featuredPosts.length > 0 && (
       <section id="featured-blog" class="container py-16 md:py-24">
-        <h2 class="font-heading text-3xl font-bold text-center mb-12">Latest Insights</h2>
+        <h2 class="font-heading text-3xl font-bold text-center mb-4">Latest Insights</h2> {/* Reduced bottom margin */}
+        {/* Added intro line */}
+        <p class="text-center text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
+          Curious about what drones can do? Dive into our latest tips, insights, and project spotlights:
+        </p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Pass headingLevel="h3" for correct semantics */}
           {featuredPosts.map((post: BlogPost) => (

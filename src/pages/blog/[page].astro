@@ -51,7 +51,7 @@ const displayPosts: BlogPost[] = isFirstPage ? page.data.slice(1) : page.data;
 // Adjust title and description for paginated pages
 const pageNum = page.currentPage > 1 ? ` | Page ${page.currentPage}` : "";
 const pageTitle = `Blog${pageNum} | Coalbanks Creative`;
-const pageDescription = `Read the latest insights, news, and tips on drone technology and aerial imaging from Coalbanks Creative.${pageNum}`;
+const pageDescription = `Unlock the potential of aerial views! Explore our collection of insights designed for businesses and organizations right here in Lethbridge and Southern Alberta. Find tips, inspiration, and answers to help you make the most of drone technology.${pageNum}`;
 
 // Get all unique categories for the category list
 const allBlogPosts = await getCollection("blog");
@@ -60,15 +60,15 @@ const uniqueCategories = [...new Set(allBlogPosts.map(post => post.data.category
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   <div class="container py-12 md:py-16">
-    <h1 class="font-heading text-4xl font-bold mb-8 text-center">Our Blog</h1>
+    <h1 class="font-heading text-4xl font-bold mb-8 text-center">Elevate Your Knowledge:<br /> Drone Insights for Southern Alberta</h1>
     <p class="text-muted-foreground text-lg mb-16 text-center max-w-2xl mx-auto"> {/* Changed mb-12 to mb-16 */}
-      {pageDescription}
+      Unlock the potential of aerial views! Explore our collection of insights designed for businesses and organizations right here in Lethbridge and Southern Alberta. Find tips, inspiration, and answers to help you make the most of drone technology.
     </p>
 
     {/* Categories Section */}
     {uniqueCategories.length > 0 && (
       <section id="categories-section" class="mb-12">
-        <h2 class="font-heading text-2xl font-semibold mb-4 text-center">Browse by Category</h2>
+        <h2 class="font-heading text-2xl font-semibold mb-4 text-center">Find Your Topic:</h2>
         <div class="flex flex-wrap justify-center gap-2">
           {uniqueCategories.map(category => (
             <a
