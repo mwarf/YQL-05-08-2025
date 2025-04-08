@@ -1,0 +1,38 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Our Services - Coalbanks Creative" description="Explore the drone videography and photography services offered by Coalbanks Creative in Lethbridge.">
+  {/* Copied Services / Why Choose Us Section from index.astro */}
+  <section id="services-content" class="py-16 md:py-24 bg-secondary"> {/* Changed ID, kept styling */}
+    <div class="container grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="font-heading text-3xl font-bold mb-6">Our Drone Services</h2>
+        <ul class="list-disc list-inside space-y-2 text-muted-foreground mb-8">
+          <li>Commercial Real Estate Photography/Videography</li>
+          <li>Event Coverage</li>
+          <li>Marketing & Promotional Videos</li>
+          <li>Construction Progress Monitoring</li>
+          <li>Photogrammetry</li>
+          {/* Add more detailed service descriptions here */}
+        </ul>
+      </div>
+      <div>
+        <h2 class="font-heading text-3xl font-bold mb-6">Why Choose Coalbanks Creative?</h2>
+        <p class="text-muted-foreground leading-relaxed">
+          Coalbanks Creative specializes in delivering high-quality drone videography and photography, even in complex environments. We hold Transport Canada Advanced Drone Certification and excel at collaborating with stakeholders to ensure your project is captured safely, legally, and beautifully. From Lethbridge Airport operations to commercial projects, we turn logistical challenges into stunning visual assets.
+        </p>
+        {/* Add more details about expertise, certification, etc. */}
+      </div>
+    </div>
+  </section>
+
+  {/* Consider adding a Call to Action section here */}
+  {/* Example:
+  <section class="container py-16 md:py-24 text-center">
+    <h2 class="font-heading text-3xl font-bold mb-6">Ready to Elevate Your Project?</h2>
+    <p class="text-muted-foreground mb-8 max-w-xl mx-auto">Contact us today to discuss your aerial videography or photography needs.</p>
+    <a href="/#contact" class={buttonVariants({ size: "lg" })}>Get a Quote</a>
+  </section>
+  */}
+</BaseLayout>

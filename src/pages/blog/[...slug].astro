@@ -1,0 +1,139 @@
+---
+// src/pages/blog/[...slug].astro
+import {
+  getCollection,
+  getEntryBySlug,
+  type CollectionEntry,
+} from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { buttonVariants } from "@/components/ui/button";
+import { Image } from "astro:assets"; // Import Astro Image component
+import TableOfContents from "@/components/TableOfContents.astro"; // Import ToC component
+import SocialShare from "@/components/SocialShare.astro"; // Import SocialShare component
+
+// Define the type for blog posts
+type BlogPost = CollectionEntry<"blog">;
+
+// 1. Generate a static page for every blog post
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post: BlogPost) => ({
+    // Add type to map param
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+// 2. Get the post data from the props passed by getStaticPaths
+const { post } = Astro.props as { post: BlogPost };
+const { Content, headings } = await post.render(); // Get rendered content AND headings
+
+// Calculate Estimated Reading Time
+const wordsPerMinute = 225; // Average reading speed
+const wordCount = post.body.split(/\s+/).length; // Simple word count
+const readingTime = Math.ceil(wordCount / wordsPerMinute); // Round up
+
+// 3. Find related posts (simple version: same category, not self, limit 3)
+const allPosts: BlogPost[] = await getCollection("blog"); // Add type to allPosts
+const relatedPosts = allPosts
+  .filter(
+    (p: BlogPost) =>
+      p.data.category === post.data.category && p.slug !== post.slug,
+  ) // Add type to filter param
+  .sort(
+    (a: BlogPost, b: BlogPost) =>
+      b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  ) // Add types to sort params
+  .slice(0, 3); // Limit to 3
+
+const pageTitle = `${post.data.title} | Coalbanks Creative Blog`;
+const pageDescription = post.data.description;
+
+// Construct the full URL for the og:image meta tag
+const ogImageUrl = post.data.heroImage
+  ? new URL(post.data.heroImage.src, Astro.site)
+  : undefined; // Use undefined if no heroImage
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} ogImage={ogImageUrl}>
+  <article class="container max-w-3xl py-12 md:py-16">
+    {/* Hero Image */}
+    {post.data.heroImage && (
+      <Image
+        src={post.data.heroImage}
+        alt={`Hero image for ${post.data.title}`}
+        width={1000}
+        height={500}
+        format="webp"
+        quality={85}
+        class="w-full h-auto max-h-[500px] object-cover rounded-lg mb-8 shadow-lg"
+      />
+    )}
+
+    {/* Post Header */}
+    <header class="mb-8">
+      <h1 class="font-heading text-4xl md:text-5xl font-bold mb-4">{post.data.title}</h1>
+      <div class="text-sm text-muted-foreground flex items-center gap-4">
+        <time datetime={post.data.pubDate.toISOString()}>
+          Published: {new Date(post.data.pubDate).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </time>
+        <span>&bull;</span>
+        <span>{readingTime} min read</span>
+        <span>&bull;</span>
+        <span>Category: {post.data.category}</span>
+        {/* TODO: Add Tags here later */}
+      </div>
+    </header>
+
+    {/* Table of Contents */}
+    <TableOfContents headings={headings} />
+
+    {/* Post Content */}
+    <div class="prose prose-lg dark:prose-invert max-w-none mb-12">
+      <Content />
+    </div>
+
+    {/* Social Share Buttons */}
+    <SocialShare title={post.data.title} url={Astro.url} description={post.data.description} />
+
+    {/* Related Posts Section */}
+    {relatedPosts.length > 0 && (
+      <section class="mt-16 border-t border-border pt-8">
+        <h2 class="font-heading text-2xl font-semibold mb-6">Related Posts</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {relatedPosts.map((relatedPost: BlogPost) => ( // Add type to map param
+            <a href={`/blog/${relatedPost.slug}/`} class="block group border border-border rounded-lg overflow-hidden shadow hover:shadow-md transition-shadow">
+              {relatedPost.data.heroImage && (
+                <Image
+                  src={relatedPost.data.heroImage}
+                  alt={`Thumbnail for ${relatedPost.data.title}`}
+                  width={400}
+                  height={200}
+                  format="webp"
+                  quality={75}
+                  class="w-full h-32 object-cover"
+                />
+              )}
+              <div class="p-4">
+                <h3 class="font-semibold mb-1 group-hover:text-accent transition-colors">{relatedPost.data.title}</h3>
+                <p class="text-sm text-muted-foreground line-clamp-2">{relatedPost.data.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {/* Back to Blog Link */}
+    <div class="mt-12 text-center">
+      <a href="/blog" class={buttonVariants({ variant: "outline" })}>
+        &larr; Back to Blog
+      </a>
+    </div>
+
+  </article>
+</BaseLayout>

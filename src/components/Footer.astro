@@ -1,0 +1,19 @@
+---
+// src/components/Footer.astro
+const currentYear = new Date().getFullYear();
+---
+<footer class="border-t py-6 md:px-8 md:py-8"> {/* Increased padding */}
+  <div
+    class="container flex flex-col items-center justify-between gap-6 md:flex-row text-center md:text-left"
+  >
+    <div class="text-sm text-muted-foreground">
+      <p class="font-semibold">Coalbanks Creative Inc.</p>
+      <p>#208, 316 5 St S, Lethbridge, AB T1J 2B5</p>
+      <p>Phone: <a href="tel:+15878135950" class="hover:underline">(587) 813-5950</a></p>
+      {/* Consider adding email or link to contact form later */}
+    </div>
+    <p class="text-sm text-muted-foreground">
+      &copy; {currentYear} Coalbanks Creative Inc. All rights reserved.
+    </p>
+  </div>
+</footer>

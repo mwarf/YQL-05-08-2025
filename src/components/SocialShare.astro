@@ -1,0 +1,63 @@
+---
+// src/components/SocialShare.astro
+import { Icon } from "astro-icon/components"; // Using astro-icon
+
+interface Props {
+  title: string;
+  url: URL; // Use the full URL object
+  description?: string; // Optional description for some platforms
+}
+
+const { title, url, description } = Astro.props;
+
+// Ensure URL is a string for encoding
+const urlString = url.toString();
+
+// Encode components for URLs
+const encodedTitle = encodeURIComponent(title);
+const encodedUrl = encodeURIComponent(urlString);
+const encodedDescription = description
+  ? encodeURIComponent(description)
+  : encodedTitle; // Fallback to title
+
+// Define share links
+const shareLinks = [
+  {
+    name: "Twitter",
+    url: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
+    icon: "mdi:twitter", // Example icon name (adjust if needed)
+  },
+  {
+    name: "Facebook",
+    url: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+    icon: "mdi:facebook", // Example icon name
+  },
+  {
+    name: "LinkedIn",
+    url: `https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${encodedTitle}&summary=${encodedDescription}`,
+    icon: "mdi:linkedin", // Example icon name
+  },
+  {
+    name: "Email",
+    url: `mailto:?subject=${encodedTitle}&body=Check out this article: ${encodedUrl}`,
+    icon: "mdi:email-outline", // Example icon name
+  },
+  // Add more platforms like Reddit, Pinterest, WhatsApp etc. if desired
+];
+---
+
+<div class="mt-8 py-4 border-t border-b border-border flex items-center gap-4 flex-wrap">
+  <span class="text-sm font-medium text-muted-foreground mr-2">Share this post:</span>
+  {shareLinks.map(link => (
+    <a
+      href={link.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Share on ${link.name}`}
+      class="text-muted-foreground hover:text-foreground transition-colors"
+      title={`Share on ${link.name}`}
+    >
+      <Icon name={link.icon} class="w-5 h-5" />
+    </a>
+  ))}
+</div>

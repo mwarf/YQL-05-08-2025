@@ -1,0 +1,101 @@
+---
+// src/components/MobileNav.astro
+// Removed Icon import
+import { buttonVariants } from "@/components/ui/button";
+---
+
+<div class="md:hidden"> {/* Only show on mobile */}
+  {/* Hamburger Button */}
+  <button
+    id="mobile-menu-toggle"
+    class:list={[buttonVariants({ variant: 'ghost', size: 'icon' }), "relative z-50"]}
+    aria-label="Open menu"
+    aria-expanded="false"
+    aria-controls="mobile-menu-panel"
+  >
+    {/* Inline SVGs */}
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 block menu-icon-open">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 hidden menu-icon-close">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+    </svg>
+  </button>
+
+  {/* Mobile Menu Panel */}
+  <!-- Initially hidden -->
+  <div
+    id="mobile-menu-panel"
+    class="absolute top-full left-0 right-0 z-40 mt-1 w-full border-b border-border bg-background p-4 shadow-md hidden"
+    aria-hidden="true"
+    style="transition: opacity 0.3s ease-out, transform 0.3s ease-out; opacity: 0; transform: translateY(-10px);"
+  >
+    <nav class="flex flex-col items-center space-y-2">
+      <a href="/#sizzle-reel" class={buttonVariants({ variant: 'ghost' })} data-menu-item>Reel</a>
+      <a href="/#portfolio" class={buttonVariants({ variant: 'ghost' })} data-menu-item>Portfolio</a>
+      <a href="/services" class={buttonVariants({ variant: 'ghost' })} data-menu-item>Services</a> {/* Updated href */}
+      <a href="/about" class={buttonVariants({ variant: 'ghost' })} data-menu-item>About</a> {/* Added About link */}
+      <a href="/blog" class={buttonVariants({ variant: 'ghost' })} data-menu-item>Blog</a>
+      <a href="/contact" class={buttonVariants({ variant: 'ghost' })} data-menu-item>Contact</a>
+    </nav>
+  </div>
+</div>
+
+<script>
+  const toggleButton = document.getElementById('mobile-menu-toggle');
+  const menuPanel = document.getElementById('mobile-menu-panel');
+  // Select icons using classes relative to the button
+  const iconOpen = toggleButton?.querySelector('.menu-icon-open');
+  const iconClose = toggleButton?.querySelector('.menu-icon-close');
+  const menuItems = document.querySelectorAll('[data-menu-item]');
+
+  let isOpen = false;
+
+  function setMenuState(open: any) { // Added : any type annotation
+    isOpen = open;
+    toggleButton?.setAttribute('aria-expanded', String(open));
+    menuPanel?.setAttribute('aria-hidden', String(!open));
+
+    iconOpen?.classList.toggle('hidden', open);
+    iconOpen?.classList.toggle('block', !open);
+    iconClose?.classList.toggle('block', open);
+    iconClose?.classList.toggle('hidden', !open);
+
+    if (open) {
+      menuPanel?.classList.remove('hidden');
+      // Use setTimeout to allow display change before starting transition
+      setTimeout(() => {
+        menuPanel?.style.setProperty('opacity', '1');
+        menuPanel?.style.setProperty('transform', 'translateY(0)');
+      }, 10);
+    } else {
+      menuPanel?.style.setProperty('opacity', '0');
+      menuPanel?.style.setProperty('transform', 'translateY(-10px)');
+      // Hide after transition ends
+      menuPanel?.addEventListener('transitionend', () => {
+        if (!isOpen) { // Check state again in case it reopened quickly
+          menuPanel?.classList.add('hidden');
+        }
+      }, { once: true });
+    }
+    toggleButton?.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+
+  toggleButton?.addEventListener('click', () => {
+    setMenuState(!isOpen);
+  });
+
+  // Close menu when a menu item is clicked
+  menuItems.forEach(item => {
+    item.addEventListener('click', () => {
+      setMenuState(false);
+    });
+  });
+
+  // Optional: Close menu if window is resized to desktop width
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768 && isOpen) { // 768px is Tailwind's 'md' breakpoint
+      setMenuState(false);
+    }
+  });
+</script>

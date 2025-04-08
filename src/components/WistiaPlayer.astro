@@ -1,0 +1,67 @@
+---
+// src/components/WistiaPlayer.astro
+interface Props {
+  mediaId: string;
+  autoplay?: boolean | "muted";
+  muted?: boolean;
+  seo?: boolean;
+  playerColor?: string; // Hex code without #
+  controlsVisibleOnLoad?: boolean;
+  endVideoBehavior?: "default" | "loop" | "pause";
+  preload?: "metadata" | "auto" | "none";
+  // Add any other Wistia player attributes you might need as optional props
+}
+
+const {
+  mediaId,
+  autoplay,
+  muted,
+  seo,
+  playerColor,
+  controlsVisibleOnLoad,
+  endVideoBehavior,
+  preload,
+  ...rest // Capture any other potential props if needed, though explicit is better
+} = Astro.props;
+
+// Build attributes object, handling boolean flags and kebab-case conversion implicitly via spread
+const playerAttributes: Record<string, string | boolean | undefined> = {
+  "media-id": mediaId,
+  "video-foam": true, // Always enable video-foam for responsiveness
+  autoplay: autoplay, // Pass directly, undefined will be ignored by spread
+  muted: muted, // Pass directly
+  seo: seo, // Pass directly
+  "player-color": playerColor, // Use kebab-case for attribute
+  "controls-visible-on-load": controlsVisibleOnLoad, // Use kebab-case
+  "end-video-behavior": endVideoBehavior, // Use kebab-case
+  preload: preload, // Pass directly
+  // Filter out undefined values before spreading if necessary, but Astro/HTML usually handles it
+};
+
+// Clean attributes: remove keys with undefined values
+Object.keys(playerAttributes).forEach((key) => {
+  if (playerAttributes[key] === undefined) {
+    delete playerAttributes[key];
+  }
+});
+---
+
+{/* Wistia Player Embed */}
+<script src="https://fast.wistia.com/player.js" async></script>
+{/* The embed script is often handled automatically by player.js + web component,
+    but keeping it might be safer depending on Wistia's implementation details.
+    Let's keep it for now unless issues arise. */}
+<script src={`https://fast.wistia.com/embed/${mediaId}.js`} async type="module"></script>
+<style define:vars={{ mediaId }}>
+  /* Style for the loading state before the player JS defines the element */
+  wistia-player[media-id='{mediaId}']:not(:defined) {
+    background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/{mediaId}/swatch');
+    display: block; /* Ensure it takes up space */
+    filter: blur(5px); /* Optional: keep the blur effect */
+    /* padding-top is no longer needed thanks to video-foam */
+    min-height: 100px; /* Optional: provide a minimum height during load */
+    width: 100%; /* Ensure it tries to fill container width */
+  }
+</style>
+{/* Spread the calculated attributes onto the player element */}
+<wistia-player {...playerAttributes}></wistia-player>

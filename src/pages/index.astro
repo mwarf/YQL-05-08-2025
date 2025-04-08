@@ -1,0 +1,282 @@
+---
+// src/pages/index.astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+// import { buttonVariants } from "@/components/ui/button"; // Removed unused import
+// import { Label } from "@/components/ui/label"; // Comment out import
+// import { Input } from "@/components/ui/input"; // Remove Input import
+// import { Textarea } from "@/components/ui/textarea"; // Remove Textarea import
+import { getCollection, type CollectionEntry } from "astro:content"; // Import content collection functions
+import BlogPostPreview from "@/components/BlogPostPreview.astro"; // Import the preview component
+import { Image, getImage } from "astro:assets"; // Import the Image component and getImage utility
+import { FeaturedItemsCarousel } from "@/components/blocks/FeaturedItemsCarousel"; // Import the new carousel
+import WistiaPlayer from "@/components/WistiaPlayer.astro"; // Import the Wistia player component
+import HeroWithVideoContent from "@/components/blocks/HeroWithVideoContent.tsx"; // Import the new Hero component
+import { FlickeringGrid } from "@/components/ui/flickering-grid"; // Import the FlickeringGrid component
+import { ClientLogos } from "@/components/blocks/ClientLogos"; // Import the ClientLogos component
+
+// Import images for the carousel
+import projectImage1 from "@/images/projects/project-upscaled-01-upscale-3.2x.jpeg";
+import projectImage2 from "@/images/projects/project-upscaled-02-upscale-3.2x.jpeg";
+import projectImage3 from "@/images/projects/project-upscaled-03-upscale-3.3x.jpeg";
+import projectImage4 from "@/images/projects/project-upscaled-04-upscale-3.3x.jpeg";
+import projectImage5 from "@/images/projects/project-upscaled-05-upscale-3.3x.jpeg";
+import projectImage6 from "@/images/projects/project-upscaled-24-upscale-3.3x.jpeg";
+
+
+// Import SVG logos - Reverted
+// import cityLogoUrl from '@/images/logos/city-of-lethbridge-logo.svg';
+// import uoflLogoUrl from '@/images/logos/uofl_reverse.svg';
+// import pepsicoLogoUrl from '@/images/logos/pepsico-logo-horizontal-reverse.svg';
+// import snapshotLogoUrl from '@/images/logos/snapshot-studios-reverse.svg';
+// import stantecLogoUrl from '@/images/logos/stantec-consulting-reverse-horizontal.svg';
+// import pgaLogoUrl from '@/images/logos/pga-horizontal-reverse.svg';
+// import galtLogoUrl from '@/images/logos/galt-horizontal-reverse.svg';
+// import castleLogoUrl from '@/images/logos/castle-mountain-logo-reverse.svg';
+// import mdTaberLogoUrl from '@/images/logos/md-taber-logo-reverse.svg';
+// import sumusLogoUrl from '@/images/logos/sumus-horizontal-reverse.svg';
+// import storyhiveLogoUrl from '@/images/logos/storyhive-reverse-logo.svg';
+
+// Fetch featured blog posts
+type BlogPost = CollectionEntry<"blog">;
+const featuredPosts = (await getCollection("blog"))
+  .filter((post: BlogPost) => post.data.featured) // Keep first filter
+  .sort(
+    (a: BlogPost, b: BlogPost) =>
+      b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  ) // Keep first sort
+  .slice(0, 3); // Get latest 3 featured
+
+// Generate optimized image attributes, adding densities to generate srcset
+const optimizedImage1 = await getImage({
+  src: projectImage1,
+  width: 600,
+  height: 400,
+  format: "webp",
+  densities: [1, 1.5, 2],
+});
+const optimizedImage2 = await getImage({
+  src: projectImage2,
+  width: 600,
+  height: 400,
+  format: "webp",
+  densities: [1, 1.5, 2],
+});
+const optimizedImage3 = await getImage({
+  src: projectImage3,
+  width: 600,
+  height: 400,
+  format: "webp",
+  densities: [1, 1.5, 2],
+});
+const optimizedImage4 = await getImage({
+  src: projectImage4,
+  width: 600,
+  height: 400,
+  format: "webp",
+  densities: [1, 1.5, 2],
+});
+const optimizedImage5 = await getImage({
+  src: projectImage5,
+  width: 600,
+  height: 400,
+  format: "webp",
+  densities: [1, 1.5, 2],
+});
+const optimizedImage6 = await getImage({
+  src: projectImage6,
+  width: 600,
+  height: 400,
+  format: "webp",
+  densities: [1, 1.5, 2],
+});
+// Prepare data for the FeaturedItemsCarousel with explicit, serializable image attributes
+const carouselItems = [
+  {
+    id: "carousel-item-1",
+    title: "For the Love of Lethbridge",
+    summary: "Showcasing the beauty and spirit of the city.",
+    url: "https://youtu.be/-zaqFf4qhhg?si=lU31gGinZHoiVLLb",
+    imgAttrs: {
+      src: optimizedImage1.src,
+      srcset: optimizedImage1.srcSet,
+      width: optimizedImage1.attributes.width,
+      height: optimizedImage1.attributes.height,
+    },
+  }, // Use srcSet
+  {
+    id: "carousel-item-2",
+    title: "Aperture Park Disc Golf",
+    summary: "Mapping and signage for the University course.",
+    url: "#",
+    imgAttrs: {
+      src: optimizedImage2.src,
+      srcset: optimizedImage2.srcSet,
+      width: optimizedImage2.attributes.width,
+      height: optimizedImage2.attributes.height,
+    },
+  }, // Use srcSet
+  {
+    id: "carousel-item-3",
+    title: "Pepsi Sustainable Agriculture",
+    summary: "Highlighting eco-friendly farming practices.",
+    url: "#",
+    imgAttrs: {
+      src: optimizedImage3.src,
+      srcset: optimizedImage3.srcSet,
+      width: optimizedImage3.attributes.width,
+      height: optimizedImage3.attributes.height,
+    },
+  }, // Use srcSet
+  {
+    id: "carousel-item-4",
+    title: "Francheska Prairie Queen",
+    summary: "A compelling documentary piece.",
+    url: "https://watch.telusoriginals.com/view/francheska-prairie-queen",
+    imgAttrs: {
+      src: optimizedImage4.src,
+      srcset: optimizedImage4.srcSet,
+      width: optimizedImage4.attributes.width,
+      height: optimizedImage4.attributes.height,
+    },
+  }, // Use srcSet
+  {
+    id: "carousel-item-5",
+    title: "The Story of Us - PGA",
+    summary: "Documenting the journey of Alberta's potato growers.",
+    url: "https://youtu.be/UUfeCmwQMIw?si=i7cealcuNi9l2JUm",
+    imgAttrs: {
+      src: optimizedImage5.src,
+      srcset: optimizedImage5.srcSet,
+      width: optimizedImage5.attributes.width,
+      height: optimizedImage5.attributes.height,
+    },
+  }, // Use srcSet
+  // Placeholder items 6-10 using generated attributes cyclically
+  {
+    id: "carousel-item-6",
+    title: "Huckfest",
+    summary: "Castle Mountain Festival 2023",
+    url: "#",
+    imgAttrs: {
+      src: optimizedImage6.src,
+      srcset: optimizedImage6.srcSet,
+      width: optimizedImage6.attributes.width,
+      height: optimizedImage6.attributes.height,
+    },
+  }, // Use srcSet
+  {
+    id: "carousel-item-7",
+    title: "Placeholder Project 7",
+    summary: "Description for placeholder project 7.",
+    url: "#",
+    imgAttrs: {
+      src: optimizedImage2.src,
+      srcset: optimizedImage2.srcSet,
+      width: optimizedImage2.attributes.width,
+      height: optimizedImage2.attributes.height,
+    },
+  }, // Use srcSet
+  {
+    id: "carousel-item-8",
+    title: "Placeholder Project 8",
+    summary: "Description for placeholder project 8.",
+    url: "#",
+    imgAttrs: {
+      src: optimizedImage3.src,
+      srcset: optimizedImage3.srcSet,
+      width: optimizedImage3.attributes.width,
+      height: optimizedImage3.attributes.height,
+    },
+  }, // Use srcSet
+  {
+    id: "carousel-item-9",
+    title: "Placeholder Project 9",
+    summary: "Description for placeholder project 9.",
+    url: "#",
+    imgAttrs: {
+      src: optimizedImage4.src,
+      srcset: optimizedImage4.srcSet,
+      width: optimizedImage4.attributes.width,
+      height: optimizedImage4.attributes.height,
+    },
+  }, // Use srcSet
+  {
+    id: "carousel-item-10",
+    title: "Placeholder Project 10",
+    summary: "Description for placeholder project 10.",
+    url: "#",
+    imgAttrs: {
+      src: optimizedImage5.src,
+      srcset: optimizedImage5.srcSet,
+      width: optimizedImage5.attributes.width,
+      height: optimizedImage5.attributes.height,
+    },
+  }, // Use srcSet
+];
+---
+
+<BaseLayout
+  title="Lethbridge Drone Services | Coalbanks Creative | Aerial Videography & Photography"
+  description="Professional drone videography and photography services in Lethbridge, Alberta by Coalbanks Creative. Specializing in stunning aerial shots for real estate, events, and more. Get a quote today!"
+>
+  <main class="flex flex-col gap-y-16 md:gap-y-24 overflow-x-hidden"> {/* Reduced gap */}
+    {/* New Hero Section */}
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden"> {/* Added relative and overflow-hidden */}
+      {/* Add FlickeringGrid as background */}
+      <FlickeringGrid
+        client:visible
+        className="absolute inset-0 -z-10 size-full"
+        squareSize={4}
+        gridGap={6}
+        color="#6B7280"
+        maxOpacity={0.3}
+        flickerChance={0.1}
+      />
+      {/* Added bg-background/80 for contrast overlay */}
+      <div class="max-w-screen-xl w-full mx-auto grid lg:grid-cols-2 gap-12 px-6 py-12 z-10 bg-background/80 rounded-lg shadow-lg"> {/* Added overlay, rounded, shadow */}
+        <HeroWithVideoContent
+          client:visible
+          badgeText="Serving Southern Alberta"
+          title="Stunning Aerial Views: Lethbridge Drone Videography & Photography"
+          description="Coalbanks Creative offers professional drone services in Lethbridge, capturing breathtaking aerial footage and high-resolution photos for real estate, events, marketing, and more."
+          button1Text="Get a Quote"
+          button1Link="/contact"
+          button2Text="See Our Work"
+          button2Link="#sizzle-reel"
+        />
+         <div class="w-full rounded-xl flex items-center justify-center overflow-hidden"> {/* Removed aspect-video and bg-muted */}
+            {/* Embed Wistia Player Directly - Set preload="metadata" */}
+            <WistiaPlayer mediaId="2cx9e0koe3" preload="metadata" />
+         </div>
+       </div>
+     </section>
+
+    <!-- Featured Items Carousel Section -->
+    <FeaturedItemsCarousel heading="Featured Projects" items={carouselItems} client:load /> {/* Use correct variable name */}
+
+    {/* Client Logos Section - Moved Here */}
+    <ClientLogos client:visible />
+
+    {/* Temporarily comment out Featured Blog Posts section AGAIN to isolate error */}
+
+    {featuredPosts.length > 0 && (
+      <section id="featured-blog" class="container py-16 md:py-24">
+        <h2 class="font-heading text-3xl font-bold text-center mb-12">Latest Insights</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Pass headingLevel="h3" for correct semantics */}
+          {featuredPosts.map((post: BlogPost) => (
+            <BlogPostPreview post={post} headingLevel="h3" />
+          ))}
+        </div>
+        <div class="text-center mt-12">
+          <a href="/blog" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2">
+            View All Posts
+          </a>
+        </div>
+      </section>
+    )}
+    
+    {/* Removed commented-out contact form script */}
+
+  </main>
+</BaseLayout>

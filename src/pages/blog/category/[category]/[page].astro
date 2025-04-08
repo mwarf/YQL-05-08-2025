@@ -1,0 +1,109 @@
+---
+// src/pages/blog/category/[category]/[page].astro
+
+import { getCollection, type CollectionEntry } from "astro:content";
+import type { GetStaticPaths, Page } from "astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BlogPostPreview from "@/components/BlogPostPreview.astro";
+import { buttonVariants } from "@/components/ui/button";
+import { slugify } from "@/lib/utils"; // Import the slugify utility
+
+// Define the type for blog posts
+type BlogPost = CollectionEntry<"blog">;
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+  const PAGE_SIZE = 6; // Define PAGE_SIZE inside the function
+  const allPosts = await getCollection("blog");
+  const uniqueCategories = [
+    ...new Set(allPosts.map((post) => post.data.category)),
+  ];
+
+  const paths = [];
+
+  for (const category of uniqueCategories) {
+    const categorySlug = slugify(category);
+    const filteredPosts = allPosts
+      .filter((post) => post.data.category === category)
+      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+    // Paginate the filtered posts for this category
+    const categoryPaginationResult = paginate(filteredPosts, {
+      params: { category: categorySlug }, // Pass the slug as the [category] param
+      props: { categoryName: category }, // Pass the original category name as a prop
+      pageSize: PAGE_SIZE,
+    });
+    paths.push(...categoryPaginationResult); // Add generated paths for this category
+  }
+
+  return paths;
+};
+
+// Get the paginated data and category name for the current page
+interface Props {
+  page: Page<BlogPost>;
+  categoryName: string; // Get the original category name from props
+  children?: any; // Explicitly add children prop
+}
+const { page, categoryName } = Astro.props;
+
+// Adjust title and description for category pages
+const pageNum = page.currentPage > 1 ? ` | Page ${page.currentPage}` : "";
+const pageTitle = `Blog - Category: ${categoryName}${pageNum} | Coalbanks Creative`;
+const pageDescription = `Blog posts categorized under "${categoryName}" from Coalbanks Creative.${pageNum}`;
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <div class="container py-12 md:py-16">
+    {/* Page Header */}
+    <div class="mb-12 text-center">
+        <p class="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Blog Category</p>
+        <h1 class="font-heading text-4xl font-bold mt-2">{categoryName}</h1>
+        {page.currentPage > 1 && <p class="text-muted-foreground mt-2">Page {page.currentPage}</p>}
+    </div>
+
+    {/* Grid for Posts on Current Page */}
+    {page.data.length > 0 ? (
+      <section id="posts-grid-section">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+          {page.data.map((post: BlogPost) => (
+            <div> {/* Simple wrapper */}
+              <BlogPostPreview post={post} headingLevel="h3" showImage={true} />
+            </div>
+          ))}
+        </div>
+      </section>
+    ) : (
+       <p class="text-center text-muted-foreground mt-12">No posts found in this category.</p>
+    )}
+
+     {/* Pagination Controls */}
+     <nav class="mt-16 flex justify-center gap-4" aria-label={`Pagination for category ${categoryName}`}>
+        {page.url.prev ? (
+          <a href={page.url.prev} class={buttonVariants({ variant: "outline" })}>
+            &larr; Previous Page
+          </a>
+        ) : (
+          <span class={buttonVariants({ variant: "outline", class: "opacity-50 cursor-not-allowed" })}>
+             &larr; Previous Page
+          </span>
+        )}
+        {page.url.next ? (
+          <a href={page.url.next} class={buttonVariants({ variant: "outline" })}>
+            Next Page &rarr;
+          </a>
+         ) : (
+          <span class={buttonVariants({ variant: "outline", class: "opacity-50 cursor-not-allowed" })}>
+             Next Page &rarr;
+          </span>
+         )}
+     </nav>
+
+     {/* Link back to main blog */}
+     <div class="mt-12 text-center">
+        <a href="/blog" class={buttonVariants({ variant: "ghost" })}>
+            &larr; Back to All Blog Posts
+        </a>
+     </div>
+
+   </div>
+ </BaseLayout>

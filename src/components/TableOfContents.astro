@@ -1,0 +1,36 @@
+---
+// src/components/TableOfContents.astro
+import type { MarkdownHeading } from "astro";
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+// Filter headings to include only h2 and h3 for a cleaner ToC
+const { headings } = Astro.props;
+const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
+
+// Function to determine indentation based on heading depth
+const getIndentClass = (depth: number) => {
+  if (depth === 3) return "ml-4"; // Indent h3 under h2
+  return ""; // No indent for h2
+};
+---
+
+{filteredHeadings.length > 1 && ( // Only render ToC if there's more than one relevant heading
+  <aside class="mb-8 p-4 border border-border rounded-lg bg-muted/50 dark:bg-muted/20">
+    <h2 class="text-lg font-semibold mb-3 font-heading">Table of Contents</h2>
+    <ul class="space-y-1.5">
+      {filteredHeadings.map((heading) => (
+        <li class={`text-sm ${getIndentClass(heading.depth)}`}>
+          <a
+            href={`#${heading.slug}`}
+            class="text-muted-foreground hover:text-foreground transition-colors hover:underline underline-offset-2"
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </aside>
+)}
