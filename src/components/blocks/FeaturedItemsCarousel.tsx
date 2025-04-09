@@ -68,7 +68,8 @@ const FeaturedItemsCarousel = ({
             </h2>
             {/* Replaced Book a demo link with intro text */}
             <p className="text-sm text-muted-foreground md:text-base lg:text-lg">
-              We love helping Lethbridge businesses and organizations shine. Here's a peek at what we've been up to:
+              We love helping Lethbridge businesses and organizations shine.
+              Here's a peek at what we've been up to:
             </p>
           </div>
           <div className="mt-8 flex shrink-0 items-center justify-start gap-2">

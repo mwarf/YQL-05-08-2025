@@ -14,7 +14,12 @@ interface Props {
   wrapperClass?: string; // Optional class for the root article element
 }
 
-const { post, showImage = true, headingLevel = "h2", wrapperClass = "" } = Astro.props;
+const {
+  post,
+  showImage = true,
+  headingLevel = "h2",
+  wrapperClass = "",
+} = Astro.props;
 // const HeadingTag = headingLevel; // Use variable for dynamic tag name - Temporarily removed
 ---
 

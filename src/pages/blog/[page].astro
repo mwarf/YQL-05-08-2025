@@ -55,7 +55,9 @@ const pageDescription = `Unlock the potential of aerial views! Explore our colle
 
 // Get all unique categories for the category list
 const allBlogPosts = await getCollection("blog");
-const uniqueCategories = [...new Set(allBlogPosts.map(post => post.data.category))].sort();
+const uniqueCategories = [
+  ...new Set(allBlogPosts.map((post) => post.data.category)),
+].sort();
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>

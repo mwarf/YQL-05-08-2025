@@ -47,7 +47,9 @@ const HeroWithVideoContent: React.FC<HeroProps> = ({
   return (
     <div>
       {badgeText && (
-        <Badge className="rounded-full py-1 border-none"> {/* Removed gradient classes */}
+        <Badge className="rounded-full py-1 border-none">
+          {" "}
+          {/* Removed gradient classes */}
           {badgeText}
         </Badge>
       )}

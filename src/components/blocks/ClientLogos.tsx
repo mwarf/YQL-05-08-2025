@@ -37,8 +37,8 @@ const ClientLogos = ({
     {
       id: "logo-city",
       description: "City of Lethbridge",
-      imageLight: "/images/logos/city-of-lethbridge-horizontal-dark.svg", 
-      imageDark: "/images/logos/city-of-lethbridge-horizontal-light.svg", 
+      imageLight: "/images/logos/city-of-lethbridge-horizontal-dark.svg",
+      imageDark: "/images/logos/city-of-lethbridge-horizontal-light.svg",
       className: "h-10 w-auto",
     },
     {
@@ -136,7 +136,8 @@ const ClientLogos = ({
         </h2>
         {/* Added intro line */}
         <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
-          We're proud to partner with fantastic organizations in Southern Alberta and beyond:
+          We're proud to partner with fantastic organizations in Southern
+          Alberta and beyond:
         </p>
       </div>
       <div className="pt-10 md:pt-12 lg:pt-16">
