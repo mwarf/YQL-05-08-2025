@@ -84,3 +84,32 @@ See `ROADMAP.md` for detailed feature planning and status.
 
 ---
 *This document should be kept up-to-date as the project evolves.*
+
+---
+
+## Astro Codebase Audit Summary (2025-04-12)
+
+An audit of the Astro.js codebase was performed, reviewing configuration, layouts, pages, components, content collections, global styles, and serverless functions.
+
+**Overall Assessment:**
+
+The codebase generally adheres well to Astro and modern web development best practices. It effectively utilizes Astro features (Content Collections, Image Optimization, Islands), TypeScript, Tailwind CSS, and `shadcn/ui`. The structure is sound, and components are well-implemented.
+
+**Key Recommendations & Findings:**
+
+1.  **Configuration:**
+    *   `astro.config.ts`: Consider specifying exact icons used in `astro-icon` instead of `mdi: ["*"]` for potential bundle size optimization.
+    *   `package.json`: Verify if the `@tailwindcss/vite` dependency is necessary, as `@astrojs/tailwind` usually handles this.
+
+2.  **Styling (`src/styles/global.css`):**
+    *   Remove non-standard/deprecated directives: `@plugin "tailwindcss-animate";`, `@custom-variant dark (...)`, and the `@theme { ... }` block. Rely on `tailwind.config.cjs` and `:root` / `.dark` CSS variables for theme configuration.
+
+3.  **Pages (`src/pages/index.astro`):**
+    *   Remove commented-out code and imports for better clarity.
+    *   Replace placeholder images in the Featured Projects carousel with actual project images.
+
+4.  **Components (`src/components/Header.astro`):**
+    *   Review if `client:visible` is the optimal hydration strategy for `MobileNav` or if `client:idle` might be better depending on interactivity needs.
+
+5.  **General:**
+    *   The project structure, TypeScript usage, `shadcn/ui` implementation, Content Collections setup, and serverless function (`functions/api/submit.ts`) follow best practices.
