@@ -168,7 +168,9 @@ const ClientLogos = ({
                   className="flex basis-1/4 justify-center pl-4 sm:basis-1/5 md:basis-1/6 lg:basis-1/8" // Adjusted basis
                 >
                   {/* Give this div a fixed width and center content */}
-                  <div className="mx-auto flex h-20 w-24 md:w-32 shrink-0 items-center justify-center p-2"> {/* Changed h-16 to h-20 */}
+                  <div className="mx-auto flex h-20 w-24 md:w-32 shrink-0 items-center justify-center p-2">
+                    {" "}
+                    {/* Changed h-16 to h-20 */}
                     <div>
                       {/* Conditionally render image based on theme */}
                       <img
