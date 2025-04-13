@@ -11,7 +11,8 @@ import MobileNav from "@/components/MobileNav.astro"; // Updated import path
     {/* Left side: Brand and Desktop Nav */}
     <div class="flex items-center gap-6 md:gap-10">
       <a href="/" class="flex items-center space-x-2">
-        <span class="font-heading inline-block font-bold">Coalbanks Creative</span>
+        <img src="/images/logos/lethbride-drone-logo-dark.svg" alt="Lethbridge Drone Logo" width="150" height="40" class="inline-block dark:hidden" />
+        <img src="/images/logos/lethbride-drone-logo-light.svg" alt="Lethbridge Drone Logo" width="150" height="40" class="hidden dark:inline-block" />
       </a>
       {/* Desktop Navigation */}
       <nav class="hidden md:flex items-center space-x-1"> {/* Reduced spacing */}

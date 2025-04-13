@@ -31,7 +31,7 @@ interface ClientLogosProps {
 
 // Renamed component and props interface
 const ClientLogos = ({
-  heading = "Trusted by these companies",
+  heading = "Clients We've Served",
   // Updated default logos with light/dark variants where available
   logos = [
     {
@@ -39,56 +39,63 @@ const ClientLogos = ({
       description: "City of Lethbridge",
       imageLight: "/images/logos/city-of-lethbridge-horizontal-dark.svg",
       imageDark: "/images/logos/city-of-lethbridge-horizontal-light.svg",
-      className: "h-10 w-auto",
+      className: "h-12 w-auto",
     },
     {
       id: "logo-uofl",
       description: "University of Lethbridge",
       imageLight: "/images/logos/uofl-horizontal-dark.svg", // Using dark mode one for light bg
       imageDark: "/images/logos/uofl-horizontal-light.svg",
-      className: "h-10 w-auto",
+      className: "h-12 w-auto",
     },
     {
       id: "logo-pepsico",
       description: "Pepsico",
       imageLight: "/images/logos/pepsico-logo-dark.svg", // Using dark mode one for light bg
       imageDark: "/images/logos/pepsico-horizontal-light.svg",
-      className: "h-10 w-auto",
+      className: "h-12 w-auto",
     },
     {
       id: "logo-stantec",
       description: "Stantec",
       imageLight: "/images/logos/stantec-consulting-logo-dark.svg", // Using dark mode one for light bg
       imageDark: "/images/logos/stantec-consulting-horizontal-light.svg",
-      className: "h-10 w-auto",
+      className: "h-12 w-auto",
     },
     {
       id: "logo-pga",
       description: "PGA",
       imageLight: "/images/logos/pga-horizontal-dark.svg", // Using dark mode one for light bg
       imageDark: "/images/logos/pga-horizontal-light.svg",
-      className: "h-10 w-auto",
+      className: "h-12 w-auto",
     },
     {
       id: "logo-galt",
       description: "Galt Museum",
       imageLight: "/images/logos/galt-horizontal-dark.svg", // Using dark mode one for light bg
       imageDark: "/images/logos/galt-horizontal-light.svg",
-      className: "h-10 w-auto",
+      className: "h-12 w-auto",
     },
     {
       id: "logo-castle",
       description: "Castle Mountain",
       imageLight: "/images/logos/castle-mountain-logo-dark.svg", // Using dark mode one for light bg
       imageDark: "/images/logos/castle-mountain-logo-light.svg",
-      className: "h-10 w-auto",
+      className: "h-12 w-auto",
     },
     {
       id: "logo-storyhive",
       description: "Storyhive",
       imageLight: "/images/logos/storyhive-logo-dark.svg", // Using dark mode one for light bg
       imageDark: "/images/logos/storyhive-logo-light.svg",
-      className: "h-10 w-auto",
+      className: "h-12 w-auto",
+    },
+    {
+      id: "logo-smrid",
+      description: "SMRID",
+      imageLight: "/images/logos/smrid-logo-dark.svg", // Using dark mode one for light bg
+      imageDark: "/images/logos/smrid-logo-light.svg",
+      className: "h-12 w-auto",
     },
   ],
 }: ClientLogosProps) => {
@@ -160,13 +167,15 @@ const ClientLogos = ({
                   key={logo.id}
                   className="flex basis-1/4 justify-center pl-4 sm:basis-1/5 md:basis-1/6 lg:basis-1/8" // Adjusted basis
                 >
-                  <div className="mx-6 flex shrink-0 items-center justify-center p-2">
+                  {/* Give this div a fixed width and center content */}
+                  <div className="mx-auto flex h-20 w-24 md:w-32 shrink-0 items-center justify-center p-2"> {/* Changed h-16 to h-20 */}
                     <div>
                       {/* Conditionally render image based on theme */}
                       <img
                         src={isDarkMode ? logo.imageDark : logo.imageLight}
                         alt={logo.description}
-                        className={logo.className}
+                        // Keep original height constraint, maybe add max-w-full
+                        className={`${logo.className} max-w-full`}
                       />
                     </div>
                   </div>

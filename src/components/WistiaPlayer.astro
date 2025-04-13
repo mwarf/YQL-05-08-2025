@@ -48,10 +48,8 @@ Object.keys(playerAttributes).forEach((key) => {
 
 {/* Wistia Player Embed */}
 <script src="https://fast.wistia.com/player.js" async></script>
-{/* The embed script is often handled automatically by player.js + web component,
-    but keeping it might be safer depending on Wistia's implementation details.
-    Let's keep it for now unless issues arise. */}
-<script src={`https://fast.wistia.com/embed/${mediaId}.js`} async type="module"></script>
+{/* The embed script is handled automatically by player.js + the wistia-player web component.
+    The separate embed/[mediaId].js script is redundant and has been removed. */}
 <style define:vars={{ mediaId }}>
   /* Style for the loading state before the player JS defines the element */
   wistia-player[media-id='{mediaId}']:not(:defined) {

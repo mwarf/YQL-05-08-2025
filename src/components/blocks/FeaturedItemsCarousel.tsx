@@ -102,7 +102,8 @@ const FeaturedItemsCarousel = ({
           </div>
         </div>
       </div>
-      <div className="w-full">
+      {/* Added relative positioning and pseudo-elements for gradient masks */}
+      <div className="w-full relative before:absolute before:inset-y-0 before:left-0 before:z-10 before:w-16 before:bg-gradient-to-r before:from-background before:to-transparent before:pointer-events-none after:absolute after:inset-y-0 after:right-0 after:z-10 after:w-16 after:bg-gradient-to-l after:from-background after:to-transparent after:pointer-events-none">
         <Carousel
           setApi={setCarouselApi}
           opts={{
