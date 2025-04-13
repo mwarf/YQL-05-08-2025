@@ -1,5 +1,5 @@
 ---
-title: "Drones in Agriculture: Boosting Efficiency and Yields"
+title: "Farming Smarter, Not Harder: How Drones Are Helping Out in Southern Alberta"
 description: "How drone technology is transforming modern farming practices, from crop monitoring and spraying to soil analysis and yield prediction."
 pubDate: 2025-04-05
 category: "Industry News"
@@ -7,8 +7,6 @@ heroImage: "../../images/blog/blog-drone-aerial-city-36.jpg"
 featured: true
 tags: ["Agriculture", "Farming", "Drones", "Precision Ag"]
 ---
-
-# Farming Smarter, Not Harder: How Drones Are Helping Out in Southern Alberta
 
 Farming is huge here in Lethbridge and Southern Alberta – it's what we do! And just like any business, finding new ways to be efficient and sustainable is key. One of the coolest tools popping up on farms lately? Drones! These aren't just toys; they're seriously changing the game for farmers everywhere, including right here.
 
