@@ -152,9 +152,9 @@ const FeaturedItemsCarousel = ({
                       {item.summary}
                     </div>
                     {/* Conditionally render the link only if url is not '#' */}
-                    {item.url !== '#' && (
+                    {item.url !== "#" && (
                       <div className="flex items-center text-sm">
-                        {item.linkText}{" "} {/* Use dynamic linkText */}
+                        {item.linkText} {/* Use dynamic linkText */}
                         <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-1" />
                       </div>
                     )}
