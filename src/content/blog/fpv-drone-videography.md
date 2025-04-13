@@ -1,9 +1,9 @@
 ---
 title: "Experience Flight Like Never Before: Unleash the Dynamic Power of FPV Drone Videography for Your Southern Alberta Business"
 description: "Discover the thrill and utility of FPV drone videography and how its dynamic, immersive perspective can elevate your Southern Alberta business's video content."
-pubDate: 2025-04-12 # Default date used
+pubDate: 2025-04-12
 category: "Videography"
-heroImage: "../../images/blog/blog-drone-fpv.jpg" # Placeholder image used
+heroImage: "../../images/blog/blog-drone-fpv.jpg"
 featured: false
 tags: ["FPV", "Drone Videography", "Cinematic", "Marketing", "Real Estate", "Action Sports", "Southern Alberta", "Lethbridge", "Technology"]
 ---

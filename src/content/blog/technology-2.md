@@ -1,5 +1,5 @@
 ---
-title: "Understanding LiDAR vs. Photogrammetry for Drone Mapping"
+title: "Lasers vs. Photos: Which Drone Mapping Magic is Right for Your Lethbridge Project?"
 description: "A comparison of two popular drone mapping technologies, LiDAR and Photogrammetry, outlining their strengths, weaknesses, and best use cases."
 pubDate: 2025-01-10
 category: "Technology"
@@ -7,8 +7,6 @@ heroImage: "../../images/blog/blog-photo-vis-lidar.png"
 featured: false
 tags: ["LiDAR", "Photogrammetry", "Mapping", "Surveying", "Drones"]
 ---
-
-# Lasers vs. Photos: Which Drone Mapping Magic is Right for Your Lethbridge Project?
 
 So, you know drones can make cool maps, right? It's super useful for all sorts of businesses here in Lethbridge and Southern Alberta for surveying, planning, and just seeing things better. But there are actually a couple of main ways drones do this map-making magic: **LiDAR** (think lasers!) and **Photogrammetry** (think fancy photo-stitching). Which one's best for *you*?
 

@@ -1,5 +1,5 @@
 ---
-title: "From Concept to Completion: The Coalbanks Creative Drone Videography Process"
+title: "How We Make Awesome Drone Videos: A Peek Behind the Coalbanks Creative Curtain!"
 description: "A behind-the-scenes look at our drone video production workflow, ensuring a smooth process and exceptional results for your project."
 pubDate: 2025-03-12
 category: "Process"
@@ -7,8 +7,6 @@ heroImage: "../../images/blog/blog-videography-process.jpg"
 featured: false
 tags: ["Videography", "Process", "Workflow", "Video Production", "Client Collaboration"]
 ---
-
-# How We Make Awesome Drone Videos: A Peek Behind the Coalbanks Creative Curtain!
 
 Ever wonder how those cool drone videos actually get made? It's not just about sending a drone up and hitting record (though that's part of the fun!). At Coalbanks Creative, we've got a process we follow to make sure everything runs smoothly and the final video for our Lethbridge clients is totally amazing.
 

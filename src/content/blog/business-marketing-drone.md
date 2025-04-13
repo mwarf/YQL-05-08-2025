@@ -1,5 +1,5 @@
 ---
-title: "Elevate Your Marketing: Using Aerial Videography to Showcase Your Lethbridge Business"
+title: "Give Your Lethbridge Business a Bird's-Eye View (Without the Feathers!)"
 description: "Learn how dynamic drone footage can create compelling marketing content for various Lethbridge businesses, from retail to industrial."
 pubDate: 2025-04-04
 category: "Marketing"
@@ -7,8 +7,6 @@ heroImage: "../../images/blog/blog-business-marketing-drone.jpg"
 featured: false
 tags: ["Marketing", "Lethbridge", "Business Video", "Drone Videography", "Commercial"]
 ---
-
-## Give Your Lethbridge Business a Bird's-Eye View (Without the Feathers!)
 
 Let's talk about making your business look *really* good. Aerial video, shot with drones, is a super versatile way for businesses here in Lethbridge and Southern Alberta to shine. Whether you're running a factory, selling cars, have a sweet restaurant patio, or manage a cool local attraction, drone shots give people a fresh look at what you do. Think awesome website banners, eye-catching social media stuff, or even slick corporate videos – it's all about telling your story from a new angle.
 

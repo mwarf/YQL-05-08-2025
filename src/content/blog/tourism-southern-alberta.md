@@ -1,5 +1,5 @@
 ---
-title: "Showcasing Southern Alberta's Beauty: Tourism Promotion with Aerial Imagery"
+title: "Wow Tourists with Views! Showing Off Southern Alberta From the Sky"
 description: "Discover how stunning drone photography and videography can capture the unique landscapes of Southern Alberta for tourism marketing."
 pubDate: 2025-03-05
 category: "Tourism"
@@ -7,8 +7,6 @@ heroImage: "../../images/blog/blog-tourism-southern-alberta.jpg"
 featured: true
 tags: ["Tourism", "Southern Alberta", "Lethbridge", "Aerial Photography", "Landscape", "Marketing"]
 ---
-
-# Wow Tourists with Views! Showing Off Southern Alberta From the Sky
 
 Let's be honest, Southern Alberta is gorgeous! We've got everything from epic Rocky Mountains and cool, weird Badlands to wide-open prairies and beautiful river valleys. But how do you *really* show people how amazing it is so they actually pack their bags and visit Lethbridge and our surrounding areas?
 

@@ -1,5 +1,5 @@
 ---
-title: "5 Tips for Capturing Cinematic Drone Footage"
+title: "Level Up Your Drone Videos: Tips for That Sweet Cinematic Look!"
 description: "Elevate your aerial videography with these essential tips for achieving smooth, professional, and cinematic drone shots."
 pubDate: 2025-02-20
 category: "Tips & Tricks"
@@ -7,8 +7,6 @@ heroImage: "../../images/blog/blog-drone-mountain-lake-22.jpg"
 featured: true
 tags: ["Videography", "Cinematic", "Drone Tips", "Filming"]
 ---
-
-# Level Up Your Drone Videos: Tips for That Sweet Cinematic Look!
 
 Want your drone videos to look less like shaky phone footage and more like something... well, *cinematic*? It takes a bit more than just sending the drone up! Getting those smooth, professional-looking shots involves thinking about camera settings, planning your flights, moving the drone just right, and a little polish afterwards. Whether you're showing off Lethbridge's beauty, a cool project, or marketing your business, these tips can help make your drone videos seriously impressive.
 

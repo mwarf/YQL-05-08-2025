@@ -8,7 +8,7 @@ featured: false
 tags: ["Corporate", "Lethbridge", "Facility Showcase", "Drone Videography", "Brand Image", "Professionalism", "Marketing"]
 ---
 
-## Is Your Awesome Lethbridge Facility Getting Lost in Flat Photos?
+## Is Your Awesome Facility Getting Lost in Flat Photos?
 
 You've got an impressive setup here in Lethbridge – maybe a huge warehouse, a sleek office park, or a high-tech manufacturing plant. You know it's great, but does everyone else? Let's be honest, handing out a brochure with a few static pictures often feels a bit... meh. It just doesn't capture the sheer size, the smart layout, or that professional buzz you've worked so hard to create.
 
@@ -35,8 +35,6 @@ With awesome drone footage, you can:
 -   **Put Your Location on the Map:** Easily show off nearby roads, landmarks, how your site is laid out, and how easy it is to get to – super important stuff for logistics and just plain looking good.
 -   **Seriously Impress the VIPs:** Give investors, partners, and key clients the grand tour without them leaving their chairs. It’s a powerful way to show them what you've got and build serious confidence.
 
-<!-- Consider adding an image here: A split image showing a static brochure photo vs. a dynamic drone video screenshot of the same facility -->
-<!-- Example: ![Brochure vs Drone](../../images/blog/brochure-vs-drone-comparison.jpg) -->
 
 ## More Than Just Cool Shots: How You Can Actually Use It
 
@@ -59,5 +57,4 @@ Seriously, stop letting flat photos hide how awesome your Lethbridge facility is
 
 Ready to give your facility the spotlight it deserves and make a killer impression? Give Coalbanks Creative a shout! Let's chat about your project and get you a free quote.
 
-<!-- Consider adding a call-to-action button visually, linking to your contact page -->
-<!-- Example: [Get My Free Drone Video Quote](/contact) -->
+
