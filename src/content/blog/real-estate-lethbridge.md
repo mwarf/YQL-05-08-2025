@@ -1,5 +1,5 @@
 ---
-title: "# Make Your Lethbridge Listings Fly (Literally!): Why Drone Shots Are a Must-Have"
+title: "Make Your Lethbridge Listings Fly (Literally!): Why Drone Shots Are a Must-Have"
 description: "Discover how professional aerial photography and videography can make your Lethbridge property listings stand out and attract more buyers."
 pubDate: 2025-04-05
 category: "Real Estate"
