@@ -8,18 +8,18 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
-  title="Contact Lethbridge Drone | Get a Free Quote"
-  description="Contact Lethbridge Drone for expert aerial photography & videography in Southern Alberta. Request your free quote today for drone services!"
+  title="Contact Us | Lethbridge Drone Services | Coalbanks Creative"
+  description="Ready to chat about drone photos or video in Lethbridge? Contact Coalbanks Creative! Get your free, no-obligation quote today for awesome aerial services."
 >
   <main class="flex flex-col gap-y-20 md:gap-y-32 overflow-x-hidden">
     <section id="contact" class="container py-16 md:py-24">
-      <h1 class="font-heading text-3xl font-bold text-center mb-12">Let's Chat About Your Project</h1> {/* Changed h2 to h1 for page title */}
+      <h1 class="font-heading text-3xl font-bold text-center mb-12 tracking-tight">Get in Touch! Let's Talk Drones</h1> {/* Added tracking-tight */}
       <p class="text-lg text-muted-foreground leading-relaxed mb-8 max-w-xl mx-auto text-center">
-        Have an idea buzzing around for some awesome drone footage? Or maybe just curious how aerial views could boost your Lethbridge business? We'd love to hear from you! Fill out the quick form below, give us a call, or shoot us an email – we're happy to answer questions and provide a no-obligation quote.
+        Got a cool idea for some drone shots? Curious how aerial views could help your Lethbridge business or project? We're all ears! Fill out this quick form, or feel free to call or email. We're happy to answer questions and give you a free, no-pressure quote.
       </p>
       <form id="contact-form" method="POST" action="/api/submit" class="max-w-xl mx-auto grid gap-6">
         <div class="grid gap-2">
-          <label for="name" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50">Name</label>
+          <label for="name" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50">Your Name</label>
           <input
             type="text"
             id="name"
@@ -30,7 +30,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           />
         </div>
         <div class="grid gap-2">
-          <label for="email" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50">Email</label>
+          <label for="email" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50">Your Email</label>
           <input
             type="email"
             id="email"
@@ -41,7 +41,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           />
         </div>
         <div class="grid gap-2">
-          <label for="phone" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50">Phone (Optional)</label>
+          <label for="phone" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50">Phone Number (Optional)</label>
           <input
             type="tel"
             id="phone"
@@ -51,24 +51,25 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           />
         </div>
         <div class="grid gap-2">
-          <label for="service-needed" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50">Type of Service Needed (Optional)</label>
+          <label for="service-needed" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50">What Service Are You Interested In? (Optional)</label>
           <select
             id="service-needed"
             name="service-needed"
             class="border-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 flex h-9 w-full rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
           >
-            <option value="" disabled selected>Select a service...</option>
-            <option value="Elevate Your Listings">Elevate Your Listings</option>
-            <option value="Wow Factor Marketing & Brand Videos">Wow Factor Marketing & Brand Videos</option>
-            <option value="Dynamic Event Coverage">Dynamic Event Coverage</option>
-            <option value="Construction Progress From Above">Construction Progress From Above</option>
-            <option value="Precision Mapping & Data">Precision Mapping & Data</option>
-            <option value="Smarter Farming Aerials">Smarter Farming Aerials</option>
-            <option value="Other">Other</option>
+            <option value="" disabled selected>Choose one (or 'Other')...</option>
+            {/* Updated option text to match Services page */}
+            <option value="Real Estate That Wows">Real Estate That Wows</option>
+            <option value="Marketing Videos with Altitude">Marketing Videos with Altitude</option>
+            <option value="Event Coverage From the Sky">Event Coverage From the Sky</option>
+            <option value="Construction Site Fly-Overs">Construction Site Fly-Overs</option>
+            <option value="Mapping & Surveys (Super Accurate!)">Mapping & Surveys (Super Accurate!)</option>
+            <option value="Ag Insights for Smart Farming">Ag Insights for Smart Farming</option>
+            <option value="Other">Something Else / Not Sure Yet</option>
           </select>
         </div>
         <div class="grid gap-2">
-          <label for="project-location" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50">Project Location (Approximate, Optional)</label>
+          <label for="project-location" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50">Where's the Project? (Approx. Location, Optional)</label>
           <input
             type="text"
             id="project-location"
@@ -78,11 +79,11 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           />
         </div>
         <div class="grid gap-2">
-          <label for="message" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50">Message / Project Details</label>
+          <label for="message" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50">Your Message / Project Details</label>
           <textarea
             id="message"
             name="message"
-            placeholder="Tell us a bit about your project or question..."
+            placeholder="Tell us a bit about your project, timeline, or any questions you have..."
             rows={5}
             required
             class="border-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 flex field-sizing-content min-h-16 w-full rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
@@ -92,9 +93,9 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         <button
           type="submit"
           id="submit-button"
-          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 h-10 rounded-md px-8 bg-accent text-accent-foreground hover:bg-accent/90"
+          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 h-10 rounded-md px-8 bg-primary text-primary-foreground shadow hover:bg-primary/90"
         >
-          Request My Quote
+          Send My Message!
         </button>
       </form>
     </section>

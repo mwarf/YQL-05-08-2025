@@ -2,6 +2,14 @@
 
 This file tracks specific tasks and improvements to be implemented.
 
+---
+
+## Content Guidelines Reminder
+
+-   **Blog Voice & Tone (Established April 12, 2025):** Remember to write new blog posts using a **friendly, conversational, approachable, knowledgeable, trustworthy, and slightly witty** tone. Minimize jargon, focus on benefits for the reader, and connect to the Lethbridge/Southern Alberta context where possible. (See `README.md` or `knowledgetransfer.md` for full details).
+
+---
+
 ## Blog Landing Page (`/blog/[page].astro`) Improvements
 
 - [x] **Layout/Visuals:**

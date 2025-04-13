@@ -8,39 +8,39 @@ import { FlickeringGrid } from "@/components/ui/flickering-grid"; // Import the 
 const ourServices = [
   {
     iconName: "Building2", // Pass name instead of component
-    title: "Elevate Your Listings",
+    title: "Real Estate That Wows",
     description:
-      "Sell or lease faster! We capture stunning aerial photos & immersive video tours that showcase your Lethbridge property's location, scale, and best features.",
+      "Help sell or lease faster! Get stunning aerial photos & video tours that show off a property's true scale, location, and best bits here in Lethbridge.",
   },
   {
     iconName: "Film",
-    title: "Wow Factor Marketing & Brand Videos",
+    title: "Marketing Videos with Altitude",
     description:
-      "Make your Lethbridge brand unforgettable. We create eye-catching aerials for promotional videos, website banners, and brand stories that truly stand out.",
+      "Make your Lethbridge brand pop! We create eye-catching drone shots for promos, websites, and brand stories that people actually remember.",
   },
   {
     iconName: "CalendarDays",
-    title: "Dynamic Event Coverage",
+    title: "Event Coverage From the Sky",
     description:
-      "Showcase the energy! Our drones capture the full scale and excitement of your Lethbridge festival, corporate gathering, or community event from unique aerial angles.",
+      "Capture the whole vibe! Our drones get those epic shots showing the scale and energy of your Lethbridge festival, wedding, or corporate shindig.",
   },
   {
     iconName: "HardHat",
-    title: "Construction Progress From Above",
+    title: "Construction Site Fly-Overs",
     description:
-      "Keep your Lethbridge project on track safely. Get clear aerial progress reports, site overviews, and valuable documentation without the hassle.",
+      "Keep tabs on your Lethbridge build, safely and easily. Get clear progress shots, site overviews, and useful documentation without anyone climbing scaffolding.",
   },
   {
     iconName: "MapPinned",
-    title: "Precision Mapping & Data",
+    title: "Mapping & Surveys (Super Accurate!)",
     description:
-      "Need accurate data? We provide detailed 2D maps, 3D models, and precise measurements for site surveys, inspections, agriculture, and planning near Lethbridge.",
+      "Need the lay of the land? We create detailed maps, 3D models, and precise measurements for surveys, inspections, farming, and planning around Lethbridge.",
   },
   {
     iconName: "Leaf",
-    title: "Smarter Farming Aerials",
+    title: "Ag Insights for Smart Farming",
     description:
-      "Farm smarter, not harder. Use drone insights for crop health monitoring (NDVI), irrigation checks, and optimized resource management on your Southern Alberta fields.",
+      "Farm smarter! Use drone data for checking crop health (NDVI), spotting irrigation issues, and managing resources better on your Southern Alberta fields.",
   },
 ];
 ---
@@ -50,11 +50,11 @@ const ourServices = [
   {/* Introductory Section */}
   <section class="py-16 md:py-24 text-center bg-background">
     <div class="container max-w-3xl mx-auto">
-      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-        Our Drone Services: Elevating Lethbridge Perspectives
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4 tracking-tight"> {/* Added tracking-tight */}
+        What We Do: Awesome Drone Services for Lethbridge!
       </h1>
       <p class="text-lg text-muted-foreground leading-relaxed">
-        Ready to see Lethbridge from a whole new angle? At Coalbanks Creative, we're your local, certified experts in drone technology. We bring professional skill and a deep understanding of Southern Alberta to every project, delivering stunning aerial photos, videos, maps, and inspections that solve problems and showcase the best of your work.
+        Ready to see things differently? We're Coalbanks Creative, your friendly neighbourhood drone pros right here in Lethbridge. We know our stuff (we're certified!) and we know Southern Alberta. We use cool drone tech to get amazing aerial photos, videos, maps, and inspection data that helps solve problems and makes your work look fantastic.
       </p>
     </div>
   </section>
@@ -79,13 +79,13 @@ const ourServices = [
       flickerChance={0.05}
     />
     <div class="container relative z-10"> {/* Added relative z-10 */}
-       <div class="max-w-3xl mx-auto text-center md:text-left"> {/* Centered text for potentially better layout */}
-        <h2 class="font-heading text-3xl font-bold mb-6">Why Choose Coalbanks Creative for Your Drone Needs?</h2>
+       <div class="max-w-3xl mx-auto text-center"> {/* Centered text */}
+        <h2 class="font-heading text-3xl font-bold mb-6 tracking-tight">Why Pick Us for Your Drone Stuff?</h2> {/* Added tracking-tight */}
         <p class="text-muted-foreground leading-relaxed mb-6">
-          It's simple: we deliver stunning aerial results, even when the project gets complex. Got a challenging shoot near Lethbridge? Bring it on! We're fully Transport Canada Advanced Certified and insured, meaning you can trust your project is captured safely, legally, and looks absolutely fantastic.
+          Good question! We think it boils down to this: we get awesome shots, even when things get tricky. Got a tough location near Lethbridge? We love a challenge! Plus, we're fully certified by Transport Canada and insured, so you know everything's safe, legal, and going to look great.
         </p>
         <p class="text-muted-foreground leading-relaxed">
-          We're pros at collaborating and navigating the logistics smoothly (yep, even around the airport!). Ultimately, we take potential headaches off your plate and turn them into the incredible visual assets your project deserves.
+          We're easy to work with, handle the tricky logistics (like flying near the airport), and basically take the stress out of getting amazing drone content for your project. We turn potential headaches into awesome visuals!
         </p>
        </div>
     </div>
@@ -93,10 +93,10 @@ const ourServices = [
 
   {/* Optional Call to Action */}
   <section class="container py-16 md:py-24 text-center">
-    <h2 class="font-heading text-3xl font-bold mb-6">Ready to Elevate Your Project?</h2>
-    <p class="text-muted-foreground mb-8 max-w-xl mx-auto">Contact us today to discuss your aerial videography, photography, mapping, or inspection needs.</p>
+    <h2 class="font-heading text-3xl font-bold mb-6 tracking-tight">Ready to See Your Project Soar?</h2> {/* Added tracking-tight */}
+    <p class="text-muted-foreground mb-8 max-w-xl mx-auto">Let's chat about your ideas! Whether it's photos, video, maps, or inspections, we're here to help.</p>
     {/* Using standard anchor tag with Tailwind classes matching buttonVariants */}
-    <a href="/contact" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-10 px-8">Get a Quote</a>
+    <a href="/contact" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-10 px-8">Get Your Free Quote!</a>
   </section>
 
 </BaseLayout>

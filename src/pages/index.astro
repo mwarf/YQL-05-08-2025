@@ -225,8 +225,8 @@ const carouselItems = [
 ---
 
 <BaseLayout
-  title="Lethbridge Drone: Expert Aerial Photography & Videography"
-  description="Elevate your project with Lethbridge Drone's professional aerial photography and videography. Serving Southern Alberta for real estate, events & more. Get a free quote!"
+  title="Lethbridge Drone Services | Awesome Aerial Photos & Video | Coalbanks Creative"
+  description="Need amazing drone shots in Lethbridge or Southern Alberta? Coalbanks Creative offers pro aerial photography & video for real estate, events, construction & more. See things differently! Get a free quote."
 >
   <main class="flex flex-col gap-y-16 md:gap-y-24 overflow-x-hidden"> {/* Reduced gap */}
     {/* New Hero Section */}
@@ -246,8 +246,8 @@ const carouselItems = [
         <HeroWithVideoContent
           client:visible
           badgeText="Serving Southern Alberta"
-          title="Your Project, Elevated: Stunning Drone Views by Coalbanks Creative."
-          description="Ready for breathtaking aerial footage or crystal-clear photos? Coalbanks Creative is your local Lethbridge team for professional drone services. We help businesses in real estate, agriculture, construction, marketing, events, and more capture unique perspectives safely and beautifully. Let's show your project from its best angle!"
+          title="Your Project, Elevated"
+          description="Stunning Drone Views by Coalbanks Creative. Ready for breathtaking aerial footage or crystal-clear photos? Coalbanks Creative is your local Lethbridge team for professional drone services. We help businesses in real estate, agriculture, construction, marketing, events, and more capture unique perspectives safely and beautifully. Let's show your project from its best angle!"
           button1Text="Get Your Free Quote"
           button1Link="/contact"
           button2Text="Explore Our Work"
@@ -261,7 +261,7 @@ const carouselItems = [
      </section>
 
     <!-- Featured Items Carousel Section -->
-    <FeaturedItemsCarousel heading="Featured Projects" items={carouselItems} client:load /> {/* Use correct variable name */}
+    <FeaturedItemsCarousel heading="Check Out Some Cool Projects We've Done" items={carouselItems} client:load /> {/* Removed headingClassName prop */}
 
     {/* Client Logos Section - Moved Here */}
     <ClientLogos client:visible />
@@ -270,10 +270,10 @@ const carouselItems = [
 
     {featuredPosts.length > 0 && (
       <section id="featured-blog" class="container py-16 md:py-24">
-        <h2 class="font-heading text-3xl font-bold text-center mb-4">Latest Insights</h2> {/* Reduced bottom margin */}
+        <h2 class="font-heading text-3xl font-bold text-center mb-4 tracking-tight">Fresh from the Blog: Drone Tips & Insights</h2> {/* Add tracking-tight */}
         {/* Added intro line */}
         <p class="text-center text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Curious about what drones can do? Dive into our latest tips, insights, and project spotlights:
+          Want to know more about drones or get some pro tips? Check out our latest articles:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Pass headingLevel="h3" for correct semantics */}
@@ -283,7 +283,7 @@ const carouselItems = [
         </div>
         <div class="text-center mt-12">
           <a href="/blog" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2">
-            View All Posts
+            See All Blog Posts
           </a>
         </div>
       </section>

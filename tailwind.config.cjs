@@ -110,8 +110,23 @@ module.exports = {
             },
             "blockquote p:first-of-type::before": { content: "none" }, // Remove default quote marks
             "blockquote p:last-of-type::after": { content: "none" }, // Remove default quote marks
+            // Customize headings within prose
+            h2: {
+              fontFamily: theme("fontFamily.heading").join(", "), // Use Poppins
+              fontWeight: theme("fontWeight.bold"),
+              letterSpacing: theme("letterSpacing.tight"), // Apply tight tracking
+              marginTop: theme("spacing.10"), // Adjust top margin if needed
+              marginBottom: theme("spacing.4"), // Adjust bottom margin if needed
+            },
+            h3: {
+              fontFamily: theme("fontFamily.heading").join(", "), // Use Poppins
+              fontWeight: theme("fontWeight.semibold"),
+              letterSpacing: theme("letterSpacing.tight"), // Apply tight tracking
+              marginTop: theme("spacing.8"), // Adjust top margin if needed
+              marginBottom: theme("spacing.3"), // Adjust bottom margin if needed
+            },
             // Add more customizations here as needed...
-            // e.g., headings, code blocks
+            // e.g., p, code blocks
           },
         },
         // You can define customizations for specific prose variants like prose-lg
@@ -133,6 +148,9 @@ module.exports = {
               color: theme("colors.slate[400]"), // Lighter text for dark mode
               backgroundColor: theme("colors.slate[800] / 50%"), // Darker semi-transparent background
             },
+            // Ensure headings inherit tightening in dark mode too (or override if needed)
+            // h2: { ... }, // No specific dark mode override needed for tracking
+            // h3: { ... }, // No specific dark mode override needed for tracking
           },
         },
       }),

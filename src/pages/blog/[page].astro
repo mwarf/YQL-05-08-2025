@@ -50,8 +50,8 @@ const displayPosts: BlogPost[] = isFirstPage ? page.data.slice(1) : page.data;
 
 // Adjust title and description for paginated pages
 const pageNum = page.currentPage > 1 ? ` | Page ${page.currentPage}` : "";
-const pageTitle = `Blog${pageNum} | Coalbanks Creative`;
-const pageDescription = `Unlock the potential of aerial views! Explore our collection of insights designed for businesses and organizations right here in Lethbridge and Southern Alberta. Find tips, inspiration, and answers to help you make the most of drone technology.${pageNum}`;
+const pageTitle = `Drone Tips & Insights Blog${pageNum} | Coalbanks Creative`;
+const pageDescription = `Curious about drones? Check out the Coalbanks Creative blog for friendly tips, insights, and ideas for using aerial photos & video in Lethbridge and Southern Alberta.${pageNum}`;
 
 // Get all unique categories for the category list
 const allBlogPosts = await getCollection("blog");
@@ -62,15 +62,15 @@ const uniqueCategories = [
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   <div class="container py-12 md:py-16">
-    <h1 class="font-heading text-4xl font-bold mb-8 text-center">Elevate Your Knowledge:<br /> Drone Insights for Southern Alberta</h1>
-    <p class="text-muted-foreground text-lg mb-16 text-center max-w-2xl mx-auto"> {/* Changed mb-12 to mb-16 */}
-      Unlock the potential of aerial views! Explore our collection of insights designed for businesses and organizations right here in Lethbridge and Southern Alberta. Find tips, inspiration, and answers to help you make the most of drone technology.
+    <h1 class="font-heading text-4xl font-bold mb-8 text-center tracking-tight">Drone Talk:<br /> Tips & Insights for Southern Alberta</h1> {/* Added tracking-tight */}
+    <p class="text-muted-foreground text-lg mb-16 text-center max-w-2xl mx-auto">
+      Want to know more about what drones can do for your business or project here in Lethbridge? Dive into our collection of helpful articles, tips, and ideas. Let's explore the potential of seeing things from a new perspective!
     </p>
 
     {/* Categories Section */}
     {uniqueCategories.length > 0 && (
       <section id="categories-section" class="mb-12">
-        <h2 class="font-heading text-2xl font-semibold mb-4 text-center">Find Your Topic:</h2>
+        <h2 class="font-heading text-2xl font-semibold mb-4 text-center tracking-tight">Find Your Topic:</h2> {/* Added tracking-tight */}
         <div class="flex flex-wrap justify-center gap-2">
           {uniqueCategories.map(category => (
             <a
@@ -88,8 +88,8 @@ const uniqueCategories = [
 
     {/* Featured Post Section - Only on First Page */}
     {isFirstPage && featuredPost && (
-      <section id="featured-post-section" class="mb-12 md:mb-16"> {/* Removed blog-post-item class */}
-        <h2 class="font-heading text-3xl font-semibold mb-6 border-b pb-3">Latest Post</h2>
+      <section id="featured-post-section" class="mb-12 md:mb-16">
+        <h2 class="font-heading text-3xl font-semibold mb-6 border-b pb-3 tracking-tight">Hot Off the Press! Our Latest Post:</h2> {/* Added tracking-tight */}
         <BlogPostPreview
           post={featuredPost}
           headingLevel="h2"
@@ -101,12 +101,12 @@ const uniqueCategories = [
 
     {/* Grid for Posts on Current Page */}
     {displayPosts.length > 0 && (
-      <section id="posts-grid-section"> {/* Changed ID */}
-         {isFirstPage && featuredPost && <h2 class="font-heading text-3xl font-semibold mb-6 border-b pb-3">More Posts</h2>}
-         {!isFirstPage && <h2 class="font-heading text-3xl font-semibold mb-6 border-b pb-3">Posts - Page {page.currentPage}</h2>}
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-12"> {/* Changed lg:grid-cols-3 to lg:grid-cols-2 */}
+      <section id="posts-grid-section">
+         {isFirstPage && featuredPost && <h2 class="font-heading text-3xl font-semibold mb-6 border-b pb-3 tracking-tight">Check Out More Posts:</h2>} {/* Added tracking-tight */}
+         {!isFirstPage && <h2 class="font-heading text-3xl font-semibold mb-6 border-b pb-3 tracking-tight">More Drone Talk (Page {page.currentPage}):</h2>} {/* Added tracking-tight */}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-12">
           {displayPosts.map((post: BlogPost) => (
-            <div> {/* Simple wrapper, removed filtering attributes */}
+            <div>
               <BlogPostPreview post={post} headingLevel="h3" showImage={true} />
             </div>
           ))}

@@ -113,3 +113,17 @@ The codebase generally adheres well to Astro and modern web development best pra
 
 5.  **General:**
     *   The project structure, TypeScript usage, `shadcn/ui` implementation, Content Collections setup, and serverless function (`functions/api/submit.ts`) follow best practices.
+
+## 7. Content Guidelines
+
+### Blog Voice and Tone (Established April 12, 2025)
+
+Future blog posts should adhere to the following voice and tone guidelines to maintain consistency:
+
+*   **Friendly & Conversational:** Write as if you're having a helpful chat with a local business owner or potential client. Avoid overly formal language.
+*   **Approachable:** Make complex topics easy to understand. Be welcoming and encouraging.
+*   **Knowledgeable & Trustworthy:** Demonstrate expertise in drone technology and its applications, but explain concepts clearly. Build trust through accurate information and helpful advice.
+*   **Slightly Witty (Use with Care!):** Inject personality and occasional light humour where appropriate, but maintain professionalism. Don't overdo it.
+*   **Locally Focused:** Connect the content to Lethbridge and Southern Alberta whenever relevant (mentioning local landmarks, industries, conditions, etc.).
+*   **Minimize Jargon:** Explain technical terms simply or find relatable analogies. Avoid overly technical or corporate-speak.
+*   **Benefit-Oriented:** Focus on how the information or service helps the reader/client achieve their goals (save time/money, improve results, enhance safety, etc.).

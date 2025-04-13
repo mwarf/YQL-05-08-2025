@@ -54,7 +54,7 @@ const HeroWithVideoContent: React.FC<HeroProps> = ({
         </Badge>
       )}
       {/* Render the heading with the gradient */}
-      <h1 className="font-heading mt-6 max-w-[17ch] text-4xl font-bold !leading-[1.2] md:text-5xl lg:text-6xl xl:text-7xl">
+      <h1 className="font-heading mt-6 max-w-[17ch] text-4xl font-bold !leading-[1.2] md:text-5xl lg:text-6xl xl:text-7xl tracking-tight"> {/* Added tracking-tight */}
         {renderHeading()}
       </h1>
       {/* Render the new subheading */}

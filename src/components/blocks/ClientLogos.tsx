@@ -131,7 +131,7 @@ const ClientLogos = ({
     <section className="py-16 md:py-24">
       <div className="container flex flex-col items-center text-center">
         {/* Adjusted heading style for consistency */}
-        <h2 className="font-heading my-6 text-pretty text-3xl font-bold md:text-4xl">
+        <h2 className="font-heading my-6 text-pretty text-3xl font-bold md:text-4xl tracking-tight"> {/* Added tracking-tight */}
           {heading}
         </h2>
         {/* Added intro line */}

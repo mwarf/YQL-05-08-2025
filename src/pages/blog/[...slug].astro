@@ -72,7 +72,7 @@ const ogImageUrl = post.data.heroImage
 
     {/* Post Header */}
     <header class="mb-8">
-      <h1 class="font-heading text-4xl md:text-5xl font-bold mb-4">{post.data.title}</h1>
+      <h1 class="font-heading text-4xl md:text-5xl font-bold mb-4 tracking-tight">{post.data.title}</h1> {/* Added tracking-tight */}
       <div class="text-sm text-muted-foreground flex items-center gap-4">
         <time datetime={post.data.pubDate.toISOString()}>
           Published: {new Date(post.data.pubDate).toLocaleDateString('en-US', {
@@ -103,9 +103,9 @@ const ogImageUrl = post.data.heroImage
     {/* Related Posts Section */}
     {relatedPosts.length > 0 && (
       <section class="mt-16 border-t border-border pt-8">
-        <h2 class="font-heading text-2xl font-semibold mb-6">Related Posts</h2>
+        <h2 class="font-heading text-2xl font-semibold mb-6 tracking-tight">You Might Also Like...</h2> {/* Added tracking-tight */}
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {relatedPosts.map((relatedPost: BlogPost) => ( // Add type to map param
+          {relatedPosts.map((relatedPost: BlogPost) => (
             <a href={`/blog/${relatedPost.slug}/`} class="block group border border-border rounded-lg overflow-hidden shadow hover:shadow-md transition-shadow">
               {relatedPost.data.heroImage && (
                 <Image
@@ -131,7 +131,7 @@ const ogImageUrl = post.data.heroImage
     {/* Back to Blog Link */}
     <div class="mt-12 text-center">
       <a href="/blog" class={buttonVariants({ variant: "outline" })}>
-        &larr; Back to Blog
+        &larr; Back to All Posts
       </a>
     </div>
 
