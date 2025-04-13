@@ -17,6 +17,7 @@ interface GalleryItem {
   title: string;
   summary: string;
   url: string;
+  linkText: string; // Add linkText property
   alt: string; // Add this line
   imgAttrs: {
     // Use the new key and define the expected shape
@@ -147,13 +148,16 @@ const FeaturedItemsCarousel = ({
                     <h3 className="font-heading mb-2 line-clamp-3 break-words pt-4 text-lg font-medium md:mb-3 md:pt-4 md:text-xl lg:pt-4 lg:text-2xl">
                       {item.title}
                     </h3>
-                    <div className="mb-8 line-clamp-2 text-sm text-muted-foreground md:mb-12 md:text-base lg:mb-9">
+                    <div className="mb-8 line-clamp-3 text-sm text-muted-foreground md:mb-12 md:text-base lg:mb-9">
                       {item.summary}
                     </div>
-                    <div className="flex items-center text-sm">
-                      Read more{" "}
-                      <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-1" />
-                    </div>
+                    {/* Conditionally render the link only if url is not '#' */}
+                    {item.url !== '#' && (
+                      <div className="flex items-center text-sm">
+                        {item.linkText}{" "} {/* Use dynamic linkText */}
+                        <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-1" />
+                      </div>
+                    )}
                   </a>
                 </CarouselItem>
               ); // Close the return statement
