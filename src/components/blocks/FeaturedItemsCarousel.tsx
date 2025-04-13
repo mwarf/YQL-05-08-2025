@@ -63,7 +63,9 @@ const FeaturedItemsCarousel = ({
       <div className="container">
         <div className="mb-8 flex flex-col justify-between md:mb-14 md:flex-row md:items-end lg:mb-16">
           <div>
-            <h2 className="font-heading mb-3 text-3xl font-bold md:mb-4 md:text-4xl lg:mb-6 tracking-tight"> {/* Added tracking-tight */}
+            <h2 className="font-heading mb-3 text-3xl font-bold md:mb-4 md:text-4xl lg:mb-6 tracking-tight">
+              {" "}
+              {/* Added tracking-tight */}
               {heading}
             </h2>
             {/* Replaced Book a demo link with intro text */}
