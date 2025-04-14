@@ -23,9 +23,9 @@ const pageDescription =
 
     {/* Main Intro Text */}
     <article class="prose prose-lg dark:prose-invert max-w-3xl mx-auto text-center"> {/* Added text-center */}
-      <h1 class="text-4xl font-bold mb-8 tracking-tight">Hey There! Meet Coalbanks Creative (Your Friendly Neighbourhood Drone Geeks)</h1> {/* Added tracking-tight */}
+      <h1 class="text-4xl font-bold mb-8 tracking-tight">Hey There! Meet Coalbanks Creative<br/>(Your Friendly Neighbourhood Drone Geeks)</h1> {/* Added tracking-tight */}
       <p>
-        Welcome! We're the folks behind Coalbanks Creative, bringing you awesome drone services right here in Lethbridge. Our founder, Michael Warf (a local!), kicked things off in 2020. Our goal? Pretty simple: help local businesses and groups tell their stories with amazing photos and videos, captured from a whole new perspective.
+        Welcome! We're the folks behind Coalbanks Creative, bringing you reliable drone services right here in Lethbridge. Our founder, Michael Warf (a local!), kicked things off in 2020. Our goal? Pretty simple: help local businesses and groups tell their stories with amazing photos and videos, captured from a whole new perspective.
       </p>
     </article>
 
@@ -36,7 +36,7 @@ const pageDescription =
         <Image src={founderImage} alt="Headshot of Michael Warf, founder of Lethbridge Drone, smiling." class="rounded-lg shadow-md w-full max-w-sm aspect-square object-cover" width={400} height={400} densities={[1, 1.5, 2]}/>
       </div>
       <div class="prose prose-lg dark:prose-invert">
-        <h2 class="tracking-tight">Meet Michael: The Guy Behind the Drone</h2> {/* Added tracking-tight */}
+        <h2 class="tracking-tight">Meet Michael Warf:<br/>Our "Pilot in Command"</h2> {/* Added tracking-tight */}
         <p>
           Michael's story is a cool mix of tech smarts and a love for great visuals. He spent 20 years wrangling websites (leading teams at the U of L, designing for agencies, even running his own digital shop!), so he really gets how pictures and videos grab attention online. But he's also got a photographer's soul and a huge soft spot for Southern Alberta. That combo means we aim for real, authentic shots that truly capture the spirit of our region.
         </p>
@@ -74,47 +74,18 @@ const pageDescription =
       </div>
     </section>
 
-     {/* Why It Matters Text */}
-     <article class="prose prose-lg dark:prose-invert max-w-3xl mx-auto text-center"> {/* Added text-center */}
-       <h2 class="text-3xl font-bold mb-8 tracking-tight">So, Why Pick Us?</h2> {/* Added tracking-tight */}
-       <p>
-         Look, we know there are choices. But we think we're pretty great! 😉 We don't just fly drones; we're storytellers using cool tech. We get what makes a Lethbridge property shine, how to capture the buzz of a local festival, or what farmers need to see from above. Plus, we do it right – Michael's got the official Transport Canada Advanced Certification, we're fully insured, and safety is always top of mind.
+     {/* Why Pick Us Section with Background */}
+     <section class="bg-muted dark:bg-muted/50 rounded-lg py-12 px-6 max-w-3xl mx-auto">
+       <article class="prose prose-lg dark:prose-invert text-center"> {/* Removed max-w and mx-auto */}
+         <h2 class="text-3xl font-bold mb-8 tracking-tight">So, Why Pick Us?</h2> {/* Added tracking-tight */}
+         <p>
+           Look, we know there are choices. But we think we're pretty great! 😉 We don't just fly drones; we're storytellers using cool tech. We get what makes a Lethbridge property shine, how to capture the buzz of a local festival, or what farmers need to see from above. Plus, we do it right – Michael's got the official <b>Transport Canada Advanced Certification</b>, we're fully insured, and safety is always top of mind.
        </p>
        <p>
-         Most importantly, we like working *with* people. We want to hear your ideas, share what we know, and create awesome aerial stuff together that you'll be thrilled with.
+         Most importantly, we like working <i>with</i> people. We want to hear your ideas, share what we know, and create awesome aerial stuff together that you'll be thrilled with.
        </p>
-     </article>
-
-    {/* Bento Grid Section */}
-    <section class="max-w-5xl mx-auto">
-      <h2 class="text-3xl font-bold mb-12 text-center tracking-tight">Quick Hits & Highlights</h2> {/* Added tracking-tight */}
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Tile 1: Main Visual */}
-        <div class="md:col-span-1 md:row-span-2 rounded-lg overflow-hidden shadow-md aspect-video md:aspect-auto">
-           {/* Use Astro Image component for optimization */}
-          <Image src={bentoVisualImage} alt="Promotional image for the documentary Francheska Prairie Queen featuring the subject." class="w-full h-full object-cover" width={600} height={400} densities={[1, 1.5, 2]}/>
-        </div>
-        {/* Tile 2: Certification */}
-        <div class="bg-card text-card-foreground p-6 rounded-lg shadow-md flex flex-col justify-center items-center text-center">
-          <ShieldCheck size={32} className="mb-3 text-primary"/>
-          <h3 class="text-xl font-semibold mb-1">Transport Canada</h3>
-          <p class="text-muted-foreground">Advanced Certified Pilot</p>
-        </div>
-        {/* Tile 3: Local Focus */}
-        <div class="bg-card text-card-foreground p-6 rounded-lg shadow-md flex flex-col justify-center items-center text-center">
-           <MapPin size={32} className="mb-3 text-primary"/>
-           <h3 class="text-xl font-semibold mb-1">Proudly Lethbridge</h3>
-           <p class="text-muted-foreground">We Know Southern Alberta!</p>
-        </div>
-         {/* Tile 4: Service Highlight */}
-         <div class="bg-card text-card-foreground p-6 rounded-lg shadow-md flex flex-col justify-center items-center text-center">
-           <Camera size={32} className="mb-3 text-primary"/>
-           <h3 class="text-xl font-semibold mb-1">Storytelling Pros</h3>
-           <p class="text-muted-foreground">Making Your Brand Look Good</p>
-           <a href="/services" class={buttonVariants({ variant: "link", size: "sm" }) + " mt-2"}>See Our Services</a>
-         </div>
-      </div>
-    </section>
+       </article>
+     </section>
 
     {/* Visual CTA Section */}
     <section class="bg-muted dark:bg-muted/50 py-20 md:py-28 rounded-lg">

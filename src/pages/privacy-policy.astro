@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Privacy Policy";
+const pageDescription = "Learn how Lethbridge Drone handles your personal information.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <div class="container mx-auto px-4 py-12">
+    <h1 class="text-4xl font-bold mb-8">{pageTitle}</h1>
+
+    <div class="prose prose-lg dark:prose-invert max-w-none">
+      <p><strong>Last Updated: {new Date().toLocaleDateString('en-CA')}</strong></p>
+
+      <p><strong>IMPORTANT NOTICE:</strong> This is a template Privacy Policy and requires review by a qualified legal professional to ensure it meets the specific needs of your business and complies with all applicable laws, including Canada's Personal Information Protection and Electronic Documents Act (PIPEDA) and any relevant provincial legislation.</p>
+
+      <h2>Introduction</h2>
+      <p>Lethbridge Drone ("we", "us", "our") is committed to protecting the privacy of individuals who visit our website lethbridgedrone.com (the "Site") or interact with our services. This Privacy Policy outlines how we collect, use, disclose, and safeguard your personal information.</p>
+
+      <h2>Information We Collect</h2>
+      <p>We may collect personal information that you voluntarily provide to us, such as:</p>
+      <ul>
+        <li><strong>Contact Information:</strong> Name, email address, phone number, and message content when you submit our contact form or otherwise communicate with us.</li>
+        <li><strong>Usage Data:</strong> Information about how you access and use the Site, which may include your IP address, browser type, operating system, pages viewed, and the dates/times of your visits. This is often collected automatically through cookies and similar technologies.</li>
+      </ul>
+
+      <h2>How We Use Your Information</h2>
+      <p>We use the information we collect for purposes such as:</p>
+      <ul>
+        <li>Responding to your inquiries and providing customer support.</li>
+        <li>Operating, maintaining, and improving our Site and services.</li>
+        <li>Understanding how users interact with our Site to enhance user experience.</li>
+        <li>Complying with legal obligations.</li>
+        <li>Sending occasional marketing communications if you opt-in (we will provide clear opt-out options).</li>
+      </ul>
+
+      <h2>Cookies and Tracking Technologies</h2>
+      <p>Our Site may use cookies (small text files stored on your device) and similar tracking technologies to collect usage data and improve functionality. This may include essential cookies for site operation and non-essential cookies for analytics (e.g., understanding traffic patterns). You can typically manage cookie preferences through your browser settings. Refusing non-essential cookies should not prevent you from using the core features of the Site.</p>
+      <p>[Optional: Add more detail here if using specific analytics providers like Google Analytics or third-party embeds like Wistia, explaining what they collect.]</p>
+
+      <h2>Disclosure of Your Information</h2>
+      <p>We do not sell your personal information. We may share your information in limited circumstances, such as:</p>
+      <ul>
+        <li>With service providers who assist us in operating the Site (e.g., hosting providers), under confidentiality agreements.</li>
+        <li>If required by law, regulation, or legal process.</li>
+        <li>To protect the rights, property, or safety of Lethbridge Drone, our users, or others.</li>
+      </ul>
+
+      <h2>Data Security</h2>
+      <p>We implement reasonable administrative, technical, and physical security measures to protect your personal information from unauthorized access, use, or disclosure. However, no internet transmission is completely secure.</p>
+
+      <h2>Your Rights (PIPEDA)</h2>
+      <p>Under Canadian privacy law (PIPEDA), you generally have the right to:</p>
+      <ul>
+        <li>Access the personal information we hold about you.</li>
+        <li>Request correction of inaccurate or incomplete information.</li>
+        <li>Withdraw consent to our collection, use, or disclosure of your information (subject to legal or contractual restrictions).</li>
+      </ul>
+      <p>To exercise these rights, please contact us using the information below.</p>
+
+      <h2>Third-Party Links</h2>
+      <p>Our Site may contain links to other websites. We are not responsible for the privacy practices of these third-party sites.</p>
+
+      <h2>Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. We will notify you of significant changes by posting the new policy on the Site and updating the "Last Updated" date.</p>
+
+      <h2>Contact Us</h2>
+      <p>If you have questions about this Privacy Policy or our privacy practices, please contact us via our <a href="/contact">contact page</a> or at:</p>
+      <p>[Insert Your Business Contact Information Here - e.g., Email Address, Physical Address if applicable]</p>
+    </div>
+  </div>
+</BaseLayout>

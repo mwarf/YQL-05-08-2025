@@ -12,8 +12,14 @@ const currentYear = new Date().getFullYear();
       <p>Phone: <a href="tel:+15878135950" class="hover:underline">(587) 813-5950</a></p>
       {/* Consider adding email or link to contact form later */}
     </div>
-    <p class="text-sm text-muted-foreground">
-      &copy; {currentYear} Coalbanks Creative Inc. All rights reserved.
-    </p>
+    <div class="text-sm text-muted-foreground flex flex-col items-center md:items-end gap-2">
+      <p>
+        &copy; {currentYear} Coalbanks Creative Inc. All rights reserved.
+      </p>
+      <div class="flex gap-4">
+        <a href="/privacy-policy" class="hover:underline">Privacy Policy</a>
+        <a href="/terms-of-service" class="hover:underline">Terms of Service</a>
+      </div>
+    </div>
   </div>
 </footer>
