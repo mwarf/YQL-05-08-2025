@@ -1,14 +1,17 @@
 // @ts-check
+// @ts-check
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind"; // Import the tailwind integration
 import sitemap from "@astrojs/sitemap"; // Import the sitemap integration
-// import tailwindcss from "@tailwindcss/vite"; // Remove Vite plugin import
+import cloudflare from "@astrojs/cloudflare"; // Import the Cloudflare adapter
 import icon from "astro-icon"; // Uncomment astro-icon import
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://lethbridgedrone.com", // Set production domain
+  output: "server", // Required for Cloudflare adapter
+  adapter: cloudflare(), // Add the Cloudflare adapter
   integrations: [
     react(),
     tailwind(), // Add the tailwind integration
