@@ -3,6 +3,8 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import type { GetStaticPaths, Page } from "astro"; // Import GetStaticPaths and Page types
 import BaseLayout from "@/layouts/BaseLayout.astro";
+
+export const prerender = true; // Ensure this page is pre-rendered
 import BlogPostPreview from "@/components/BlogPostPreview.astro";
 import { buttonVariants } from "@/components/ui/button";
 import { slugify } from "@/lib/utils"; // Import slugify

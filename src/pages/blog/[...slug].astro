@@ -11,6 +11,8 @@ import { Image } from "astro:assets"; // Import Astro Image component
 import TableOfContents from "@/components/TableOfContents.astro"; // Import ToC component
 import SocialShare from "@/components/SocialShare.astro"; // Import SocialShare component
 
+export const prerender = true; // Ensure this page is pre-rendered
+
 // Define the type for blog posts
 type BlogPost = CollectionEntry<"blog">;
 
