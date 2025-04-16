@@ -1,0 +1,5 @@
+name = "yql-drone"
+compatibility_date = "2025-04-16"
+
+[site]
+bucket = "./dist"
