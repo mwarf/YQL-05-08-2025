@@ -46,7 +46,7 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "typescript": "^5.8.2",
-    "wrangler": "^3.67.1"
+    "wrangler": "^4.0.0"
   },
   "packageManager": "pnpm@10.7.0"
 }
