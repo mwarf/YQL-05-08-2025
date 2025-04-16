@@ -14,8 +14,7 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-        with: # Add this 'with' block
-          lfs: true # Add this line
+        # LFS checkout disabled to prevent build failures
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
