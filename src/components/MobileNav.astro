@@ -14,10 +14,12 @@ import { buttonVariants } from "@/components/ui/button";
     aria-controls="mobile-menu-panel"
   >
     {/* Inline SVGs */}
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 block menu-icon-open">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 block menu-icon-open" aria-hidden="true">
+      <title>Open menu icon</title>
       <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
     </svg>
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 hidden menu-icon-close">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 hidden menu-icon-close" aria-hidden="true">
+      <title>Close menu icon</title>
       <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
     </svg>
   </button>
@@ -31,10 +33,9 @@ import { buttonVariants } from "@/components/ui/button";
     style="transition: opacity 0.3s ease-out, transform 0.3s ease-out; opacity: 0; transform: translateY(-10px);"
   >
     <nav class="flex flex-col items-center space-y-2">
-      <a href="/#sizzle-reel" class={buttonVariants({ variant: 'ghost' })} data-menu-item>Reel</a>
-      <a href="/#portfolio" class={buttonVariants({ variant: 'ghost' })} data-menu-item>Portfolio</a>
-      <a href="/services" class={buttonVariants({ variant: 'ghost' })} data-menu-item>Services</a> {/* Updated href */}
+      {/* Removed Reel and Portfolio links */}
       <a href="/about" class={buttonVariants({ variant: 'ghost' })} data-menu-item>About</a> {/* Added About link */}
+      <a href="/services" class={buttonVariants({ variant: 'ghost' })} data-menu-item>Services</a> {/* Updated href */}
       <a href="/blog" class={buttonVariants({ variant: 'ghost' })} data-menu-item>Blog</a>
       <a href="/contact" class={buttonVariants({ variant: 'ghost' })} data-menu-item>Contact</a>
     </nav>
@@ -48,6 +49,7 @@ import { buttonVariants } from "@/components/ui/button";
   const iconOpen = toggleButton?.querySelector('.menu-icon-open');
   const iconClose = toggleButton?.querySelector('.menu-icon-close');
   const menuItems = document.querySelectorAll('[data-menu-item]');
+  const firstMenuItem = menuPanel?.querySelector('a[data-menu-item]') as HTMLElement | null; // Get first focusable item
 
   let isOpen = false;
 
@@ -64,17 +66,20 @@ import { buttonVariants } from "@/components/ui/button";
     if (open) {
       menuPanel?.classList.remove('hidden');
       // Use setTimeout to allow display change before starting transition
+      // Use setTimeout to allow display change before starting transition and focusing
       setTimeout(() => {
         menuPanel?.style.setProperty('opacity', '1');
         menuPanel?.style.setProperty('transform', 'translateY(0)');
+        firstMenuItem?.focus(); // Move focus to the first menu item
       }, 10);
     } else {
       menuPanel?.style.setProperty('opacity', '0');
       menuPanel?.style.setProperty('transform', 'translateY(-10px)');
-      // Hide after transition ends
+      // Hide after transition ends and return focus
       menuPanel?.addEventListener('transitionend', () => {
         if (!isOpen) { // Check state again in case it reopened quickly
           menuPanel?.classList.add('hidden');
+          toggleButton?.focus(); // Return focus to the toggle button
         }
       }, { once: true });
     }
@@ -95,6 +100,13 @@ import { buttonVariants } from "@/components/ui/button";
   // Optional: Close menu if window is resized to desktop width
   window.addEventListener('resize', () => {
     if (window.innerWidth >= 768 && isOpen) { // 768px is Tailwind's 'md' breakpoint
+      setMenuState(false);
+    }
+  });
+
+  // Add event listener for the Escape key
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && isOpen) {
       setMenuState(false);
     }
   });

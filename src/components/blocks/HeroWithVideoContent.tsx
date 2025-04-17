@@ -69,12 +69,12 @@ const HeroWithVideoContent: React.FC<HeroProps> = ({
         {button1Link ? (
           <a href={button1Link}>
             <Button size="lg" className="rounded-full text-base">
-              {button1Text} <ArrowUpRight className="!h-5 !w-5 ml-1" />
+              {button1Text} <ArrowUpRight className="!h-5 !w-5 ml-1" aria-hidden="true" />
             </Button>
           </a>
         ) : (
           <Button size="lg" className="rounded-full text-base">
-            {button1Text} <ArrowUpRight className="!h-5 !w-5 ml-1" />
+            {button1Text} <ArrowUpRight className="!h-5 !w-5 ml-1" aria-hidden="true" />
           </Button>
         )}
         {button2Link ? (
@@ -84,7 +84,7 @@ const HeroWithVideoContent: React.FC<HeroProps> = ({
               size="lg"
               className="rounded-full text-base shadow-none"
             >
-              <CirclePlay className="!h-5 !w-5 mr-1" /> {button2Text}
+              <CirclePlay className="!h-5 !w-5 mr-1" aria-hidden="true" /> {button2Text}
             </Button>
           </a>
         ) : (
@@ -93,7 +93,7 @@ const HeroWithVideoContent: React.FC<HeroProps> = ({
             size="lg"
             className="rounded-full text-base shadow-none"
           >
-            <CirclePlay className="!h-5 !w-5 mr-1" /> {button2Text}
+            <CirclePlay className="!h-5 !w-5 mr-1" aria-hidden="true" /> {button2Text}
           </Button>
         )}
       </div>

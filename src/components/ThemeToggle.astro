@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 ---
 
 <Button variant="ghost" size="icon" id="themeToggle" aria-pressed="false"> {/* Added aria-pressed */}
-  <SunIcon className="h-[1.5rem] w-[1.3rem] dark:hidden" />
-  <MoonIcon className="hidden h-5 w-5 dark:block" />
+  <SunIcon className="h-[1.5rem] w-[1.3rem] dark:hidden" aria-hidden="true" />
+  <MoonIcon className="hidden h-5 w-5 dark:block" aria-hidden="true" />
   <span class="sr-only">Toggle theme</span>
 </Button>
 

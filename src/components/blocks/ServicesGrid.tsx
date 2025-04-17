@@ -50,7 +50,7 @@ const ServicesGrid: React.FC<ServicesGridProps> = ({ services, title }) => {
               className="flex flex-col border rounded-xl p-6 bg-card text-card-foreground hover:shadow-lg transition-shadow duration-300" // Added hover effect
             >
               <div className="mb-4 h-12 w-12 flex items-center justify-center bg-muted text-muted-foreground rounded-full">
-                <IconComponent className="h-6 w-6" />{" "}
+                <IconComponent className="h-6 w-6" aria-hidden="true" />{" "}
                 {/* Render the selected icon component */}
               </div>
               <h3 className="text-lg font-semibold mb-1">{service.title}</h3>
