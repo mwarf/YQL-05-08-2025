@@ -75,8 +75,10 @@ const pageDescription =
     </section>
 
      {/* Why Pick Us Section with Background */}
-     <section class="bg-muted dark:bg-muted/50 rounded-lg py-12 px-6 max-w-3xl mx-auto">
-       <article class="prose prose-lg dark:prose-invert text-center"> {/* Removed max-w and mx-auto */}
+     <section class="relative bg-muted/90 dark:bg-muted/80 rounded-lg py-12 px-6 max-w-3xl mx-auto overflow-hidden"> {/* Added relative, adjusted bg opacity, added overflow-hidden */}
+       {/* Add topography SVG background */}
+       <div class="absolute inset-0 -z-10 size-full bg-[url('/images/assets/topography.svg')] bg-repeat opacity-30 dark:invert" />
+       <article class="prose prose-lg dark:prose-invert text-center relative z-10"> {/* Removed max-w and mx-auto, Added relative and z-10 */}
          <h2 class="text-3xl font-bold mb-8 tracking-tight">So, Why Pick Us?</h2> {/* Added tracking-tight */}
          <p>
            Look, we know there are choices. But we think we're pretty great! 😉 We don't just fly drones; we're storytellers using cool tech. We get what makes a Lethbridge property shine, how to capture the buzz of a local festival, or what farmers need to see from above. Plus, we do it right – Michael's got the official <b>Transport Canada Advanced Certification</b>, we're fully insured, and safety is always top of mind.
@@ -88,8 +90,10 @@ const pageDescription =
      </section>
 
     {/* Visual CTA Section */}
-    <section class="bg-muted dark:bg-muted/50 py-20 md:py-28 rounded-lg">
-      <div class="container text-center max-w-3xl mx-auto">
+    <section class="relative bg-muted/90 dark:bg-muted/80 py-20 md:py-28 rounded-lg overflow-hidden"> {/* Added relative, adjusted bg opacity, added overflow-hidden */}
+      {/* Add topography SVG background */}
+      <div class="absolute inset-0 -z-10 size-full bg-[url('/images/assets/topography.svg')] bg-repeat opacity-60 dark:invert" /> {/* Increased opacity to 30 for light mode contrast */}
+      <div class="container text-center max-w-3xl mx-auto relative z-10"> {/* Added relative and z-10 to content */}
         <h2 class="text-3xl md:text-4xl font-bold mb-6 tracking-tight">Ready for Some Awesome Aerial Shots?</h2> {/* Added tracking-tight */}
         <p class="text-lg text-muted-foreground mb-8">
           Let's chat! We'd love to hear about your project and see how Coalbanks Creative can help you get amazing drone photos and videos.

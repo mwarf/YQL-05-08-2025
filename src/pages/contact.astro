@@ -17,7 +17,11 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       <p class="text-lg text-muted-foreground leading-relaxed mb-8 max-w-xl mx-auto text-center">
         Got a cool idea for some drone shots? Curious how aerial views could help your Lethbridge business or project? We're all ears! Fill out this quick form, or feel free to call or email. We're happy to answer questions and give you a free, no-pressure quote.
       </p>
-      <form id="contact-form" method="POST" action="/api/submit" class="max-w-xl mx-auto grid gap-6">
+      {/* Added relative, padding, rounded, bg, overflow-hidden */}
+      <form id="contact-form" method="POST" action="/api/submit" class="relative max-w-xl mx-auto grid gap-6 p-6 md:p-8 rounded-lg bg-card/90 dark:bg-card/80 overflow-hidden">
+        {/* Add topography SVG background */}
+        <div class="absolute inset-0 -z-10 size-full bg-[url('/images/assets/topography.svg')] bg-repeat opacity-30 dark:invert" />
+        {/* Form fields remain above the background */}
         <div class="grid gap-2">
           <label for="name" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50">Your Name</label>
           <input

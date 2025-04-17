@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ServicesGrid from "@/components/blocks/ServicesGrid.tsx";
-import { FlickeringGrid } from "@/components/ui/flickering-grid"; // Import the FlickeringGrid component
 // Icons are now handled within the React component
 
 // Pass icon names as strings
@@ -67,17 +66,9 @@ const ourServices = [
   </section>
 
   {/* Existing Why Choose Us Section (potentially restyled) */}
-  <section id="why-choose-us" class="relative overflow-hidden py-16 md:py-24 bg-secondary">
-    {/* Add FlickeringGrid as background */}
-    <FlickeringGrid
-      client:visible
-      className="absolute inset-0 -z-10 size-full"
-      squareSize={4}
-      gridGap={6}
-      color="#6B7280"
-      maxOpacity={0.2}
-      flickerChance={0.05}
-    />
+  <section id="why-choose-us" class="relative overflow-hidden py-16 md:py-24 bg-secondary/90 dark:bg-secondary/80 rounded-lg"> {/* Adjusted bg opacity, added rounded-lg */}
+    {/* Add topography SVG background */}
+    <div class="absolute inset-0 -z-10 size-full bg-[url('/images/assets/topography.svg')] bg-repeat opacity-30 dark:invert" />
     <div class="container relative z-10"> {/* Added relative z-10 */}
        <div class="max-w-3xl mx-auto text-center"> {/* Centered text */}
         <h2 class="font-heading text-3xl font-bold mb-6 tracking-tight">Why Pick Us for Your Drone Stuff?</h2> {/* Added tracking-tight */}

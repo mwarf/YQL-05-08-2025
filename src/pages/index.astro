@@ -11,7 +11,6 @@ import { Image, getImage } from "astro:assets"; // Import the Image component an
 import { FeaturedItemsCarousel } from "@/components/blocks/FeaturedItemsCarousel"; // Import the new carousel
 import WistiaPlayer from "@/components/WistiaPlayer.astro"; // Import the Wistia player component
 import HeroWithVideoContent from "@/components/blocks/HeroWithVideoContent.tsx"; // Import the new Hero component
-import { FlickeringGrid } from "@/components/ui/flickering-grid"; // Import the FlickeringGrid component
 import { ClientLogos } from "@/components/blocks/ClientLogos"; // Import the ClientLogos component
 
 // Import images for the carousel
@@ -288,16 +287,8 @@ const carouselItems = [
   <main class="flex flex-col gap-y-16 md:gap-y-24 overflow-x-hidden"> {/* Reduced gap */}
     {/* New Hero Section */}
     <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden"> {/* Added relative and overflow-hidden */}
-      {/* Add FlickeringGrid as background */}
-      <FlickeringGrid
-        client:visible
-        className="absolute inset-0 -z-10 size-full"
-        squareSize={4}
-        gridGap={6}
-        color="#6B7280"
-        maxOpacity={0.3}
-        flickerChance={0.1}
-      />
+      {/* Add topography SVG background */}
+      <div class="absolute inset-0 -z-10 size-full bg-[url('/images/assets/topography.svg')] bg-repeat opacity-30 dark:invert" /> {/* Increased opacity to 30 for light mode contrast */}
       {/* Added bg-background/80 for contrast overlay */}
       <div class="max-w-screen-xl w-full mx-auto grid lg:grid-cols-2 gap-12 px-6 py-12 z-10 bg-background/80 rounded-lg shadow-lg"> {/* Added overlay, rounded, shadow */}
         <HeroWithVideoContent
