@@ -27,7 +27,7 @@ export default defineConfig({
   // Explicitly set image service to compile for Cloudflare compatibility
   image: {
     service: {
-      entrypoint: 'astro/assets/services/compile',
+      entrypoint: "astro/assets/services/compile",
     },
   },
   vite: {
