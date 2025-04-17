@@ -15,12 +15,16 @@ import { FlickeringGrid } from "@/components/ui/flickering-grid"; // Import the 
 import { ClientLogos } from "@/components/blocks/ClientLogos"; // Import the ClientLogos component
 
 // Import images for the carousel
-import projectImage1 from "@/images/projects/placeholder-project-1.png";
-import projectImage2 from "@/images/projects/placeholder-project-2.png";
-import projectImage3 from "@/images/projects/placeholder-project-3.png";
-import projectImage4 from "@/images/projects/placeholder-project-4.png";
-import projectImage5 from "@/images/projects/placeholder-project-5.png";
-import projectImage6 from "@/images/projects/placeholder-project-6.png";
+import ftllImage from "@/images/project-images/FTLL.jpg"; // For the Love of Lethbridge
+import discGolfImage from "@/images/project-images/disc-golf.jpeg"; // Aperture Park
+import pepsicoImage from "@/images/project-images/pepsico-project.jpg"; // PepsiCo
+import mdTaberImage from "@/images/project-images/md-taber.jpg"; // MD of Taber
+import postVisionImage from "@/images/project-images/post-vision-video.jpg"; // Post Vision
+import pgaImage from "@/images/project-images/this-is-us-pga.jpg"; // PGA
+import smridImage from "@/images/project-images/SMRID-project.jpg"; // SMRID
+import prairieQueenImage from "@/images/project-images/prairie-queen.jpg"; // Prairie Queen
+import huckfestImage from "@/images/project-images/huckfest.png"; // Huckfest
+import albertaEnergyImage from "@/images/project-images/alberta-energy.jpg"; // Alberta Energy
 
 // Import SVG logos - Reverted
 // import cityLogoUrl from '@/images/logos/city-of-lethbridge-logo.svg';
@@ -46,48 +50,77 @@ const featuredPosts = (await getCollection("blog"))
   .slice(0, 3); // Get latest 3 featured
 
 // Generate optimized image attributes, adding densities to generate srcset
-const optimizedImage1 = await getImage({
-  src: projectImage1,
+const optimizedFtllImage = await getImage({
+  src: ftllImage,
   width: 600,
   height: 400,
   format: "webp",
   densities: [1, 1.5, 2],
 });
-const optimizedImage2 = await getImage({
-  src: projectImage2,
+const optimizedDiscGolfImage = await getImage({ // Updated for Aperture Park
+  src: discGolfImage,
   width: 600,
   height: 400,
   format: "webp",
   densities: [1, 1.5, 2],
 });
-const optimizedImage3 = await getImage({
-  src: projectImage3,
+const optimizedPepsicoImage = await getImage({
+  src: pepsicoImage,
   width: 600,
   height: 400,
   format: "webp",
   densities: [1, 1.5, 2],
 });
-const optimizedImage4 = await getImage({
-  src: projectImage4,
+const optimizedMdTaberImage = await getImage({
+  src: mdTaberImage,
   width: 600,
   height: 400,
   format: "webp",
   densities: [1, 1.5, 2],
 });
-const optimizedImage5 = await getImage({
-  src: projectImage5,
+const optimizedPostVisionImage = await getImage({
+  src: postVisionImage,
   width: 600,
   height: 400,
   format: "webp",
   densities: [1, 1.5, 2],
 });
-const optimizedImage6 = await getImage({
-  src: projectImage6,
+const optimizedPgaImage = await getImage({
+  src: pgaImage,
   width: 600,
   height: 400,
   format: "webp",
   densities: [1, 1.5, 2],
 });
+const optimizedSmridImage = await getImage({
+  src: smridImage,
+  width: 600,
+  height: 400,
+  format: "webp",
+  densities: [1, 1.5, 2],
+});
+const optimizedPrairieQueenImage = await getImage({
+  src: prairieQueenImage,
+  width: 600,
+  height: 400,
+  format: "webp",
+  densities: [1, 1.5, 2],
+});
+const optimizedHuckfestImage = await getImage({
+  src: huckfestImage,
+  width: 600,
+  height: 400,
+  format: "webp", // Keep webp, png source will be converted
+  densities: [1, 1.5, 2],
+});
+const optimizedAlbertaEnergyImage = await getImage({
+  src: albertaEnergyImage,
+  width: 600,
+  height: 400,
+  format: "webp",
+  densities: [1, 1.5, 2],
+});
+
 // Prepare data for the FeaturedItemsCarousel with explicit, serializable image attributes
 const carouselItems = [
   // Community/Local Pride
@@ -100,10 +133,10 @@ const carouselItems = [
     linkText: "View Video",
     alt: "Aerial view of Lethbridge river valley and high level bridge.",
     imgAttrs: {
-      src: optimizedImage1.src,
-      srcset: optimizedImage1.srcSet,
-      width: optimizedImage1.attributes.width,
-      height: optimizedImage1.attributes.height,
+      src: optimizedFtllImage.src,
+      srcset: optimizedFtllImage.srcSet,
+      width: optimizedFtllImage.attributes.width,
+      height: optimizedFtllImage.attributes.height,
     },
   },
   {
@@ -113,12 +146,12 @@ const carouselItems = [
       "We captured drone footage for the M.D. of Taber’s 70th anniversary video, showcasing local businesses, tourism spots, and infrastructure from above.\n\nThese aerial views celebrate the community’s growth and rich history, highlighting its vibrant spirit.\n\nIt was a privilege to contribute to this meaningful tribute, helping tell Taber’s story.",
     url: "https://www.youtube.com/watch?v=_9BMIcHVSv4&t=17s",
     linkText: "View Video",
-    alt: "Placeholder image for project 9.",
+    alt: "Drone shot of MD of Taber administration building.", // Updated Alt Text
     imgAttrs: {
-      src: optimizedImage4.src, // Using image 4 for variety
-      srcset: optimizedImage4.srcSet,
-      width: optimizedImage4.attributes.width,
-      height: optimizedImage4.attributes.height,
+      src: optimizedMdTaberImage.src,
+      srcset: optimizedMdTaberImage.srcSet,
+      width: optimizedMdTaberImage.attributes.width,
+      height: optimizedMdTaberImage.attributes.height,
     },
   },
   {
@@ -128,12 +161,12 @@ const carouselItems = [
       "For Sumus' Post project, we captured drone footage for their vision video, showcasing the transformation of a historic Lethbridge building into a modern workspace.\n\nThis redevelopment unites legacy and innovation, creating new opportunities for local businesses.\n\nOur aerial perspectives help bring this community-focused initiative to life.",
     url: "https://www.youtube.com/watch?v=sSvVNeYLscw&t=10s",
     linkText: "View Video",
-    alt: "Placeholder image for project 10.",
+    alt: "Aerial view of the Post building in downtown Lethbridge.", // Updated Alt Text
     imgAttrs: {
-      src: optimizedImage5.src, // Using image 5 for variety
-      srcset: optimizedImage5.srcSet,
-      width: optimizedImage5.attributes.width,
-      height: optimizedImage5.attributes.height,
+      src: optimizedPostVisionImage.src,
+      srcset: optimizedPostVisionImage.srcSet,
+      width: optimizedPostVisionImage.attributes.width,
+      height: optimizedPostVisionImage.attributes.height,
     },
   },
   // Agriculture/Industry
@@ -146,10 +179,10 @@ const carouselItems = [
     linkText: "View Video",
     alt: "Potato harvesting machinery in a field for PGA Alberta.",
     imgAttrs: {
-      src: optimizedImage5.src,
-      srcset: optimizedImage5.srcSet,
-      width: optimizedImage5.attributes.width,
-      height: optimizedImage5.attributes.height,
+      src: optimizedPgaImage.src,
+      srcset: optimizedPgaImage.srcSet,
+      width: optimizedPgaImage.attributes.width,
+      height: optimizedPgaImage.attributes.height,
     },
   },
   {
@@ -161,10 +194,10 @@ const carouselItems = [
     linkText: "Read More",
     alt: "Aerial shot of farm equipment working in a field for PepsiCo.",
     imgAttrs: {
-      src: optimizedImage3.src,
-      srcset: optimizedImage3.srcSet,
-      width: optimizedImage3.attributes.width,
-      height: optimizedImage3.attributes.height,
+      src: optimizedPepsicoImage.src,
+      srcset: optimizedPepsicoImage.srcSet,
+      width: optimizedPepsicoImage.attributes.width,
+      height: optimizedPepsicoImage.attributes.height,
     },
   },
   {
@@ -174,12 +207,12 @@ const carouselItems = [
       "We captured drone footage for SMRID, showcasing their infrastructure and Chinn chute expansion. It highlights their vital role in Southern Alberta's agriculture and environment. Now featured on their website, it tells their story in a simple and clear way.",
     url: "https://smrid.com/",
     linkText: "Visit Website",
-    alt: "Placeholder image for project 7.",
+    alt: "Drone view of SMRID irrigation canal infrastructure.", // Updated Alt Text
     imgAttrs: {
-      src: optimizedImage2.src, // Using image 2 for variety
-      srcset: optimizedImage2.srcSet,
-      width: optimizedImage2.attributes.width,
-      height: optimizedImage2.attributes.height,
+      src: optimizedSmridImage.src,
+      srcset: optimizedSmridImage.srcSet,
+      width: optimizedSmridImage.attributes.width,
+      height: optimizedSmridImage.attributes.height,
     },
   },
   // Events/Entertainment
@@ -192,25 +225,25 @@ const carouselItems = [
     linkText: "View Video",
     alt: "Promotional image for the documentary Francheska Prairie Queen.",
     imgAttrs: {
-      src: optimizedImage4.src,
-      srcset: optimizedImage4.srcSet,
-      width: optimizedImage4.attributes.width,
-      height: optimizedImage4.attributes.height,
+      src: optimizedPrairieQueenImage.src,
+      srcset: optimizedPrairieQueenImage.srcSet,
+      width: optimizedPrairieQueenImage.attributes.width,
+      height: optimizedPrairieQueenImage.attributes.height,
     },
   },
   {
     id: "carousel-item-6",
     title: "Castle Mountain Huckfest",
     summary:
-      "We captured a bird's-eye view of the action and stunning mountain scenery. Our team worked hard to deliver high-quality visuals that showcased the energy and adventure of this amazing event. From sweeping vistas to heart-pumping action shots, our footage brought Huckfest to life in a way that's both exhilarating and authentic.",
-    url: "#",
-    linkText: "Read More",
+      "We contributed drone footage for the Castle Mountain Huckfest recap video, capturing a bird's-eye view of the action and stunning mountain scenery. Our high-quality aerials showcased the energy and adventure of this amazing event, bringing Huckfest to life in a way that's both exhilarating and authentic.",
+    url: "https://www.youtube.com/watch?v=Ze6HysY5ERw",
+    linkText: "View Video",
     alt: "Aerial view of skiers and snowboarders at Huckfest Castle Mountain.",
     imgAttrs: {
-      src: optimizedImage6.src,
-      srcset: optimizedImage6.srcSet,
-      width: optimizedImage6.attributes.width,
-      height: optimizedImage6.attributes.height,
+      src: optimizedHuckfestImage.src,
+      srcset: optimizedHuckfestImage.srcSet,
+      width: optimizedHuckfestImage.attributes.width,
+      height: optimizedHuckfestImage.attributes.height,
     },
   },
   // Specific Services/Other
@@ -223,10 +256,10 @@ const carouselItems = [
     linkText: "Read More",
     alt: "Drone view of Aperture Park Disc Golf course map sign.",
     imgAttrs: {
-      src: optimizedImage2.src,
-      srcset: optimizedImage2.srcSet,
-      width: optimizedImage2.attributes.width,
-      height: optimizedImage2.attributes.height,
+      src: optimizedDiscGolfImage.src,
+      srcset: optimizedDiscGolfImage.srcSet,
+      width: optimizedDiscGolfImage.attributes.width,
+      height: optimizedDiscGolfImage.attributes.height,
     },
   },
   {
@@ -236,12 +269,12 @@ const carouselItems = [
       "We showcased solar and wind sites across Vauxhall, Raymond, Pincher Creek, and Magrath in this video, produced by Frame30 Productions, shares Alberta’s inspiring energy story with the world.",
     url: "https://www.youtube.com/watch?v=QqSA8eWww7I",
     linkText: "View Video",
-    alt: "Placeholder image for project 8.",
+    alt: "Drone shot of wind turbines in Southern Alberta.", // Updated Alt Text
     imgAttrs: {
-      src: optimizedImage3.src, // Using image 3 for variety
-      srcset: optimizedImage3.srcSet,
-      width: optimizedImage3.attributes.width,
-      height: optimizedImage3.attributes.height,
+      src: optimizedAlbertaEnergyImage.src,
+      srcset: optimizedAlbertaEnergyImage.srcSet,
+      width: optimizedAlbertaEnergyImage.attributes.width,
+      height: optimizedAlbertaEnergyImage.attributes.height,
     },
   },
 ];
