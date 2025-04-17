@@ -104,10 +104,10 @@ const ClientLogos = ({
 }: ClientLogosProps) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   // Removed isPlaying state
-  const [api, setApi] = useState<CarouselApi>() // State to hold the API instance
+  const [api, setApi] = useState<CarouselApi>(); // State to hold the API instance
   const autoScroll = useRef(
     // Keep stopOnInteraction: false so hover/focus works independently
-    AutoScroll({ playOnInit: true, speed: 0.7, stopOnInteraction: false })
+    AutoScroll({ playOnInit: true, speed: 0.7, stopOnInteraction: false }),
   ); // Create plugin instance in ref
 
   // Get the playing state once the API and plugin are ready
@@ -117,21 +117,19 @@ const ClientLogos = ({
     }
     // No need to set isPlaying state here anymore
     // setIsPlaying(autoScroll.current.isPlaying());
-
   }, [api]); // Depend only on api readiness
-
 
   // Removed togglePlay callback
 
   // Pause on hover/focus, resume on blur/leave
-   const pauseOnInteract = useCallback(() => {
+  const pauseOnInteract = useCallback(() => {
     autoScroll.current?.stop();
   }, []); // No dependencies needed
 
   const resumeOnLeave = useCallback(() => {
     // Resume if plugin exists and isn't already playing (due to hover/focus pause)
     if (autoScroll.current && !autoScroll.current.isPlaying()) {
-       autoScroll.current.play();
+      autoScroll.current.play();
     }
   }, []); // No dependency on isPlaying needed
 
@@ -188,59 +186,61 @@ const ClientLogos = ({
         {" "}
         {/* Adjusted padding */}
         <div className="relative mx-auto flex items-center justify-center lg:max-w-6xl">
-        {" "}
-        {/* Increased max-width */}
-        {/* Add event listeners for hover/focus */}
-        <div
-          onMouseEnter={pauseOnInteract}
-          onMouseLeave={resumeOnLeave}
-          onFocus={pauseOnInteract} // Added for keyboard focus
-          onBlur={resumeOnLeave}    // Added for keyboard focus
-          className="relative" // Needed for positioning the button
-        >
-          <Carousel
-            opts={{ loop: true, align: "start" }} // Added align: "start"
-            // Pass the plugin instance via the plugins prop
-            plugins={[autoScroll.current]}
-            // Use setApi prop to get the Embla instance for control
-            setApi={setApi}
+          {" "}
+          {/* Increased max-width */}
+          {/* Add event listeners for hover/focus */}
+          <div
+            onMouseEnter={pauseOnInteract}
+            onMouseLeave={resumeOnLeave}
+            onFocus={pauseOnInteract} // Added for keyboard focus
+            onBlur={resumeOnLeave} // Added for keyboard focus
+            className="relative" // Needed for positioning the button
           >
-            <CarouselContent className="-ml-4">
-              {" "}
-              {/* Adjusted margin */}
-              {logos.map((logo) => (
-                <CarouselItem
-                  key={logo.id}
-                  className="flex basis-1/4 justify-center pl-4 sm:basis-1/5 md:basis-1/6 lg:basis-1/8" // Adjusted basis
-                >
-                  {/* Give this div a fixed width and center content */}
-                  <div className="mx-auto flex h-20 w-24 md:w-32 shrink-0 items-center justify-center p-2">
-                    {" "}
-                    {/* Changed h-16 to h-20 */}
-                    <div>
-                      {/* Conditionally render image based on theme */}
-                      <img
-                        src={isDarkMode ? logo.imageDark : logo.imageLight}
-                        alt={logo.description}
-                        // Keep original height constraint, maybe add max-w-full
-                        className={`${logo.className} max-w-full`}
-                      />
+            <Carousel
+              opts={{ loop: true, align: "start" }} // Added align: "start"
+              // Pass the plugin instance via the plugins prop
+              plugins={[autoScroll.current]}
+              // Use setApi prop to get the Embla instance for control
+              setApi={setApi}
+            >
+              <CarouselContent className="-ml-4">
+                {" "}
+                {/* Adjusted margin */}
+                {logos.map((logo) => (
+                  <CarouselItem
+                    key={logo.id}
+                    className="flex basis-1/4 justify-center pl-4 sm:basis-1/5 md:basis-1/6 lg:basis-1/8" // Adjusted basis
+                  >
+                    {/* Give this div a fixed width and center content */}
+                    <div className="mx-auto flex h-20 w-24 md:w-32 shrink-0 items-center justify-center p-2">
+                      {" "}
+                      {/* Changed h-16 to h-20 */}
+                      <div>
+                        {/* Conditionally render image based on theme */}
+                        <img
+                          src={isDarkMode ? logo.imageDark : logo.imageLight}
+                          alt={logo.description}
+                          // Keep original height constraint, maybe add max-w-full
+                          className={`${logo.className} max-w-full`}
+                        />
+                      </div>
                     </div>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            {/* Gradient Overlays - Moved inside Carousel */}
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background to-transparent"></div>
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background to-transparent"></div>
-            {/* Gradient Overlays - Moved inside Carousel */}
-            {/* Gradient Overlays - Moved inside Carousel */}
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background to-transparent"></div>
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background to-transparent"></div>
-          </Carousel>
-          {/* Removed Pause/Play Button */}
-        </div> {/* Closing the div that has hover/focus listeners */}
-        </div> {/* Closing the div with class="relative mx-auto..." */}
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              {/* Gradient Overlays - Moved inside Carousel */}
+              <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background to-transparent"></div>
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background to-transparent"></div>
+              {/* Gradient Overlays - Moved inside Carousel */}
+              {/* Gradient Overlays - Moved inside Carousel */}
+              <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background to-transparent"></div>
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background to-transparent"></div>
+            </Carousel>
+            {/* Removed Pause/Play Button */}
+          </div>{" "}
+          {/* Closing the div that has hover/focus listeners */}
+        </div>{" "}
+        {/* Closing the div with class="relative mx-auto..." */}
       </div>
     </section>
   );
