@@ -19,13 +19,7 @@ interface GalleryItem {
   url: string;
   linkText: string; // Add linkText property
   alt: string; // Add this line
-  imgAttrs: {
-    // Use the new key and define the expected shape
-    src: string;
-    srcset: any; // Temporarily use 'any' to bypass complex type issue
-    width: number;
-    height: number;
-  };
+  imageSrc: string; // Changed from imgAttrs to simple image source string
 }
 
 interface FeaturedItemsCarouselProps {
@@ -131,14 +125,13 @@ const FeaturedItemsCarousel = ({
                       <div className="flex aspect-[3/2] overflow-clip rounded-lg">
                         <div className="flex-1">
                           <div className="relative h-full w-full origin-bottom transition duration-300 group-hover:scale-105">
+                            {/* Updated img tag to use imageSrc and remove srcset/width/height */}
                             <img
-                              src={item.imgAttrs.src} // Use imgAttrs
-                              srcSet={item.imgAttrs.srcset} // Use the srcset string directly
-                              width={item.imgAttrs.width} // Use imgAttrs
-                              height={item.imgAttrs.height} // Use imgAttrs
-                              loading="lazy" // Add lazy loading
-                              decoding="async" // Add async decoding
-                              alt={item.alt} // Change this from item.title
+                              src={item.imageSrc} // Use the new imageSrc prop
+                              loading="lazy" // Keep lazy loading
+                              decoding="async" // Keep async decoding
+                              alt={item.alt} // Keep alt text
+                              // Removed width, height, and srcset as they are no longer provided
                               className="h-full w-full object-cover object-center"
                             />
                           </div>
