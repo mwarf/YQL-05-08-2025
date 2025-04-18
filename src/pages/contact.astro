@@ -9,13 +9,13 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 
 <BaseLayout
   title="Contact Us | Lethbridge Drone Services | Coalbanks Creative"
-  description="Ready to chat about drone photos or video in Lethbridge? Contact Coalbanks Creative! Get your free, no-obligation quote today for awesome aerial services."
+  description="Ready to chat about drone photos or video in Lethbridge? Contact Coalbanks Creative! Get your free, no-obligation quote today for professional aerial services."
 >
   <main class="flex flex-col gap-y-20 md:gap-y-32 overflow-x-hidden">
     <section id="contact" class="container py-16 md:py-24">
       <h1 class="font-heading text-3xl font-bold text-center mb-12 tracking-tight">Get in Touch! Let's Talk Drones</h1> {/* Added tracking-tight */}
       <p class="text-lg text-muted-foreground leading-relaxed mb-8 max-w-xl mx-auto text-center">
-        Got a cool idea for some drone shots? Curious how aerial views could help your Lethbridge business or project? We're all ears! Fill out this quick form, or feel free to call or email. We're happy to answer questions and give you a free, no-pressure quote.
+        Have a great idea for some drone shots? Curious how aerial views could help your Lethbridge business or project? We're all ears! Fill out this quick form, or feel free to call or email. We're happy to answer questions and give you a free, no-pressure quote.
       </p>
       {/* Added relative, padding, rounded, bg, overflow-hidden */}
       <form id="contact-form" method="POST" action="/api/submit" class="relative max-w-xl mx-auto grid gap-6 p-6 md:p-8 rounded-lg bg-card/90 dark:bg-card/80 overflow-hidden">
@@ -63,11 +63,11 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           >
             <option value="" disabled selected>Choose one (or 'Other')...</option>
             {/* Updated option text to match Services page */}
-            <option value="Real Estate That Wows">Real Estate That Wows</option>
+            <option value="Showcase Properties from Above">Showcase Properties from Above</option>
             <option value="Marketing Videos with Altitude">Marketing Videos with Altitude</option>
-            <option value="Event Coverage From the Sky">Event Coverage From the Sky</option>
+            <option value="Dynamic Event Coverage">Dynamic Event Coverage</option>
             <option value="Construction Site Fly-Overs">Construction Site Fly-Overs</option>
-            <option value="Mapping & Surveys (Super Accurate!)">Mapping & Surveys (Super Accurate!)</option>
+            <option value="Precise Mapping & Surveys">Precise Mapping & Surveys</option>
             <option value="Ag Insights for Smart Farming">Ag Insights for Smart Farming</option>
             <option value="Other">Something Else / Not Sure Yet</option>
           </select>
@@ -144,7 +144,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           statusDiv.style.color = 'red';
         } finally {
           submitButton.disabled = false;
-          submitButton.textContent = 'Request My Quote';
+          submitButton.textContent = 'Send My Message!'; // Keep consistent with initial text
         }
       });
     </script>

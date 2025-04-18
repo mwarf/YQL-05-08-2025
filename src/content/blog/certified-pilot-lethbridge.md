@@ -22,7 +22,7 @@ You might think, "Why bother with all the official stuff?" Well, hiring a certif
 
 Trying to cut corners with someone uncertified? It might seem cheaper upfront, but it can seriously mess up your project, timeline, and even your business's good name. Not worth the gamble!
 
-## Being Legit Unlocks Cool Stuff!
+## Get Certified, Get Ahead
 
 Following the rules isn't just about avoiding problems; it actually opens doors to cooler, more advanced drone work! Certified pilots can legally do things like fly Beyond Visual Line of Sight (BVLOS – basically, flying further away) or operate in tricky restricted areas (with the right permissions, of course). This means your business could access cutting-edge services that weren't possible before. Guess what? We've got the certs and know-how to make these advanced options happen for you, safely and legally.
 

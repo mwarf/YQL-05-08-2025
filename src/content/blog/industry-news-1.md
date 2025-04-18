@@ -22,7 +22,7 @@ Transport Canada is doing this in two main steps:
 
 *   **New Fees Coming:** Yep, there will be some new fees for getting certified for the fancier drone flying (like flying further away) and maybe some tweaks to drone registration costs. Think of it as chipping in for a safer, more organized drone world.
 *   **Tiny Drones at Big Events? New Rule:** Planning to fly even a little microdrone (under 250g) at something like a festival or public event? You'll now need special permission first (an SFOC). Safety first when crowds are involved!
-*   **Get a Head Start:** Good news! Starting April 1st, you can actually start taking the tests and applying for the new certifications needed for the really cool stuff coming later in the year. Beat the rush!
+*   **Get a Head Start:** Good news! Starting April 1st, you can actually start taking the tests and applying for the new certifications needed for next-level drone operations coming later in the year. Beat the rush!
 
 **Step 2: Starting November 4, 2025 – The Big Operational Changes**
 
