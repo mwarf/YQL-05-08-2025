@@ -1,6 +1,7 @@
 ---
 // src/pages/contact.astro
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { buttonVariants } from "@/components/ui/button";
 // Note: The original index page had commented-out imports for UI components.
 // If the form styling relies on these or specific CSS classes from them,
 // they might need to be re-imported or the classes adjusted.
@@ -13,7 +14,8 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 >
   <main class="flex flex-col gap-y-20 md:gap-y-32 overflow-x-hidden">
     <section id="contact" class="container py-16 md:py-24">
-      <h1 class="font-heading text-3xl font-bold text-center mb-12 tracking-tight">Get in Touch! Let's Talk Drones</h1> {/* Added tracking-tight */}
+      {/* Apply consistent H1 style */}
+      <h1 class="font-heading text-4xl md:text-5xl font-bold text-center mb-12 tracking-tight">Get in Touch! Let's Talk Drones</h1>
       <p class="text-lg text-muted-foreground leading-relaxed mb-8 max-w-xl mx-auto text-center">
         Have a great idea for some drone shots? Curious how aerial views could help your Lethbridge business or project? We're all ears! Fill out this quick form, or feel free to call or email. We're happy to answer questions and give you a free, no-pressure quote.
       </p>
@@ -97,7 +99,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         <button
           type="submit"
           id="submit-button"
-          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 h-10 rounded-md px-8 bg-primary text-primary-foreground shadow hover:bg-primary/90"
+          class={buttonVariants({ size: "lg" })}
         >
           Send My Message!
         </button>

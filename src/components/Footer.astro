@@ -2,23 +2,56 @@
 // src/components/Footer.astro
 const currentYear = new Date().getFullYear();
 ---
-<footer class="border-t py-6 md:px-8 md:py-8"> {/* Increased padding */}
-  <div
-    class="container flex flex-col items-center justify-between gap-6 md:flex-row text-center md:text-left"
-  >
-    <div class="text-sm text-muted-foreground">
-      <p class="font-semibold">Coalbanks Creative Inc.</p>
-      <p>#208, 316 5 St S, Lethbridge, AB T1J 2B5</p>
-      <p>Phone: <a href="tel:+15878135950" class="hover:underline">(587) 813-5950</a></p>
-      {/* Consider adding email or link to contact form later */}
+<footer class="border-t py-8 md:px-8 md:py-10">
+  <div class="container">
+    {/* Main Footer Grid (2 Columns) */}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center md:text-left mb-8">
+      {/* Column 1: Address & Phone */}
+      <div class="text-sm text-muted-foreground">
+        <p class="font-semibold mb-1">Coalbanks Creative Inc.</p>
+        <p>#208, 316 5 St S, Lethbridge, AB T1J 2B5</p>
+        <p>Phone: <a href="tel:+15878135950" class="hover:underline">(587) 813-5950</a></p>
+      </div>
+      {/* Column 2: Copyright & Policy Links */}
+      <div class="text-sm text-muted-foreground md:text-right">
+        <p class="mb-2">
+          &copy; {currentYear} Coalbanks Creative Inc. All rights reserved.
+        </p>
+        <div class="flex flex-col items-center md:items-end gap-1">
+          <a href="/privacy-policy" class="hover:underline">Privacy Policy</a>
+          <a href="/terms-of-service" class="hover:underline">Terms of Service</a>
+        </div>
+      </div>
     </div>
-    <div class="text-sm text-muted-foreground flex flex-col items-center md:items-end gap-2">
-      <p>
-        &copy; {currentYear} Coalbanks Creative Inc. All rights reserved.
-      </p>
-      <div class="flex gap-4">
-        <a href="/privacy-policy" class="hover:underline">Privacy Policy</a>
-        <a href="/terms-of-service" class="hover:underline">Terms of Service</a>
+
+    {/* Sub-Footer Section for Coalbanks Family */}
+    {/* Reduced contrast even further with text-muted-foreground/50 */}
+    <div class="mt-8 pt-8 border-t border-muted/30 text-xs text-muted-foreground/50"> 
+      {/* Nested Grid for 3/4 and 1/4 split */}
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        {/* Left Column (3/4 width) */}
+        <div class="md:col-span-3 text-left"> {/* Left align text */}
+           {/* Heading slightly darker than paragraph text */}
+          <h4 class="font-semibold mb-1 text-muted-foreground/70">Part of the Coalbanks Creative Family</h4>
+          <p> {/* Removed max-width and centering */}
+            Lethbridge Drone is a specialized service by Coalbanks Creative Inc., a Southern Alberta-based video production company known for documentary-style corporate films, branded storytelling, and creative media solutions.
+          </p>
+        </div>
+
+        {/* Right Column (1/4 width) */}
+        <div class="md:col-span-1 text-left md:text-right"> {/* Align text based on screen size */}
+          {/* Applied heading styles */}
+          <p class="font-semibold mb-1 text-muted-foreground/70">Want to see more of what we do?</p> 
+          <div class="flex flex-col items-start md:items-end gap-1"> {/* Align links based on screen size */}
+            {/* Re-added hover:underline for link affordance */}
+            <a href="https://coalbanks.com" target="_blank" rel="noopener noreferrer" class="hover:underline">
+              → Explore Our Full Video Services
+            </a>
+            <a href="https://brainmuffin.ca" target="_blank" rel="noopener noreferrer" class="hover:underline">
+              → Learn About Our AI & VFX Experiments
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

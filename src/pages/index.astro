@@ -1,6 +1,7 @@
 ---
 // src/pages/index.astro
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { buttonVariants } from "@/components/ui/button"; // Added import for CTA
 // import { buttonVariants } from "@/components/ui/button"; // Removed unused import
 // import { Label } from "@/components/ui/label"; // Comment out import
 // import { Input } from "@/components/ui/input"; // Remove Input import
@@ -12,6 +13,7 @@ import { FeaturedItemsCarousel } from "@/components/blocks/FeaturedItemsCarousel
 import WistiaPlayer from "@/components/WistiaPlayer.astro"; // Import the Wistia player component
 import HeroWithVideoContent from "@/components/blocks/HeroWithVideoContent.tsx"; // Import the new Hero component
 import { ClientLogos } from "@/components/blocks/ClientLogos"; // Import the ClientLogos component
+import { FaqSectionWithCategories } from "@/components/blocks/FaqSectionWithCategories"; // Import the new FAQ component
 
 // Removed image imports for carousel - using direct paths now
 // import ftllImage from "@/images/project-images/FTLL.jpg";
@@ -60,7 +62,7 @@ const carouselItems = [
       "We were proud to capture the essence of Lethbridge with stunning drone footage for the 'For the Love of Lethbridge' campaign, a heartfelt tribute to the region's beauty and charm. Our aerial visuals showcased the city's vibrant landscapes and community spirit, highlighting why Lethbridge is a wonderful place to live and work. By combining breathtaking views with a compelling narrative, we helped create a love letter to the region that resonates with both locals and newcomers alike.",
     url: "https://youtu.be/-zaqFf4qhhg?si=lU31gGinZHoiVLLb",
     linkText: "View Video",
-    alt: "Aerial view of Lethbridge river valley and high level bridge.",
+    alt: "Aerial view of downtown Lethbridge and the historic Post Office building.",
     imageSrc: "/optimized-images/project-images/FTLL.webp", // Direct path
   },
   {
@@ -70,7 +72,7 @@ const carouselItems = [
       "We captured drone footage for the M.D. of Taber’s 70th anniversary video, showcasing local businesses, tourism spots, and infrastructure from above.\n\nThese aerial views celebrate the community’s growth and rich history, highlighting its vibrant spirit.\n\nIt was a privilege to contribute to this meaningful tribute, helping tell Taber’s story.",
     url: "https://www.youtube.com/watch?v=_9BMIcHVSv4&t=17s",
     linkText: "View Video",
-    alt: "Drone shot of MD of Taber administration building.", // Updated Alt Text
+    alt: "Drone shot of MD of Taber potato planting.", // Updated Alt Text
     imageSrc: "/optimized-images/project-images/md-taber.webp", // Direct path
   },
   {
@@ -80,7 +82,7 @@ const carouselItems = [
       "For Sumus' Post project, we captured drone footage for their vision video, showcasing the transformation of a historic Lethbridge building into a modern workspace.\n\nThis redevelopment unites legacy and innovation, creating new opportunities for local businesses.\n\nOur aerial perspectives help bring this community-focused initiative to life.",
     url: "https://www.youtube.com/watch?v=sSvVNeYLscw&t=10s",
     linkText: "View Video",
-    alt: "Aerial view of the Post building in downtown Lethbridge.", // Updated Alt Text
+    alt: "BTS shot of the interview setup for Sumus Post vision video production", // Updated Alt Text
     imageSrc: "/optimized-images/project-images/post-vision-video.webp", // Direct path
   },
   // Agriculture/Industry
@@ -91,24 +93,24 @@ const carouselItems = [
       "We showcased the heart and dedication of Alberta's potato-growing families. From sweeping farmland vistas to close-up shots of innovative technology in action, our aerial visuals highlighted the challenges and triumphs of producing safe, sustainable food. Through our lens, we helped tell a story of tradition, community, and progress in Alberta's potato industry.",
     url: "https://youtu.be/UUfeCmwQMIw?si=i7cealcuNi9l2JUm",
     linkText: "View Video",
-    alt: "Potato harvesting machinery in a field for PGA Alberta.",
+    alt: "The irrigation source for Southern Alberta Farms, mountain snowpack runoff",
     imageSrc: "/optimized-images/project-images/this-is-us-pga.webp", // Direct path
   },
   {
     id: "carousel-item-3",
-    title: "Pepsi Sustainable Agriculture",
+    title: "Pepsi Regenerative Agriculture",
     summary:
-      "We were proud to contribute drone footage for PepsiCo’s feature on The Perry Farm in Chin, Alberta, showcasing their groundbreaking initiatives in regenerative agriculture and sustainability. Our aerial visuals captured the beauty of the farm and the innovative practices, from renewable energy projects to sustainable potato production. Through our lens, we helped highlight PepsiCo’s commitment to environmental stewardship and the Perry family’s leadership in sustainable farming.",
+      "We were proud to produce PepsiCo’s feature on The Perry Farm in Chin, Alberta, showcasing their groundbreaking initiatives in regenerative agriculture and sustainability. Our aerial visuals captured the beauty of the farm and the innovative practices, from renewable energy projects to sustainable potato production. Through our lens, we helped highlight PepsiCo’s commitment to environmental stewardship and the Perry family’s leadership in sustainable farming.",
     url: "#",
     linkText: "Read More",
-    alt: "Aerial shot of farm equipment working in a field for PepsiCo.",
+    alt: "Aerial shot of farm equipment working in a field at the Perry Farm",
     imageSrc: "/optimized-images/project-images/pepsico-project.webp", // Direct path
   },
   {
     id: "carousel-item-7",
     title: "SMRID Infrastructure",
     summary:
-      "We captured drone footage for SMRID, showcasing their infrastructure and Chinn chute expansion. It highlights their vital role in Southern Alberta's agriculture and environment. Now featured on their website, it tells their story in a simple and clear way.",
+      "We captured drone footage for SMRID, showcasing their infrastructure and Chin chute expansion. It highlights their vital role in Southern Alberta's agriculture and environment. Now featured on their website, it tells their story in a simple and clear way.",
     url: "https://smrid.com/",
     linkText: "Visit Website",
     alt: "Drone view of SMRID irrigation canal infrastructure.", // Updated Alt Text
@@ -132,7 +134,7 @@ const carouselItems = [
       "We contributed drone footage for the Castle Mountain Huckfest recap video, capturing a bird's-eye view of the action and stunning mountain scenery. Our high-quality aerials showcased the energy and adventure of this amazing event, bringing Huckfest to life in a way that's both exhilarating and authentic.",
     url: "https://www.youtube.com/watch?v=Ze6HysY5ERw",
     linkText: "View Video",
-    alt: "Aerial view of skiers and snowboarders at Huckfest Castle Mountain.",
+    alt: "Aerial view of hikers gathering huckleberries at Huckfest Castle Mountain.",
     imageSrc: "/optimized-images/project-images/huckfest.webp", // Direct path (Note: source was .png)
   },
   // Specific Services/Other
@@ -143,7 +145,7 @@ const carouselItems = [
       "We created detailed mapping and signage images for the University of Lethbridge's Aperture disc golf course, enhancing player experience on this scenic 18-hole route. Our work helped ensure visitors could fully enjoy the course and surrounding foliage.", // Shortened slightly
     url: "#",
     linkText: "Read More",
-    alt: "Drone view of Aperture Park Disc Golf course map sign.",
+    alt: "Drone view of Aperture Park Disc Golf course water feature.",
     imageSrc: "/optimized-images/project-images/disc-golf.webp", // Direct path (Note: source was .jpeg)
   },
   {
@@ -157,6 +159,40 @@ const carouselItems = [
     imageSrc: "/optimized-images/project-images/alberta-energy.webp", // Direct path
   },
 ];
+
+// Define FAQ data
+const faqItems = [
+  {
+    question: "Do I need a permit for drone filming in Lethbridge or Southern Alberta?",
+    answer: "Nope — we’ve got it covered. We’re certified by Transport Canada and fully insured. That means we handle the airspace, flight planning, and all the paperwork so you don’t have to worry.",
+    category: "Permits & Regulations",
+  },
+  {
+    question: "Can you fly near airports or in restricted zones?",
+    answer: "Yes, in many cases. Thanks to our Advanced Pilot Certification, we can apply for special flight authorizations in controlled airspace — including spots near airports or sensitive areas. Just let us know the location, and we’ll check what’s possible.",
+    category: "Operations",
+  },
+  {
+    question: "How long does a typical drone shoot take?",
+    answer: "Most aerial shoots take 1 to 3 hours on-site, depending on how many locations or angles we’re capturing. We'll plan everything in advance to make the shoot smooth and efficient.",
+    category: "Operations",
+  },
+  {
+    question: "What’s the turnaround time for edited drone videos or photos?",
+    answer: "Standard turnaround is 3 to 5 business days. Need it sooner? We offer rush delivery options too — just ask!",
+    category: "Deliverables",
+  },
+  {
+    question: "Can you combine drone footage with ground-level video or interviews?",
+    answer: "Absolutely. We’re a full-service production company through <a href='https://coalbanks.com' target='_blank' rel='noopener noreferrer' class='underline hover:text-primary'>Coalbanks Creative Inc.</a>, so we can deliver polished videos that blend drone shots with cinematic footage, voiceover, motion graphics — the works.",
+    category: "Deliverables",
+  },
+  {
+    question: "What Does Drone Work Cost?",
+    answer: "We keep things simple and transparent — no surprise fees or inflated rates. Services start at $450. Every project is different, so factors like travel time, location access, editing needs, and specific deliverables will influence the final quote. Custom quotes are available, and if you have a budget in mind, let’s work with it.",
+    category: "Pricing",
+  },
+];
 ---
 
 <BaseLayout
@@ -167,7 +203,7 @@ const carouselItems = [
     {/* New Hero Section */}
     <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden"> {/* Added relative and overflow-hidden */}
       {/* Add topography SVG background */}
-      <div class="absolute inset-0 -z-10 size-full bg-[url('/images/assets/topography.svg')] bg-repeat opacity-30 dark:invert" /> {/* Increased opacity to 30 for light mode contrast */}
+      <div class="absolute inset-0 -z-10 size-full bg-[url('/images/assets/topography.svg')] bg-repeat opacity-10 dark:invert" /> {/* Increased opacity to 30 for light mode contrast */}
       {/* Added bg-background/80 for contrast overlay */}
       <div class="max-w-screen-xl w-full mx-auto grid lg:grid-cols-2 gap-12 px-6 py-12 z-10 bg-background/80 rounded-lg shadow-lg"> {/* Added overlay, rounded, shadow */}
         <HeroWithVideoContent
@@ -195,11 +231,20 @@ const carouselItems = [
     {/* Client Logos Section - Moved Here */}
     <ClientLogos client:visible />
 
+    {/* FAQ Section */}
+    <FaqSectionWithCategories
+      client:load
+      title="Drone FAQs: What You Need to Know"
+      items={faqItems}
+      contactInfo={{ title: "Still have questions?", buttonText: "Contact Us" }}
+    />
+
     {/* Temporarily comment out Featured Blog Posts section AGAIN to isolate error */}
 
     {featuredPosts.length > 0 && (
       <section id="featured-blog" class="container py-16 md:py-24">
-        <h2 class="font-heading text-3xl font-bold text-center mb-4 tracking-tight">Fresh from the Blog: Drone Tips & Insights</h2> {/* Add tracking-tight */}
+        {/* Apply consistent heading style (added md:text-4xl) */}
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-center mb-4 tracking-tight">Fresh from the Blog: Drone Tips & Insights</h2>
         {/* Added intro line */}
         <p class="text-center text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
           Curious about drones or need some helpful tips? Dive into our latest articles:
@@ -211,7 +256,7 @@ const carouselItems = [
           ))}
         </div>
         <div class="text-center mt-12">
-          <a href="/blog" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2">
+          <a href="/blog" class={buttonVariants({ variant: "outline" })}>
             See More Blog Posts
           </a>
         </div>
@@ -221,4 +266,26 @@ const carouselItems = [
     {/* Removed commented-out contact form script */}
 
   </main>
+
+  {/* Visual CTA Section - Copied from about.astro */}
+  <section class="relative bg-muted/90 dark:bg-muted/80 py-20 md:py-28 rounded-lg overflow-hidden">
+    {/* Add topography SVG background */}
+    <div class="absolute inset-0 -z-10 size-full bg-[url('/images/assets/topography.svg')] bg-repeat opacity-60 dark:invert" />
+    <div class="container text-center max-w-3xl mx-auto relative z-10">
+      {/* Apply consistent heading style */}
+      <h2 class="font-heading text-3xl md:text-4xl font-bold tracking-tight mb-6">Ready for Stunning Aerial Views?</h2>
+      <p class="text-lg text-muted-foreground mb-8">
+        Let's chat! We'd love to hear about your project and see how Coalbanks Creative can help you get amazing drone photos and videos.
+      </p>
+      <div class="flex justify-center gap-4">
+        <a href="/contact" class={buttonVariants({ size: "lg" })}>
+          Get a Free Quote!
+        </a>
+        <a href="/#featured-work" class={buttonVariants({ variant: "outline", size: "lg" })}> {/* Adjusted link target to match index page */}
+          See What We Do
+        </a>
+      </div>
+    </div>
+  </section>
+
 </BaseLayout>

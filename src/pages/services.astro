@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ServicesGrid from "@/components/blocks/ServicesGrid.tsx";
+import { buttonVariants } from "@/components/ui/button";
 // Icons are now handled within the React component
 
 // Pass icon names as strings
@@ -49,7 +50,8 @@ const ourServices = [
   {/* Introductory Section */}
   <section class="py-16 md:py-24 text-center bg-background">
     <div class="container max-w-3xl mx-auto">
-      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4 tracking-tight"> {/* Added tracking-tight */}
+      {/* Apply consistent H1 style (added font-heading) */}
+      <h1 class="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-4">
         Our Drone Services for Lethbridge & Southern Alberta
       </h1>
       <p class="text-lg text-muted-foreground leading-relaxed">
@@ -71,7 +73,8 @@ const ourServices = [
     <div class="absolute inset-0 -z-10 size-full bg-[url('/images/assets/topography.svg')] bg-repeat opacity-30 dark:invert" />
     <div class="container relative z-10"> {/* Added relative z-10 */}
        <div class="max-w-3xl mx-auto text-center"> {/* Centered text */}
-        <h2 class="font-heading text-3xl font-bold mb-6 tracking-tight">Why Partner with Coalbanks Creative?</h2> {/* Added tracking-tight */}
+        {/* Apply consistent heading style */}
+        <h2 class="font-heading text-3xl md:text-4xl font-bold mb-6 tracking-tight">Why Partner with Coalbanks Creative?</h2>
         <p class="text-muted-foreground leading-relaxed mb-6">
           It's simple: we deliver exceptional results, even in challenging conditions. Got a tough location near Lethbridge? We love a challenge! Plus, we're fully certified by Transport Canada and insured, so you have peace of mind knowing everything's safe, compliant, and professional.
         </p>
@@ -84,10 +87,10 @@ const ourServices = [
 
   {/* Optional Call to Action */}
   <section class="container py-16 md:py-24 text-center">
-    <h2 class="font-heading text-3xl font-bold mb-6 tracking-tight">Ready to See Your Project Soar?</h2> {/* Added tracking-tight */}
+    {/* Apply consistent heading style */}
+    <h2 class="font-heading text-3xl md:text-4xl font-bold mb-6 tracking-tight">Ready to See Your Project Soar?</h2>
     <p class="text-muted-foreground mb-8 max-w-xl mx-auto">Let's chat about your ideas! Whether it's photos, video, maps, or inspections, we're here to help.</p>
-    {/* Using standard anchor tag with Tailwind classes matching buttonVariants */}
-    <a href="/contact" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-10 px-8">Get Your Free Quote!</a>
+    <a href="/contact" class={buttonVariants({ size: "lg" })}>Get Your Free Quote!</a>
   </section>
 
 </BaseLayout>
