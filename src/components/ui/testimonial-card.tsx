@@ -1,27 +1,39 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Star } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import * as React from "react";
+import { Star } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export interface TestimonialProps extends React.HTMLAttributes<HTMLDivElement> {
-  name: string
-  role: string
-  company?: string
-  testimonial: string
-  rating?: number
-  image?: string
+  name: string;
+  role: string;
+  company?: string;
+  testimonial: string;
+  rating?: number;
+  image?: string;
 }
 
 const Testimonial = React.forwardRef<HTMLDivElement, TestimonialProps>(
-  ({ name, role, company, testimonial, rating = 5, image, className, ...props }, ref) => {
+  (
+    {
+      name,
+      role,
+      company,
+      testimonial,
+      rating = 5,
+      image,
+      className,
+      ...props
+    },
+    ref,
+  ) => {
     return (
       <div
         ref={ref}
         className={cn(
           "relative overflow-hidden rounded-2xl border border-primary/10 bg-background p-6 transition-all hover:shadow-lg dark:hover:shadow-primary/5 md:p-8",
-          className
+          className,
         )}
         {...props}
       >
@@ -39,7 +51,7 @@ const Testimonial = React.forwardRef<HTMLDivElement, TestimonialProps>(
                   className={cn(
                     index < rating
                       ? "fill-yellow-400 text-yellow-400"
-                      : "fill-muted text-muted"
+                      : "fill-muted text-muted",
                   )}
                 />
               ))}
@@ -70,9 +82,9 @@ const Testimonial = React.forwardRef<HTMLDivElement, TestimonialProps>(
           </div>
         </div>
       </div>
-    )
-  }
-)
-Testimonial.displayName = "Testimonial"
+    );
+  },
+);
+Testimonial.displayName = "Testimonial";
 
-export { Testimonial }
+export { Testimonial };
