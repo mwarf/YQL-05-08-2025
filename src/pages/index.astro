@@ -14,6 +14,7 @@ import WistiaPlayer from "@/components/WistiaPlayer.astro"; // Import the Wistia
 import HeroWithVideoContent from "@/components/blocks/HeroWithVideoContent.tsx"; // Import the new Hero component
 import { ClientLogos } from "@/components/blocks/ClientLogos"; // Import the ClientLogos component
 import { FaqSectionWithCategories } from "@/components/blocks/FaqSectionWithCategories"; // Import the new FAQ component
+import TestimonialSection from '@/components/blocks/TestimonialSection.tsx'; // Import the Testimonial section
 
 // Removed image imports for carousel - using direct paths now
 // import ftllImage from "@/images/project-images/FTLL.jpg";
@@ -264,6 +265,9 @@ const faqItems = [
     )}
     
     {/* Removed commented-out contact form script */}
+
+    {/* Testimonials Section */}
+    <TestimonialSection client:load />
 
   </main>
 
