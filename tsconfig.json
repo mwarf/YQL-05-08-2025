@@ -4,6 +4,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+    "resolveJsonModule": true, // Allow importing JSON files
+    "esModuleInterop": true // Enable interoperability between CommonJS and ES Modules
   }
 }

@@ -1,0 +1,87 @@
+{
+  "vibe-coded-bm-hero": {
+    "width": 3840,
+    "height": 2560,
+    "relativePath": "drone-bts/vibe-coded-BM-hero.jpg"
+  },
+  "raw-09931": {
+    "width": 3840,
+    "height": 2160,
+    "relativePath": "drone-bts/RAW09931.jpg"
+  },
+  "raw-00777": {
+    "width": 3840,
+    "height": 2160,
+    "relativePath": "drone-bts/RAW00777.jpg"
+  },
+  "raw-00770": {
+    "width": 3840,
+    "height": 2160,
+    "relativePath": "drone-bts/RAW00770.jpg"
+  },
+  "raw-00760": {
+    "width": 3840,
+    "height": 2160,
+    "relativePath": "drone-bts/RAW00760.jpg"
+  },
+  "raw-00727": {
+    "width": 3840,
+    "height": 2160,
+    "relativePath": "drone-bts/RAW00727.jpg"
+  },
+  "raw-00660": {
+    "width": 3840,
+    "height": 2160,
+    "relativePath": "drone-bts/RAW00660.jpg"
+  },
+  "raw-00639": {
+    "width": 3840,
+    "height": 2160,
+    "relativePath": "drone-bts/RAW00639.jpg"
+  },
+  "raw-00561": {
+    "width": 3840,
+    "height": 2160,
+    "relativePath": "drone-bts/RAW00561.jpg"
+  },
+  "drone-vedres-landscape": {
+    "width": 3840,
+    "height": 2160,
+    "relativePath": "drone-bts/drone-vedres-landscape.jpg"
+  },
+  "drone-bts": {
+    "width": 3840,
+    "height": 2160,
+    "relativePath": "drone-bts/drone-bts.jpg"
+  },
+  "bts-image-029": {
+    "width": 2160,
+    "height": 3840,
+    "relativePath": "drone-bts/bts-image-029.jpg"
+  },
+  "bts-image-014": {
+    "width": 2160,
+    "height": 3840,
+    "relativePath": "drone-bts/bts-image-014.jpg"
+  },
+  "bts-bm-statue": {
+    "width": 3840,
+    "height": 2160,
+    "relativePath": "drone-bts/BM-STATUE-34VIEW.jpg"
+  },
+  "bts-badminton-3": {
+    "width": 3840,
+    "height": 2160,
+    "relativePath": "drone-bts/badmintonRAW09926.jpg"
+  },
+  "bts-badminton-2": {
+    "width": 3840,
+    "height": 2160,
+    "relativePath": "drone-bts/badmintonRAW09922.jpg"
+  },
+  "bts-badminton-1": {
+    "width": 3840,
+    "height": 2161,
+    "relativePath": "drone-bts/badmintonRAW09896.jpg"
+  }
+}
