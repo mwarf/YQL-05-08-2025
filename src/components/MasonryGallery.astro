@@ -30,14 +30,15 @@ function generateAltText(entry: GalleryEntry, index: number): string {
 
   // Fallback using filename (safer extraction)
   const srcString = entry.data.image?.src;
-  if (typeof srcString === 'string') {
-    const filename = srcString.split("/").pop()?.split("?")[0] ?? '';
+  if (typeof srcString === "string") {
+    const filename = srcString.split("/").pop()?.split("?")[0] ?? "";
     if (filename) {
-        const nameWithoutExt = filename.substring(0, filename.lastIndexOf('.')) || filename;
-        const descriptivePart = nameWithoutExt
-            .replace(/[-_]/g, " ")
-            .replace(/\b\w/g, (char) => char.toUpperCase());
-        return `BTS Drone Photo ${index + 1} - ${descriptivePart}`;
+      const nameWithoutExt =
+        filename.substring(0, filename.lastIndexOf(".")) || filename;
+      const descriptivePart = nameWithoutExt
+        .replace(/[-_]/g, " ")
+        .replace(/\b\w/g, (char) => char.toUpperCase());
+      return `BTS Drone Photo ${index + 1} - ${descriptivePart}`;
     }
   }
   return `BTS Drone Photo ${index + 1}`;
@@ -51,17 +52,25 @@ const itemsDataPromises = galleryEntries.map(async (entry, index) => {
     // --- Use getImage to generate optimized image attributes ---
     const imageMetadata = entry.data.image; // Image metadata from content collection
 
-    if (!imageMetadata || typeof imageMetadata !== 'object' || !('src' in imageMetadata)) {
-        console.error(`Skipping image ${index} due to missing or invalid image metadata.`);
-        return null;
+    if (
+      !imageMetadata ||
+      typeof imageMetadata !== "object" ||
+      !("src" in imageMetadata)
+    ) {
+      console.error(
+        `Skipping image ${index} due to missing or invalid image metadata.`,
+      );
+      return null;
     }
 
     // Filter target widths to not exceed original image width
-    const availableWidths = targetWidths.filter(w => w <= imageMetadata.width);
-     if (availableWidths.length === 0 && imageMetadata.width > 0) {
-        availableWidths.push(imageMetadata.width); // Use original width if smaller than all targets
+    const availableWidths = targetWidths.filter(
+      (w) => w <= imageMetadata.width,
+    );
+    if (availableWidths.length === 0 && imageMetadata.width > 0) {
+      availableWidths.push(imageMetadata.width); // Use original width if smaller than all targets
     } else if (availableWidths.length === 0) {
-        availableWidths.push(400); // Fallback if width is 0 or unavailable
+      availableWidths.push(400); // Fallback if width is 0 or unavailable
     }
 
     // Get optimized image info using getImage
@@ -74,14 +83,20 @@ const itemsDataPromises = galleryEntries.map(async (entry, index) => {
 
     // Get the largest available source for PhotoSwipe (prefer webp)
     // Find the largest width entry in the generated srcset
-    const srcSetValue = optimizedImage.attributes.srcset?.toString() ?? '';
-    const largestSrcEntry = srcSetValue.split(', ').reduce((largest: string, current: string) => {
-        const currentWidth = parseInt(current.split(' ')[1]?.replace('w', '') || '0');
-        const largestWidth = parseInt(largest.split(' ')[1]?.replace('w', '') || '0');
+    const srcSetValue = optimizedImage.attributes.srcset?.toString() ?? "";
+    const largestSrcEntry = srcSetValue
+      .split(", ")
+      .reduce((largest: string, current: string) => {
+        const currentWidth = parseInt(
+          current.split(" ")[1]?.replace("w", "") || "0",
+        );
+        const largestWidth = parseInt(
+          largest.split(" ")[1]?.replace("w", "") || "0",
+        );
         return currentWidth > largestWidth ? current : largest;
-    }, srcSetValue.split(', ')[0] || optimizedImage.src); // Fallback to first or src
+      }, srcSetValue.split(", ")[0] || optimizedImage.src); // Fallback to first or src
 
-    const largestSrc = largestSrcEntry.split(' ')[0]; // Extract URL
+    const largestSrc = largestSrcEntry.split(" ")[0]; // Extract URL
 
     const altText = generateAltText(entry, index);
 
@@ -89,15 +104,18 @@ const itemsDataPromises = galleryEntries.map(async (entry, index) => {
     itemProps = {
       src: optimizedImage.src, // Fallback src
       srcset: srcSetValue, // Use generated srcset string
-      sizes: "(max-width: 639px) 100vw, (max-width: 767px) 50vw, (max-width: 1023px) 33vw, 25vw", // Define sizes attribute
+      sizes:
+        "(max-width: 639px) 100vw, (max-width: 767px) 50vw, (max-width: 1023px) 33vw, 25vw", // Define sizes attribute
       altText,
       largestSrc: largestSrc, // Use the determined largest source
       originalWidth: imageMetadata.width,
       originalHeight: imageMetadata.height,
     };
-
   } catch (error) {
-    console.error(`Error processing gallery entry ${index} (ID: ${entry.id}):`, error);
+    console.error(
+      `Error processing gallery entry ${index} (ID: ${entry.id}):`,
+      error,
+    );
     // itemProps remains null
   }
 
@@ -105,8 +123,9 @@ const itemsDataPromises = galleryEntries.map(async (entry, index) => {
 });
 
 // Resolve all promises and filter out nulls
-const itemsData = (await Promise.all(itemsDataPromises))
-    .filter((item): item is NonNullable<typeof item> => item !== null);
+const itemsData = (await Promise.all(itemsDataPromises)).filter(
+  (item): item is NonNullable<typeof item> => item !== null,
+);
 ---
 {/* Masonry Grid Container */}
 <div class="columns-1 gap-4 space-y-4 sm:columns-2 md:columns-3 lg:columns-4 pswp-gallery">
