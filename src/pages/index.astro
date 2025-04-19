@@ -208,8 +208,8 @@ const faqItems = [
   title="Your Lethbridge Drone Team | Stunning Aerial Views | Coalbanks Creative"
   description="Looking for great drone shots in Lethbridge & Southern Alberta? Coalbanks Creative offers friendly aerial photography & video for real estate, events, construction, and more. Let's capture a new perspective! Get your free quote."
 >
-  <main class="flex flex-col gap-y-16 md:gap-y-24 overflow-x-hidden"> {/* Reduced gap */}
-    {/* New Hero Section */}
+  <main class="flex flex-col gap-y-12 md:gap-y-16 overflow-x-hidden"> {/* Reduced gap further */}
+    {/* 1. New Hero Section */}
     <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden"> {/* Added relative and overflow-hidden */}
       {/* Add topography SVG background */}
       <div class="absolute inset-0 -z-10 size-full bg-[url('/images/assets/topography.svg')] bg-repeat opacity-10 dark:invert" /> {/* Increased opacity to 30 for light mode contrast */}
@@ -232,15 +232,15 @@ const faqItems = [
        </div>
      </section>
 
-    <!-- Featured Items Carousel Section -->
+    {/* 2. Client Logos Section */}
+    <ClientLogos client:visible />
+
+    {/* 3. Featured Items Carousel Section (Our Work) */}
     <section id="featured-work"> {/* Wrap the component in a section with the ID */}
       <FeaturedItemsCarousel heading="Our Work" items={carouselItems} client:load /> {/* Removed id from component, Removed headingClassName prop */}
     </section>
 
-    {/* Client Logos Section - Moved Here */}
-    <ClientLogos client:visible />
-
-    {/* FAQ Section */}
+    {/* 4. FAQ Section */}
     <FaqSectionWithCategories
       client:load
       title="Drone FAQs: What You Need to Know"
@@ -248,10 +248,12 @@ const faqItems = [
       contactInfo={{ title: "Still have questions?", buttonText: "Contact Us" }}
     />
 
-    {/* Temporarily comment out Featured Blog Posts section AGAIN to isolate error */}
+    {/* 5. Testimonials Section */}
+    <TestimonialSection client:load />
 
+    {/* 6. Blog Section */}
     {featuredPosts.length > 0 && (
-      <section id="featured-blog" class="container py-16 md:py-24">
+      <section id="featured-blog" class="container pt-8 pb-16 md:pt-12 md:pb-24"> {/* Reduced top padding */}
         {/* Apply consistent heading style (added md:text-4xl) */}
         <h2 class="font-heading text-3xl md:text-4xl font-bold text-center mb-4 tracking-tight">Fresh from the Blog: Drone Tips & Insights</h2>
         {/* Added intro line */}
@@ -274,13 +276,10 @@ const faqItems = [
     
     {/* Removed commented-out contact form script */}
 
-    {/* Testimonials Section */}
-    <TestimonialSection client:load />
-
   </main>
 
   {/* Visual CTA Section - Copied from about.astro */}
-  <section class="relative bg-muted/90 dark:bg-muted/80 py-20 md:py-28 rounded-lg overflow-hidden">
+  <section class="relative bg-muted/90 dark:bg-muted/80 pt-10 pb-20 md:pt-14 md:pb-28 rounded-lg overflow-hidden"> {/* Reduced top padding */}
     {/* Add topography SVG background */}
     <div class="absolute inset-0 -z-10 size-full bg-[url('/images/assets/topography.svg')] bg-repeat opacity-60 dark:invert" />
     <div class="container text-center max-w-3xl mx-auto relative z-10">

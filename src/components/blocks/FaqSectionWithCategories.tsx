@@ -40,8 +40,10 @@ const FaqSectionWithCategories = React.forwardRef<
     });
 
   return (
-    <section ref={ref} className={cn("py-16 w-full", className)} {...props}>
-      <div className="container mx-auto px-4">
+    <section ref={ref} className={cn("relative pt-8 pb-16 w-full bg-muted/90 dark:bg-muted/80", className)} {...props}> {/* Added relative, bg, reduced top padding */}
+      {/* Add topography SVG background with reduced opacity */}
+      <div className="absolute inset-0 -z-10 size-full bg-[url('/images/assets/topography.svg')] bg-repeat opacity-30 dark:invert" /> {/* Fixed class to className */}
+      <div className="container mx-auto px-4 relative z-10"> {/* Added relative z-10 to container */}
         <div className="max-w-3xl mx-auto">
           {/* Header */}
           <div className="text-center space-y-4 mb-12">

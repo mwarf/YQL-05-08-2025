@@ -168,21 +168,9 @@ const ClientLogos = ({
   }, []); // Empty dependency array ensures this runs only once on mount
 
   return (
-    <section className="py-16 md:py-24">
-      <div className="container flex flex-col items-center text-center">
-        {/* Adjusted heading style for consistency */}
-        <h2 className="font-heading my-6 text-pretty text-3xl font-bold md:text-4xl tracking-tight">
-          {" "}
-          {/* Added tracking-tight */}
-          {heading}
-        </h2>
-        {/* Added intro line */}
-        <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
-          We're proud to partner with fantastic organizations in Southern
-          Alberta and beyond:
-        </p>
-      </div>
-      <div className="pt-10 md:pt-12 lg:pt-16">
+    <section className="py-0"> {/* Set vertical padding to 0 */}
+      {/* Removed heading/text container div */}
+      <div className="pt-0"> {/* Removed top padding from carousel container */}
         {" "}
         {/* Adjusted padding */}
         <div className="relative mx-auto flex items-center justify-center lg:max-w-6xl">

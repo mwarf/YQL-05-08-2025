@@ -27,7 +27,7 @@ const testimonials = [
 
 function TestimonialSection() { // Renamed from TestimonialDemo for clarity
   return (
-    <div className="container py-10">
+    <div className="container pt-5 pb-10"> {/* Reduced top padding */}
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {testimonials.map((testimonial) => (
           <Testimonial key={testimonial.name} {...testimonial} />
