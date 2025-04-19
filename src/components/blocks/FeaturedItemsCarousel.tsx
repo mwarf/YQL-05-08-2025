@@ -54,7 +54,9 @@ const FeaturedItemsCarousel = ({
   }, [carouselApi]);
 
   return (
-    <section className="pt-8 pb-16"> {/* Halved top and bottom padding */}
+    <section className="pt-8 pb-16">
+      {" "}
+      {/* Halved top and bottom padding */}
       <div className="container">
         <div className="mb-8 flex flex-col justify-between md:mb-14 md:flex-row md:items-end lg:mb-16">
           <div>
