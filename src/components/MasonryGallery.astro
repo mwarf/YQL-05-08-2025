@@ -8,7 +8,8 @@ type GalleryEntry = CollectionEntry<"gallery">;
 
 // Define the type for the dimensions data imported from JSON
 interface ImageDimensions {
-  [key: string]: { // Key is the markdown filename (entry.id)
+  [key: string]: {
+    // Key is the markdown filename (entry.id)
     width: number;
     height: number;
     relativePath: string; // e.g., drone-bts/file.jpg
@@ -42,82 +43,92 @@ function generateAltText(entry: GalleryEntry, index: number): string {
   const descriptivePart = entry.id
     .replace(/[-_]/g, " ")
     .replace(/\b\w/g, (char) => char.toUpperCase());
-  return entry.data.title ? entry.data.title : `Gallery Image: ${descriptivePart}`;
+  return entry.data.title
+    ? entry.data.title
+    : `Gallery Image: ${descriptivePart}`;
 }
 
 // --- Prepare data for gallery items using pre-optimized images and dimensions JSON ---
-const itemsData = galleryEntries.map((entry, index) => {
-  let itemProps = null; // Initialize to null
-  const mdKey = entry.id.replace(/\.md$/, ''); // Use markdown filename (id) without .md extension as the key
+const itemsData = galleryEntries
+  .map((entry, index) => {
+    let itemProps = null; // Initialize to null
+    const mdKey = entry.id.replace(/\.md$/, ""); // Use markdown filename (id) without .md extension as the key
 
-  try {
-    // Look up image data using the markdown filename key
-    const imageData = (imageDimensionsData as ImageDimensions)[mdKey];
+    try {
+      // Look up image data using the markdown filename key
+      const imageData = (imageDimensionsData as ImageDimensions)[mdKey];
 
-    if (!imageData || !imageData.width || !imageData.height || !imageData.relativePath) {
+      if (
+        !imageData ||
+        !imageData.width ||
+        !imageData.height ||
+        !imageData.relativePath
+      ) {
+        console.error(
+          `Skipping gallery entry ${index} (ID: ${mdKey}). Image data not found or incomplete in JSON for key: ${mdKey}`,
+        );
+        return null;
+      }
+
+      const originalWidth = imageData.width;
+      const originalHeight = imageData.height;
+      const relativePathKey = imageData.relativePath; // e.g., drone-bts/badmintonRAW09896.jpg
+
+      // Determine available widths based on original size
+      const availableWidths = targetWidths.filter((w) => w <= originalWidth);
+      if (availableWidths.length === 0 && originalWidth > 0) {
+        availableWidths.push(originalWidth); // Use original width if smaller than all targets
+      } else if (availableWidths.length === 0) {
+        availableWidths.push(400); // Fallback if width is 0 or unavailable
+      }
+      availableWidths.sort((a, b) => a - b); // Ensure widths are sorted ascending
+
+      // Construct paths to optimized images in /public/optimized-images/ using the retrieved relativePathKey
+      const filename = relativePathKey.split("/").pop() ?? "";
+      const nameWithoutExt = filename.substring(0, filename.lastIndexOf("."));
+      const relativeDir = relativePathKey.substring(
+        0,
+        relativePathKey.lastIndexOf("/"),
+      ); // Get the subdirectory
+      const optimizedBaseUrl = `/optimized-images/${relativeDir}/${nameWithoutExt}`; // Root-relative URL
+
+      // Build srcset string
+      const srcSetValue = availableWidths
+        .map((w) => `${optimizedBaseUrl}-w${w}.webp ${w}w`)
+        .join(", ");
+
+      // Determine fallback src (smallest available webp)
+      const fallbackSrc = `${optimizedBaseUrl}-w${availableWidths[0]}.webp`;
+
+      // Determine largest src for PhotoSwipe (largest available webp)
+      const largestSrc = `${optimizedBaseUrl}-w${availableWidths[availableWidths.length - 1]}.webp`;
+
+      const altText = generateAltText(entry, index);
+
+      // --- Assign the properties object if valid ---
+      itemProps = {
+        src: fallbackSrc,
+        srcset: srcSetValue,
+        sizes:
+          "(max-width: 639px) 100vw, (max-width: 767px) 50vw, (max-width: 1023px) 33vw, 25vw", // Define sizes attribute
+        altText,
+        largestSrc: largestSrc, // Use the determined largest source URL
+        originalWidth: originalWidth,
+        originalHeight: originalHeight,
+      };
+    } catch (error) {
       console.error(
-        `Skipping gallery entry ${index} (ID: ${mdKey}). Image data not found or incomplete in JSON for key: ${mdKey}`,
+        `Error processing gallery entry ${index} (ID: ${entry.id}):`,
+        error,
       );
-      return null;
+      // itemProps remains null
     }
 
-    const originalWidth = imageData.width;
-    const originalHeight = imageData.height;
-    const relativePathKey = imageData.relativePath; // e.g., drone-bts/badmintonRAW09896.jpg
-
-    // Determine available widths based on original size
-    const availableWidths = targetWidths.filter((w) => w <= originalWidth);
-    if (availableWidths.length === 0 && originalWidth > 0) {
-      availableWidths.push(originalWidth); // Use original width if smaller than all targets
-    } else if (availableWidths.length === 0) {
-      availableWidths.push(400); // Fallback if width is 0 or unavailable
-    }
-    availableWidths.sort((a, b) => a - b); // Ensure widths are sorted ascending
-
-    // Construct paths to optimized images in /public/optimized-images/ using the retrieved relativePathKey
-    const filename = relativePathKey.split("/").pop() ?? "";
-    const nameWithoutExt = filename.substring(0, filename.lastIndexOf("."));
-    const relativeDir = relativePathKey.substring(0, relativePathKey.lastIndexOf("/")); // Get the subdirectory
-    const optimizedBaseUrl = `/optimized-images/${relativeDir}/${nameWithoutExt}`; // Root-relative URL
-
-    // Build srcset string
-    const srcSetValue = availableWidths
-      .map((w) => `${optimizedBaseUrl}-w${w}.webp ${w}w`)
-      .join(", ");
-
-    // Determine fallback src (smallest available webp)
-    const fallbackSrc = `${optimizedBaseUrl}-w${availableWidths[0]}.webp`;
-
-    // Determine largest src for PhotoSwipe (largest available webp)
-    const largestSrc = `${optimizedBaseUrl}-w${availableWidths[availableWidths.length - 1]}.webp`;
-
-    const altText = generateAltText(entry, index);
-
-    // --- Assign the properties object if valid ---
-    itemProps = {
-      src: fallbackSrc,
-      srcset: srcSetValue,
-      sizes:
-        "(max-width: 639px) 100vw, (max-width: 767px) 50vw, (max-width: 1023px) 33vw, 25vw", // Define sizes attribute
-      altText,
-      largestSrc: largestSrc, // Use the determined largest source URL
-      originalWidth: originalWidth,
-      originalHeight: originalHeight,
-    };
-
-  } catch (error) {
-    console.error(
-      `Error processing gallery entry ${index} (ID: ${entry.id}):`,
-      error,
-    );
-    // itemProps remains null
-  }
-
-  return itemProps; // Return the props object or null
-}).filter(
-  (item): item is NonNullable<typeof item> => item !== null, // Filter out nulls from errors
-);
-
+    return itemProps; // Return the props object or null
+  })
+  .filter(
+    (item): item is NonNullable<typeof item> => item !== null, // Filter out nulls from errors
+  );
 ---
 {/* Masonry Grid Container */}
 <div class="columns-1 gap-4 space-y-4 sm:columns-2 md:columns-3 lg:columns-4 pswp-gallery">
