@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import MasonryGallery from '@/components/MasonryGallery.astro'; // Will be created next
+
+// Fetch all entries from the 'gallery' collection
+const galleryEntries = await getCollection('gallery');
+
+// Sort entries if needed, e.g., by date (optional)
+// galleryEntries.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()); 
+---
+<BaseLayout title="Gallery | Lethbridge Drone" description="Behind the scenes photos from Lethbridge Drone projects and operations.">
+  <div class="container mx-auto px-4 py-12 md:py-16 lg:py-20">
+    <h1 class="font-heading mb-8 text-center text-4xl font-bold tracking-tight md:mb-10 md:text-5xl">
+      Behind the Scenes
+    </h1>
+    <p class="mb-10 text-center text-lg text-muted-foreground md:mb-12">
+      A glimpse into our operations, equipment, and the unique perspectives we capture.
+    </p>
+    
+    {/* Render the gallery component, passing the fetched entries */}
+    <MasonryGallery galleryEntries={galleryEntries} />
+  </div>
+</BaseLayout>

@@ -52,6 +52,8 @@ const { title, description, ogImage } = Astro.props;
       "description": "Expert aerial photography and videography services in Lethbridge and Southern Alberta, specializing in real estate, events, construction, agriculture, and marketing."
     }
     </script>
+    {/* PhotoSwipe CSS */}
+    <link rel="stylesheet" href="/vendor/photoswipe/photoswipe.css"> 
   </head>
   <body class="bg-background min-h-screen font-sans antialiased">
     <ReadingProgress /> {/* Add ReadingProgress component here */}
@@ -63,7 +65,7 @@ const { title, description, ogImage } = Astro.props;
       <Footer />
     </div>
 
-    <script>
+    <script is:inline> // Use is:inline for the script tag itself
       // Fade-in animation on scroll
       document.addEventListener('DOMContentLoaded', () => {
         const observer = new IntersectionObserver((entries) => {
@@ -80,7 +82,56 @@ const { title, description, ogImage } = Astro.props;
         sections.forEach(section => {
           observer.observe(section);
         });
-      });
+
+        // --- PhotoSwipe Loading and Initialization ---
+        
+        // Function to initialize the lightbox once both scripts are loaded
+        function initPhotoSwipe() {
+          const galleryElement = document.querySelector('.pswp-gallery');
+          // Ensure PhotoSwipeLightbox and PhotoSwipe are available globally
+          // Use window['PhotoSwipe'] to avoid TS errors if env.d.ts isn't picked up
+          if (galleryElement && typeof window['PhotoSwipeLightbox'] !== 'undefined' && typeof window['PhotoSwipe'] !== 'undefined') {
+            try {
+              const lightbox = new window['PhotoSwipeLightbox']({
+                gallery: '.pswp-gallery',
+                children: 'a',
+                pswpModule: window['PhotoSwipe'] // Pass the globally available PhotoSwipe constructor
+              });
+              lightbox.init();
+              console.log('PhotoSwipe Initialized via BaseLayout');
+            } catch (error) {
+              console.error("Failed to initialize PhotoSwipe:", error);
+            }
+          } else if (galleryElement) {
+             console.warn('PhotoSwipe or PhotoSwipeLightbox constructor not found after loading scripts.');
+          }
+        }
+
+        // Load core PhotoSwipe script first
+        const coreScript = document.createElement('script');
+        coreScript.src = '/vendor/photoswipe/photoswipe.umd.min.js';
+        coreScript.async = false; // Load synchronously relative to lightbox script
+        coreScript.onload = () => {
+          console.log('PhotoSwipe Core UMD script loaded.');
+          // Now load the lightbox script
+          const lightboxScript = document.createElement('script');
+          lightboxScript.src = '/vendor/photoswipe/photoswipe-lightbox.umd.min.js';
+          lightboxScript.async = false; // Load synchronously after core
+          lightboxScript.onload = () => {
+            console.log('PhotoSwipe Lightbox UMD script loaded.');
+            // Initialize after DOM is ready and scripts are loaded
+            initPhotoSwipe(); 
+          };
+          lightboxScript.onerror = () => {
+            console.error('Failed to load PhotoSwipe Lightbox UMD script.');
+          };
+          document.body.appendChild(lightboxScript);
+        };
+        coreScript.onerror = () => {
+           console.error('Failed to load PhotoSwipe Core UMD script.');
+        };
+        document.body.appendChild(coreScript);
+      }); // End of DOMContentLoaded listener
     </script>
   </body>
 </html>

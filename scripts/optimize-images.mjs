@@ -11,7 +11,7 @@ const projectRoot = path.resolve(__dirname, ".."); // Assumes script is in 'scri
 
 const sourceDir = path.join(projectRoot, "src", "images");
 const outputDir = path.join(projectRoot, "public", "optimized-images");
-const maxWidth = 1920; // Max width for images
+const targetWidths = [400, 800, 1200, 1920]; // Define target widths for srcset
 const webpQuality = 80; // Quality for WebP conversion
 // --- End Configuration ---
 
@@ -40,32 +40,50 @@ async function optimizeImages() {
     // Process each image
     for (const imagePath of imagePaths) {
       const relativePath = path.relative(sourceDir, imagePath);
-      const outputPathWithoutExt = path.join(
-        outputDir,
-        relativePath.substring(0, relativePath.lastIndexOf(".")),
+      const baseOutputDir = path.dirname(path.join(outputDir, relativePath));
+      const nameWithoutExt = path.basename(
+        relativePath,
+        path.extname(relativePath),
       );
-      const outputWebpPath = `${outputPathWithoutExt}.webp`;
-      const outputDirForFile = path.dirname(outputWebpPath);
 
       try {
         // Ensure subdirectory exists in the output path
-        await mkdir(outputDirForFile, { recursive: true });
+        await mkdir(baseOutputDir, { recursive: true });
 
         const image = sharp(imagePath);
         const metadata = await image.metadata();
+        const originalWidth = metadata.width;
 
-        // Resize if wider than maxWidth
-        if (metadata.width && metadata.width > maxWidth) {
-          image.resize({ width: maxWidth });
+        if (!originalWidth) {
+          console.warn(`Could not get width for ${relativePath}, skipping.`);
+          continue;
         }
 
-        // Convert to WebP and save
-        await image.webp({ quality: webpQuality }).toFile(outputWebpPath);
+        let generatedCount = 0;
+        // Generate different sizes
+        for (const width of targetWidths) {
+          // Only generate if target width is smaller or equal to original
+          // and avoid upscaling
+          if (width <= originalWidth) {
+            const outputFilename = `${nameWithoutExt}-w${width}.webp`;
+            const outputPath = path.join(baseOutputDir, outputFilename);
 
-        console.log(
-          `Optimized: ${relativePath} -> ${path.relative(projectRoot, outputWebpPath)}`,
-        );
-        processedCount++;
+            // Clone the sharp object for each resize operation
+            const resizedImage = image.clone().resize({ width: width });
+            await resizedImage.webp({ quality: webpQuality }).toFile(outputPath);
+
+            console.log(
+              `Generated: ${relativePath} -> ${path.relative(projectRoot, outputPath)}`,
+            );
+            generatedCount++;
+          }
+        }
+         if (generatedCount > 0) {
+           processedCount++; // Count the original image as processed if at least one size was generated
+         } else {
+           console.log(`Skipped (all target widths larger than original): ${relativePath}`);
+         }
+
       } catch (err) {
         console.error(`Error processing ${relativePath}:`, err);
         errorCount++;

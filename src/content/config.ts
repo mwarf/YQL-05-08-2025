@@ -17,7 +17,21 @@ const blogCollection = defineCollection({
     }),
 });
 
+// Define the schema for the gallery collection
+const galleryCollection = defineCollection({
+  type: "content",
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string().optional(), // Make description optional
+      image: image(), // Reference the source image
+      date: z.coerce.date().optional(), // Optional date
+      tags: z.array(z.string()).optional(), // Optional tags
+    }),
+});
+
 // Export a single `collections` object to register our collection(s)
 export const collections = {
   blog: blogCollection,
+  gallery: galleryCollection, // Add the gallery collection
 };
