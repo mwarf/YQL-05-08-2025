@@ -1,13 +1,13 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import MasonryGallery from '@/components/MasonryGallery.astro'; // Will be created next
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import MasonryGallery from "@/components/MasonryGallery.astro"; // Will be created next
 
 // Fetch all entries from the 'gallery' collection
-const galleryEntries = await getCollection('gallery');
+const galleryEntries = await getCollection("gallery");
 
 // Sort entries if needed, e.g., by date (optional)
-// galleryEntries.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()); 
+// galleryEntries.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 <BaseLayout title="Gallery | Lethbridge Drone" description="Behind the scenes photos from Lethbridge Drone projects and operations.">
   <div class="container mx-auto px-4 py-12 md:py-16 lg:py-20">

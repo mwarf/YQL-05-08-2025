@@ -70,7 +70,9 @@ async function optimizeImages() {
 
             // Clone the sharp object for each resize operation
             const resizedImage = image.clone().resize({ width: width });
-            await resizedImage.webp({ quality: webpQuality }).toFile(outputPath);
+            await resizedImage
+              .webp({ quality: webpQuality })
+              .toFile(outputPath);
 
             console.log(
               `Generated: ${relativePath} -> ${path.relative(projectRoot, outputPath)}`,
@@ -78,12 +80,13 @@ async function optimizeImages() {
             generatedCount++;
           }
         }
-         if (generatedCount > 0) {
-           processedCount++; // Count the original image as processed if at least one size was generated
-         } else {
-           console.log(`Skipped (all target widths larger than original): ${relativePath}`);
-         }
-
+        if (generatedCount > 0) {
+          processedCount++; // Count the original image as processed if at least one size was generated
+        } else {
+          console.log(
+            `Skipped (all target widths larger than original): ${relativePath}`,
+          );
+        }
       } catch (err) {
         console.error(`Error processing ${relativePath}:`, err);
         errorCount++;
