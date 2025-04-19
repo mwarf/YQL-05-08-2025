@@ -168,10 +168,13 @@ const ClientLogos = ({
   }, []); // Empty dependency array ensures this runs only once on mount
 
   return (
-    <section className="py-0"> {/* Set vertical padding to 0 */}
+    <section className="py-0">
+      {" "}
+      {/* Set vertical padding to 0 */}
       {/* Removed heading/text container div */}
-      <div className="pt-0"> {/* Removed top padding from carousel container */}
+      <div className="pt-0">
         {" "}
+        {/* Removed top padding from carousel container */}{" "}
         {/* Adjusted padding */}
         <div className="relative mx-auto flex items-center justify-center lg:max-w-6xl">
           {" "}
