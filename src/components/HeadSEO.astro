@@ -36,18 +36,18 @@ const { title, description } = Astro.props; // Destructure only needed props her
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <meta name="apple-mobile-web-app-title" content="YQL Drone" />
 <link rel="manifest" href="/site.webmanifest" />
-<title>{title}</title>
-<meta name="title" content={title} />
+<title>{title} | YQL Drone</title>
+<meta name="title" content={`${title} | YQL Drone`} />
 <meta name="description" content={description} />
 
 <meta property="og:type" content="website" />
 <meta property="og:url" content={canonicalURL} />
-<meta property="og:title" content={title} />
+<meta property="og:title" content={`${title} | YQL Drone`} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={finalOgImage.toString()} /> {/* Use finalOgImage */}
 
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={canonicalURL} />
-<meta property="twitter:title" content={title} />
+<meta property="twitter:title" content={`${title} | YQL Drone`} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={finalOgImage.toString()} /> {/* Use finalOgImage */}

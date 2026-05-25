@@ -4,6 +4,7 @@ description: "Elevate your aerial videography with these essential tips for achi
 pubDate: 2025-02-20
 category: "Tips & Tricks"
 heroImage: "../../images/blog/blog-drone-mountain-lake-22.jpg"
+alt: "Cinematic drone shot of a mountain lake in Lethbridge with dramatic lighting"
 featured: true
 tags: ["Videography", "Cinematic", "Drone Tips", "Filming"]
 ---
