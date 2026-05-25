@@ -160,42 +160,36 @@ const itemsData = galleryEntries
   ))}
 </div>
 
-{/* PhotoSwipe Initialization Script */}
-<script is:inline>
+<script>
   import PhotoSwipeLightbox from 'photoswipe/lightbox';
-  import 'photoswipe/style.css'; // Import base PhotoSwipe styles
+  import 'photoswipe/style.css';
 
-  // Initialize PhotoSwipe only once the component is visible
-  try {
-    const lightbox = new PhotoSwipeLightbox({
-      gallery: '.pswp-gallery', // Target the container div
-      children: 'a',          // Target the anchor tags within the container
-      pswpModule: () => import('photoswipe'), // Dynamically import the core PhotoSwipe module
-    });
+  function initGallery() {
+    const galleryElement = document.querySelector('.pswp-gallery');
+    if (!galleryElement) return;
 
-    // Add event listeners if needed (e.g., for error handling)
-    lightbox.on('error', (error) => {
-      console.error('PhotoSwipe Error:', error);
-    });
-    lightbox.on('loadError', (event) => {
-      console.error('PhotoSwipe Image Load Error:', event);
-    });
+    try {
+      const lightbox = new PhotoSwipeLightbox({
+        gallery: '.pswp-gallery',
+        children: 'a',
+        pswpModule: () => import('photoswipe'),
+      });
 
-    // Initialize the lightbox after a minimal delay to ensure DOM is ready
-    setTimeout(() => {
-        try {
-            lightbox.init();
-            // console.log('PhotoSwipe initialized with setTimeout'); // Optional logging
-        } catch (initError) {
-            console.error("Error during PhotoSwipe init:", initError);
-        }
-    }, 0); // Delay of 0 pushes execution after current stack
+      lightbox.on('error', (error) => {
+        console.error('PhotoSwipe Error:', error);
+      });
+      lightbox.on('loadError', (event) => {
+        console.error('PhotoSwipe Image Load Error:', event);
+      });
 
-  } catch (error) {
-    console.error("Error setting up PhotoSwipe:", error);
+      lightbox.init();
+    } catch (error) {
+      console.error("Error setting up PhotoSwipe:", error);
+    }
   }
+
+  initGallery();
 </script>
 
 <style>
-  /* Optional: Add custom styles or overrides for PhotoSwipe if needed */
 </style>

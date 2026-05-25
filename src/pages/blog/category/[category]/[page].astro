@@ -6,11 +6,10 @@ import type { GetStaticPaths, Page } from "astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import BlogPostPreview from "@/components/BlogPostPreview.astro";
 import { buttonVariants } from "@/components/ui/button";
-import { slugify } from "@/lib/utils"; // Import the slugify utility
+import { slugify } from "@/lib/utils";
 
-export const prerender = true; // Ensure this page is pre-rendered
+export const prerender = true;
 
-// Define the type for blog posts
 type BlogPost = CollectionEntry<"blog">;
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {

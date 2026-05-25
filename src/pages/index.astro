@@ -1,47 +1,17 @@
 ---
-// src/pages/index.astro
+export const prerender = true;
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { buttonVariants } from "@/components/ui/button"; // Added import for CTA
-// import { buttonVariants } from "@/components/ui/button"; // Removed unused import
-// import { Label } from "@/components/ui/label"; // Comment out import
-// import { Input } from "@/components/ui/input"; // Remove Input import
-// import { Textarea } from "@/components/ui/textarea"; // Remove Textarea import
-import { getCollection, type CollectionEntry } from "astro:content"; // Import content collection functions
-import BlogPostPreview from "@/components/BlogPostPreview.astro"; // Import the preview component
-// import { Image, getImage } from "astro:assets"; // Removed Astro Assets import
-import { FeaturedItemsCarousel } from "@/components/blocks/FeaturedItemsCarousel"; // Import the new carousel
-import WistiaPlayer from "@/components/WistiaPlayer.astro"; // Import the Wistia player component
-import HeroWithVideoContent from "@/components/blocks/HeroWithVideoContent.tsx"; // Import the new Hero component
-import { ClientLogos } from "@/components/blocks/ClientLogos"; // Import the ClientLogos component
-import { FaqSectionWithCategories } from "@/components/blocks/FaqSectionWithCategories"; // Import the new FAQ component
-import TestimonialSection from "@/components/blocks/TestimonialSection.tsx"; // Import the Testimonial section
+import { buttonVariants } from "@/components/ui/button";
+import { getCollection, type CollectionEntry } from "astro:content";
+import BlogPostPreview from "@/components/BlogPostPreview.astro";
+import { FeaturedItemsCarousel } from "@/components/blocks/FeaturedItemsCarousel";
+import WistiaPlayer from "@/components/WistiaPlayer.astro";
+import HeroWithVideoContent from "@/components/blocks/HeroWithVideoContent.astro";
+import { ClientLogos } from "@/components/blocks/ClientLogos";
+import { FaqSectionWithCategories } from "@/components/blocks/FaqSectionWithCategories";
+import TestimonialSection from "@/components/blocks/TestimonialSection.astro";
 
-// Removed image imports for carousel - using direct paths now
-// import ftllImage from "@/images/project-images/FTLL.jpg";
-// import discGolfImage from "@/images/project-images/disc-golf.jpeg";
-// import pepsicoImage from "@/images/project-images/pepsico-project.jpg";
-// import mdTaberImage from "@/images/project-images/md-taber.jpg";
-// import postVisionImage from "@/images/project-images/post-vision-video.jpg";
-// import pgaImage from "@/images/project-images/this-is-us-pga.jpg";
-// import smridImage from "@/images/project-images/SMRID-project.jpg";
-// import prairieQueenImage from "@/images/project-images/prairie-queen.jpg";
-// import huckfestImage from "@/images/project-images/huckfest.png";
-// import albertaEnergyImage from "@/images/project-images/alberta-energy.jpg";
 
-// Import SVG logos - Reverted (Keep this comment block as is)
-// import cityLogoUrl from '@/images/logos/city-of-lethbridge-logo.svg';
-// import uoflLogoUrl from '@/images/logos/uofl_reverse.svg';
-// import pepsicoLogoUrl from '@/images/logos/pepsico-logo-horizontal-reverse.svg';
-// import snapshotLogoUrl from '@/images/logos/snapshot-studios-reverse.svg';
-// import stantecLogoUrl from '@/images/logos/stantec-consulting-reverse-horizontal.svg';
-// import pgaLogoUrl from '@/images/logos/pga-horizontal-reverse.svg';
-// import galtLogoUrl from '@/images/logos/galt-horizontal-reverse.svg';
-// import castleLogoUrl from '@/images/logos/castle-mountain-logo-reverse.svg';
-// import mdTaberLogoUrl from '@/images/logos/md-taber-logo-reverse.svg';
-// import sumusLogoUrl from '@/images/logos/sumus-horizontal-reverse.svg';
-// import storyhiveLogoUrl from '@/images/logos/storyhive-reverse-logo.svg';
-
-// Fetch featured blog posts
 type BlogPost = CollectionEntry<"blog">;
 const featuredPosts = (await getCollection("blog"))
   .filter((post: BlogPost) => post.data.featured) // Keep first filter
@@ -216,7 +186,6 @@ const faqItems = [
       {/* Added bg-background/80 for contrast overlay */}
       <div class="max-w-screen-xl w-full mx-auto grid lg:grid-cols-2 gap-12 px-6 py-12 z-10 bg-background/80 rounded-lg shadow-lg"> {/* Added overlay, rounded, shadow */}
         <HeroWithVideoContent
-          client:visible
           badgeText="Serving Southern Alberta"
           title="Your Project, Elevated"
           description="See your Southern Alberta project soar with Coalbanks Creative! As your local Lethbridge drone experts, we provide high-quality aerial photos and video you can trust. We partner with businesses like yours – in agriculture, construction, real estate, marketing, and events – to capture unique viewpoints that tell your story beautifully and effectively. Ready for a better view?"
@@ -237,19 +206,19 @@ const faqItems = [
 
     {/* 3. Featured Items Carousel Section (Our Work) */}
     <section id="featured-work"> {/* Wrap the component in a section with the ID */}
-      <FeaturedItemsCarousel heading="Our Work" items={carouselItems} client:load /> {/* Removed id from component, Removed headingClassName prop */}
+      <FeaturedItemsCarousel heading="Our Work" items={carouselItems} client:visible />
     </section>
 
     {/* 4. FAQ Section */}
     <FaqSectionWithCategories
-      client:load
+      client:visible
       title="Drone FAQs: What You Need to Know"
       items={faqItems}
       contactInfo={{ title: "Still have questions?", buttonText: "Contact Us" }}
     />
 
     {/* 5. Testimonials Section */}
-    <TestimonialSection client:load />
+    <TestimonialSection />
 
     {/* 6. Blog Section */}
     {featuredPosts.length > 0 && (

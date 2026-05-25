@@ -3,7 +3,7 @@ title: "Lasers vs. Photos: Which Drone Mapping Magic is Right for Your Lethbridg
 description: "A comparison of two popular drone mapping technologies, LiDAR and Photogrammetry, outlining their strengths, weaknesses, and best use cases."
 pubDate: 2025-01-10
 category: "Technology"
-heroImage: "../../images/blog/blog-photo-vis-lidar.png"
+heroImage: "../../images/blog/blog-photo-vis-lidar.jpg"
 featured: false
 tags: ["LiDAR", "Photogrammetry", "Mapping", "Surveying", "Drones"]
 ---

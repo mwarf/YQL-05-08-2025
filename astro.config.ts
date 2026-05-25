@@ -1,5 +1,4 @@
 // @ts-check
-// @ts-check
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind"; // Import the tailwind integration
@@ -9,9 +8,10 @@ import icon from "astro-icon"; // Uncomment astro-icon import
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://lethbridgedrone.com", // Set production domain
-  output: "server", // Required for Cloudflare adapter
-  adapter: cloudflare(), // Add the Cloudflare adapter
+  site: "https://lethbridgedrone.com",
+  output: "server",
+  compressHTML: true,
+  adapter: cloudflare(),
   integrations: [
     react(),
     tailwind(), // Add the tailwind integration

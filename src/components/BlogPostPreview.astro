@@ -64,7 +64,7 @@ const {
       {post.data.description}
     </p>
     <div class="mt-auto"> {/* Push button to bottom */}
-      <a href={`/blog/${post.slug}/`} class={buttonVariants({ variant: "link", size: "sm" })} aria-label={`Read more about ${post.data.title}`}>
+      <a href={`/blog/${post.slug}/`} class={buttonVariants({ variant: "link", size: "sm", class: "text-primary" })} aria-label={`Read more about ${post.data.title}`}>
         Read More &rarr;
       </a>
     </div>

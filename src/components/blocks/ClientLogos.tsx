@@ -211,19 +211,16 @@ const ClientLogos = ({
                         <img
                           src={isDarkMode ? logo.imageDark : logo.imageLight}
                           alt={logo.description}
-                          // Keep original height constraint, maybe add max-w-full
                           className={`${logo.className} max-w-full`}
+                          loading="lazy"
+                          width="120"
+                          height="48"
                         />
                       </div>
                     </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              {/* Gradient Overlays - Moved inside Carousel */}
-              <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background to-transparent"></div>
-              <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background to-transparent"></div>
-              {/* Gradient Overlays - Moved inside Carousel */}
-              {/* Gradient Overlays - Moved inside Carousel */}
               <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background to-transparent"></div>
               <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background to-transparent"></div>
             </Carousel>

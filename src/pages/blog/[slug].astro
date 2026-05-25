@@ -11,9 +11,9 @@ import { Image } from "astro:assets"; // Import Astro Image component
 import TableOfContents from "@/components/TableOfContents.astro"; // Import ToC component
 import SocialShare from "@/components/SocialShare.astro"; // Import SocialShare component
 
-export const prerender = true; // Ensure this page is pre-rendered
 
-// Define the type for blog posts
+export const prerender = true;
+
 type BlogPost = CollectionEntry<"blog">;
 
 // 1. Generate a static page for every blog post
@@ -51,13 +51,35 @@ const relatedPosts = allPosts
 const pageTitle = `${post.data.title} | Coalbanks Creative Blog`;
 const pageDescription = post.data.description;
 
-// Construct the full URL for the og:image meta tag
 const ogImageUrl = post.data.heroImage
   ? new URL(post.data.heroImage.src, Astro.site)
-  : undefined; // Use undefined if no heroImage
+  : undefined;
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  author: {
+    "@type": "Organization",
+    name: "Coalbanks Creative Inc.",
+    url: "https://lethbridgedrone.com",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Lethbridge Drone",
+    url: "https://lethbridgedrone.com",
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": new URL(`/blog/${post.slug}/`, Astro.site).toString(),
+  },
+};
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription} ogImage={ogImageUrl}>
+<BaseLayout title={pageTitle} description={pageDescription} showReadingProgress={true} ogImage={ogImageUrl}>
+  <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
   <article class="container max-w-3xl py-12 md:py-16">
     {/* Hero Image */}
     {post.data.heroImage && (

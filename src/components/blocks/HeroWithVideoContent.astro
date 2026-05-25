@@ -1,0 +1,74 @@
+---
+import { buttonVariants } from "@/components/ui/button";
+
+interface Props {
+  badgeText: string;
+  title: string;
+  description: string;
+  button1Text: string;
+  button2Text: string;
+  button1Link?: string;
+  button2Link?: string;
+}
+
+const {
+  badgeText,
+  title,
+  description,
+  button1Text,
+  button2Text,
+  button1Link = "#",
+  button2Link = "#",
+} = Astro.props;
+
+const titleParts = title.split(":");
+const headingText = titleParts[0]?.trim() || "";
+const subheadingText = titleParts[1]?.trim() || "";
+
+const elevatedIndex = headingText.indexOf("Elevated");
+---
+
+<div>
+  {badgeText && (
+    <div class="inline-flex items-center rounded-full border-none bg-primary text-primary-foreground px-2.5 py-1 text-xs font-semibold">
+      {badgeText}
+    </div>
+  )}
+  <h1 class="font-heading mt-6 max-w-[17ch] text-4xl font-bold !leading-[1.2] md:text-5xl lg:text-6xl xl:text-7xl tracking-tight">
+    {elevatedIndex !== -1 ? (
+      <>
+        {headingText.substring(0, elevatedIndex)}
+        <span class="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
+          Elevated
+        </span>
+        {headingText.substring(elevatedIndex + "Elevated".length)}
+      </>
+    ) : (
+      headingText
+    )}
+  </h1>
+  {subheadingText && (
+    <p class="mt-4 text-xl text-muted-foreground">{subheadingText}</p>
+  )}
+  <p class="mt-6 max-w-[60ch] text-lg">{description}</p>
+  <div class="mt-12 flex flex-wrap items-center gap-4">
+    <a
+      href={button1Link}
+      class={buttonVariants({ size: "lg", class: "rounded-full text-base" })}
+    >
+      {button1Text}
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1" aria-hidden="true">
+        <path d="M7 7h10v10"/><path d="M7 17 17 7"/>
+      </svg>
+    </a>
+    <a
+      href={button2Link}
+      class={buttonVariants({ variant: "outline", size: "lg", class: "rounded-full text-base shadow-none" })}
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/>
+      </svg>
+      {button2Text}
+    </a>
+  </div>
+</div>

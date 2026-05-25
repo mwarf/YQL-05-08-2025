@@ -1,0 +1,74 @@
+---
+const testimonials = [
+  {
+    name: "Trevor Helwig",
+    role: "SMRID",
+    rating: 5,
+    initial: "TH",
+    testimonial:
+      "Coalbanks collected some drone footage for SMRID of larger canals and drop structures. Communication and scheduling was excellent and we were very pleased with the final product.",
+  },
+  {
+    name: "Rod Leland",
+    role: "Commercial Truck",
+    rating: 5,
+    initial: "RL",
+    testimonial:
+      "I've worked with Coalbanks in a professional capacity and the agreed-upon creative brief led easily to exactly what we needed for our project quickly and with strong value.",
+  },
+  {
+    name: "Jason Visser",
+    role: "Taber Christian School",
+    rating: 5,
+    initial: "JV",
+    testimonial:
+      "Michael was good to work with and went the extra mile to accommodate our school in helping us produce a promotional video that matched what we were looking for.",
+  },
+];
+---
+
+<div class="container pt-5 pb-10">
+  <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    {testimonials.map((t) => (
+      <div class="relative overflow-hidden rounded-2xl border border-primary/10 bg-background p-6 transition-all hover:shadow-lg dark:hover:shadow-primary/5 md:p-8">
+        <div class="absolute right-6 top-6 text-6xl font-serif text-muted-foreground/20">&ldquo;</div>
+        <div class="flex flex-col gap-4 justify-between h-full">
+          {t.rating > 0 && (
+            <div class="flex gap-1">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill={i < t.rating ? "currentColor" : "none"}
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class={i < t.rating ? "text-yellow-400" : "text-muted"}
+                >
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+              ))}
+            </div>
+          )}
+          <p class="text-pretty text-base text-muted-foreground">{t.testimonial}</p>
+          <div class="flex items-center gap-4 justify-start">
+            <div class="flex items-center gap-4">
+              <div class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full bg-muted">
+                <span class="flex h-full w-full items-center justify-center rounded-full bg-muted text-sm font-medium text-muted-foreground">
+                  {t.initial}
+                </span>
+              </div>
+              <div class="flex flex-col">
+                <h3 class="font-semibold text-foreground">{t.name}</h3>
+                <p class="text-sm text-muted-foreground">{t.role}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

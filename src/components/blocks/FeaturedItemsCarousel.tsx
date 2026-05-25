@@ -129,11 +129,12 @@ const FeaturedItemsCarousel = ({
                           <div className="relative h-full w-full origin-bottom transition duration-300 group-hover:scale-105">
                             {/* Updated img tag to use imageSrc and remove srcset/width/height */}
                             <img
-                              src={item.imageSrc} // Use the new imageSrc prop
-                              loading="lazy" // Keep lazy loading
-                              decoding="async" // Keep async decoding
-                              alt={item.alt} // Keep alt text
-                              // Removed width, height, and srcset as they are no longer provided
+                              src={item.imageSrc}
+                              loading="lazy"
+                              decoding="async"
+                              alt={item.alt}
+                              width="452"
+                              height="301"
                               className="h-full w-full object-cover object-center"
                             />
                           </div>

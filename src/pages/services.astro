@@ -1,6 +1,7 @@
 ---
+export const prerender = true;
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import ServicesGrid from "@/components/blocks/ServicesGrid.tsx";
+import ServicesGrid from "@/components/blocks/ServicesGrid.astro";
 import { buttonVariants } from "@/components/ui/button";
 // Icons are now handled within the React component
 
@@ -63,7 +64,7 @@ const ourServices = [
   {/* New Services Grid Section - Removed redundant title prop */}
   <section id="services-grid" class="bg-background">
     <div class="container">
-       <ServicesGrid services={ourServices} client:load /> {/* Removed title prop as it's now in the intro section */}
+        <ServicesGrid services={ourServices} />
     </div>
   </section>
 

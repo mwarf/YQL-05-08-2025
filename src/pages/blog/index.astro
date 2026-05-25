@@ -1,7 +1,6 @@
 ---
 // src/pages/blog/index.astro
-// This page simply redirects to the first page of the blog pagination.
-export const prerender = true; // Ensure this redirect page is also pre-rendered
+export const prerender = true;
 
 return Astro.redirect("/blog/1", 301); // Permanent redirect
 ---

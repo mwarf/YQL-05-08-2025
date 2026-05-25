@@ -1,0 +1,55 @@
+---
+interface Service {
+  iconName: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  services: Service[];
+  title?: string;
+}
+
+const { services, title } = Astro.props;
+
+const iconSvg: Record<string, string> = {
+  Building2: '<path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/>',
+  Film: '<rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/><line x1="17" y1="17" x2="22" y2="17"/>',
+  CalendarDays: '<rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/>',
+  HardHat: '<path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2z"/><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M4 15V11a8 8 0 0 1 16 0v4"/>',
+  MapPinned: '<path d="M11 2a5 5 0 0 1 5 5c0 4.42-5 9-5 9s-5-4.58-5-9a5 5 0 0 1 5-5z"/><circle cx="11" cy="7" r="1.5"/><path d="M21 16l-5 5-2-2"/>',
+  Leaf: '<path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>',
+  AlertCircle: '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>',
+};
+---
+
+<div class="py-12 md:py-20">
+  {title && (
+    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-center mb-10 sm:mb-16">
+      {title}
+    </h2>
+  )}
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-screen-lg mx-auto px-4 sm:px-6">
+    {services.map((service) => (
+      <div class="flex flex-col border rounded-xl p-6 bg-card text-card-foreground hover:shadow-lg transition-shadow duration-300">
+        <div class="mb-4 h-12 w-12 flex items-center justify-center bg-muted text-muted-foreground rounded-full">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            set:html={iconSvg[service.iconName] || iconSvg.AlertCircle}
+          />
+        </div>
+        <h3 class="text-lg font-semibold mb-1">{service.title}</h3>
+        <p class="text-muted-foreground text-sm">{service.description}</p>
+      </div>
+    ))}
+  </div>
+</div>

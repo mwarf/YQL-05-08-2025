@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location (adjust if Astro generates it elsewhere)
-Sitemap: /sitemap-index.xml
+Sitemap: https://lethbridgedrone.com/sitemap-index.xml
